@@ -10,7 +10,7 @@
         <div class="pane-header">
           <h2 class="d-flex justify-content-center">Iniciar sesión</h2>
         </div>
-        <form [formGroup]="aFormGroup">
+        <form (ngSubmit)="onSubmit()" [formGroup]="aFormGroup">
           <div class="form-group">
             <label>Nombre de usuario:</label>
             <input name="username" type="text" class="form-control" formControlName="username"
@@ -61,7 +61,6 @@
               </div>
             </div>
           </div>
-          <!--  *ngIf="this.contador > 3" -->
           <div class="recaptcha2" *ngIf="this.contador > 3">
             <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha" [ngClass]="{
               'is-invalid':

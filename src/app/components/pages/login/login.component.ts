@@ -31,9 +31,6 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit() {
-    //pristine es una propiedad del formulario que indica si el formulario se conserva
-    //tal cual se dio al usuario(true), si el usuario lo modifica (false)
-
     if (this.contador > 3) {
     } else {
     }
