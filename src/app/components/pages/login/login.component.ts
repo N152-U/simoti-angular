@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
     if (this.contador > 3) {
     } else {
     }
-
   }
   get username() {
     return this.aFormGroup.get('username');
