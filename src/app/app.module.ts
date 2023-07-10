@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { HeaderComponent } from './components/shared/header/header.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
     LoginComponent,
     HomeComponent,
     FooterComponent,
-    HeaderComponent,
     SidebarComponent
   ],
   imports: [
