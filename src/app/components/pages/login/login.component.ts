@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { Validators, FormBuilder } from "@angular/forms";
+import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
+//import { far } from '@fortawesome/free-regular-svg-icons'
+//import { fab } from '@fortawesome/free-brands-svg-icons'
 
 import { environment } from "../../../../environments/environment";
 @Component({
@@ -9,7 +12,8 @@ import { environment } from "../../../../environments/environment";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  faEyeSlash = faEyeSlash;
+  faEye = faEye;
   siteKey: string;
   appVersion: string;
   appAlias: string;
@@ -25,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.aFormGroup = this.formBuilder.group({
-      username: ["", [Validators.required, Validators.minLength(2)]],
+      username: ["", [Validators.required, Validators.minLength(4)]],
       password: ["", Validators.required],
       recaptcha: ["", this.contador > 3 ? Validators.required : Validators.nullValidator]
     });
