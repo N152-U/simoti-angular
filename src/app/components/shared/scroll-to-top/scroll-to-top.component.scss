@@ -1,15 +1,13 @@
+
 .scroll-to-top {
-  position  : fixed;
-  bottom    : 15px;
-  right     : 15px;
-  opacity   : 0;
-  transition: all .2s ease-in-out;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  opacity: 0;
+  transition: all 0.15s;
 }
-
 .show-scrollTop {
-  opacity         : 1;
-  transition      : all .2s ease-in-out;
+  opacity: 1;
+  transition: all 0.15s;
   border-radius   : 50%;
-  background-color: rgb(51, 47, 49);
-
 }
