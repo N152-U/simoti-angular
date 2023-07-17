@@ -1,10 +1,16 @@
-
+<nav style="background-color: #163e74" class="navbar navbar-light">
+  <a class="navbar-brand mx-auto" href="#">
+    <img class="d-inline-block align-top" alt="">
+  </a>
+</nav>
 <div class="row">
-  <div class="col-sm-2"></div>
+  <div class="col-sm-4"></div>
   <div class="col-sm-4">
     <div class="login-content">
       <div class="pane pane-basic login-box">
         <div class="pane-header">
+          <img src="../../../../assets/images/avatar.png" class="avatar" alt="Avatar Image">
+          <br>
           <h2 class="d-flex justify-content-center">Iniciar sesión</h2>
         </div>
         <form (ngSubmit)="onSubmit()" [formGroup]="aFormGroup">
@@ -78,10 +84,9 @@
       </div>
     </div>
     <br>
-    <!-- Nombre y versión del sitema -->
     <div class="d-flex justify-content-center">
       <div> <b> {{appAlias}} v{{appVersion}}</b></div>
     </div>
   </div>
-  <div class="col-sm-4"></div>
+
 </div>
