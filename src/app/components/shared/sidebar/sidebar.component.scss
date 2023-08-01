@@ -88,8 +88,8 @@
 .home-section {
   position: relative;
   background-image: radial-gradient(circle farthest-corner at 7.2% 13.6%,
-      #9F2241,
-      #9F2241 90%);
+      #163E74,
+      #163E74 90%);
   /* background-image: radial-gradient(circle farthest-corner at 7.2% 13.6%, #25f9f5 0%, #0846da 90%); */
   height        : min-content;
   left          : 230px;
@@ -106,7 +106,7 @@
 }
 
 .home-section .home-header .title {
-  color    : #9F2241;
+  color    : #163E74;
   font-size: 35px;
 }
 
@@ -128,7 +128,7 @@
   left      : 0;
   height    : 100%;
   width     : 230px;
-  background: #9F2241;
+  background: #163E74;
   z-index   : 100;
   transition: all 0.5s ease;
 }
@@ -154,7 +154,7 @@
 .sidebar .logo-details .logo {
   height          : 40px;
   width           : 100%;
-  background-image: linear-gradient(to right, #9F2241, #9F2241);
+  background-image: linear-gradient(to right, #163E74, #163E74);
 }
 
 .sidebar.sidebar-close .logo-details .logo {
@@ -190,7 +190,7 @@
 }
 
 .sidebar .nav-links li:hover a>i {
-  color: #9F2241;
+  color: #163E74;
 }
 
 .sidebar .nav-links li.active {
@@ -217,7 +217,7 @@
   min-width  : 45px;
   text-align : center;
   line-height: 50px;
-  color      : #9F2241;
+  color      : #163E74;
   font-size  : 20px;
   cursor     : pointer;
   transition : all 0.3s ease;
@@ -268,7 +268,7 @@ i:active{
 
 .sidebar .nav-links li:hover a .link_name,
 .sidebar .nav-links li.active a .link_name {
-  color: #9F2241;
+  color: #163E74;
 }
 
 .sidebar.sidebar-close .nav-links li a .link_name {
@@ -320,7 +320,7 @@ i:active{
 
 .sidebar .nav-links li .sub-menu li:hover a,
 .sidebar .nav-links li .sub-menu li.active a {
-  color: #9F2241;
+  color: #163E74;
 }
 
 .sidebar.sidebar-close .nav-links li .sub-menu {
@@ -369,7 +369,7 @@ i:active{
 
 .sidebar.sidebar-close .nav-links li .sub-menu li:first-child:hover .link_name,
 .sidebar.sidebar-close .nav-links li .sub-menu li:first-child.active .link_name {
-  color: #9F2241;
+  color: #163E74;
 }
 
 .sidebar .nav-links li .sub-menu.blank {
