@@ -1,7 +1,23 @@
 .content {
   margin-left: 100px;
-  transition: 0.3s;
+  transition : 0.3s;
+
   &.sidebarExpanded {
     margin-left: 160px;
   }
+}
+
+.contenido {
+  margin-left: 45px;
+  transition : all 0.5s ease;
+}
+
+.expanded {
+  margin-left: 230px;
+  transition : all 0.5s ease;
+  margin-top: -70px;
+}
+
+.logout {
+  margin-left: 0px;
 }

@@ -1,60 +1,72 @@
-<div class="sidebar" [ngClass]="{ 'expanded': isExpanded }">
-  <div class="header">
-    <h1 class="title">
-      SIMOTI
-    </h1>
-    <div class="toggle" (click)="handleSidebarToggle()">
-      <span class="chevron"></span>
+<div class="sidebar" [class.sidebar-close]="!openSidebar">
+  <div class="logo-details">
+    <div class="logo">
+      <div class="hamburger-menu">
+        <input type="checkbox" id="checkbox-hamburger-menu" [(ngModel)]="openSidebar" (change)="opener()" />
+        <label class="label-hamburger-menu" for="checkbox-hamburger-menu">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </label>
+
+      </div>
+      <!-- insertar hamborgueso-->
     </div>
   </div>
-  <div class="content">
-    <div class="link">
-      <div class="content" [routerLink]="['/home']" [routerLinkActive]="'active'">
-        <div class="icon">
-        </div>
-        <div class="title">Home</div>
-      </div>
-    </div>
-    <div class="link with-children">
-      <div class="content" [routerLink]="['/configuration']" [routerLinkActive]="'active'">
-        <div class="icon">
-        </div>
-        <div class="title">Configuration</div>
-      </div>
-      <div class="children">
-        <div class="link">
-          <div class="content" [routerLink]="['/configuration']" [queryParams]="{ 'child': '1' }"
-            [routerLinkActive]="'active'">
-            <div class="icon">
-            </div>
-            <div class="title">child 1</div>
-          </div>
-        </div>
-        <div class="link">
-          <div class="content" [routerLink]="['/configuration']" [queryParams]="{ 'child': '2' }"
-            [routerLinkActive]="'active'">
-            <div class="icon">
-            </div>
-            <div class="title">child 2</div>
-          </div>
-        </div>
-        <div class="link">
-          <div class="content" [routerLink]="['/configuration']" [queryParams]="{ 'child': '3' }"
-            [routerLinkActive]="'active'">
-            <div class="icon">
-            </div>
-            <div class="title">child 3</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="link">
-      <div class="content" [routerLink]="['/bookings']" [routerLinkActive]="'active'">
-        <div class="icon">
-        </div>
-        <div class="title">Bookings</div>
-      </div>
-    </div>
+  <div class="profile">
+    <img src="assets/images/user.png" alt="profile_picture">
+    <h3>{{dataUser.username}}</h3>
+    <p>{{dataUser.role}}</p>
+    <a routerLink="profile" class="showProfile">
+      <span>Ver perfil</span>
+    </a>
   </div>
-  <div class="footer"></div>
+  <ul class="nav-links" id="nav-links">
+    <li *ngFor="let item of menuSidebar" #itemEl routerLinkActive="active">
+
+      <div *ngIf="item.sub_menu.length == 0" class="dropdown-title">
+        <a [routerLink]="[item.link]">
+          <i [class]="item.icon" #itemEl routerLinkActive="active"></i>
+          <span class="link_name">{{ item.link_name }}</span>
+        </a>
+      </div>
+      <div *ngIf="item.sub_menu.length > 0" class="dropdown-title" (click)="showSubmenu(itemEl)">
+        <a>
+          <i [class]="item.icon" routerLinkActive="active" ></i>
+          <span class="link_name">{{ item.link_name }}</span>
+        </a>
+        <i class="pi pi-chevron-down arrow" style="font-size: 13px;"></i>
+      </div>
+      <ul class="sub-menu" [class.blank]="item.sub_menu.length == 0">
+        <li>
+          <a class="link_name">{{ item.link_name }}</a>
+        </li>
+        <li *ngFor="let item_sub of item.sub_menu" routerLinkActive="active">
+          <a [routerLink]="[item_sub.link]">{{ item_sub.link_name }}</a>
+        </li>
+      </ul>
+
+    </li>
+  </ul>
+  <ul class="logout nav-links">
+    <li>
+      <div class="dropdown-title">
+        <a class="text-danger" href="#" (click)="logOut()">
+          <i class="pi pi-power-off"></i>
+          <!-- <span >Cerrar sesión</span> -->
+        </a>
+      </div>
+    </li>
+  </ul>
 </div>
+<section class="home-section">
+  <div class="home-header">
+    <a class="navbar-brand" href="#">
+      <h4 class="text-white">
+        <img src="assets/images/cdmx-tlaloc.png" height="35">
+        <!-- <img src="assets/images/tlaloc.png" width="55" height="35"> -->
+        <span class="a-text" id="topBarTitle"> Template Angular</span>
+      </h4>
+    </a>
+  </div>
+</section>

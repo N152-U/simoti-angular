@@ -1,0 +1,53 @@
+<router-outlet></router-outlet>
+
+<div class="card centrar">
+  <p-card>
+    <form [formGroup]="editDetailGroup" (ngSubmit)="UpdatePermission()" class="needs-validation center" novalidate>
+      <h4 style="text-align:center;">Edición de Registro de Permiso</h4>
+
+      <div class="p-fluid p-grid">
+
+        <div class="p-field p-col-12 p-md-3">
+          <label>Permiso*</label>
+          <input type="text" class="form-control" placeholder="Permiso" id="permission" name="permission"
+            formControlName="permission" [class]="{
+                        'is-invalid':
+                        permission.invalid &&
+                        (permission.dirty ||
+                        permission.touched),
+                        'is-valid': permission.valid
+                    }" />
+          <div *ngIf="permission.invalid && (permission.dirty || permission.touched)" class="invalid-feedback">
+            <div *ngIf="permission.errors.required">
+              El campo es obligatorio
+            </div>
+          </div>
+        </div>
+
+        <div class="p-field p-col-12 p-md-3">
+          <label>Descripción*</label>
+          <input type="text" class="form-control" placeholder="Descripción" id="description" name="description"
+            formControlName="description" [class]="{
+                        'is-invalid':
+                        description.invalid &&
+                        (description.dirty ||
+                        description.touched),
+                        'is-valid': description.valid
+                        }" />
+          <div *ngIf="description.invalid && (description.dirty || description.touched)" class="invalid-feedback">
+            <div *ngIf="description.errors.required">
+              El campo es obligatorio
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <p-button type="submit" label="Actualizar" icon="pi pi-check"
+          styleClass="p-button-sm p-button-success"></p-button>
+        <p-button [routerLink]="['/managment/manage-permissions']" label="Cancelar" icon="pi pi-times"
+          styleClass="p-button-sm p-button-danger" [style]="{ 'margin-left': '.4em' }"></p-button>
+      </div>
+    </form>
+  </p-card>
+</div>

@@ -1,17 +1,14 @@
-<nav style="background-color: #163e74" class="navbar navbar-light">
-  <a class="navbar-brand mx-auto" href="#">
-    <img class="d-inline-block align-top" alt="">
-  </a>
-</nav>
 <div class="row">
+
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
     <div class="login-content">
       <div class="pane pane-basic login-box">
         <div class="pane-header">
-          <img src="../../../../assets/images/avatar.png" class="avatar" alt="Avatar Image">
+          <img src="assets/images/user-circle-fill.svg" class="avatar" alt="Avatar Image">
           <br>
-          <h2 class="d-flex justify-content-center">Iniciar sesión</h2>
+          <h2 class="d-flex justify-content-center">Ingreso a la aplicaci&oacute;n</h2>
+          <br>
         </div>
         <form (ngSubmit)="onSubmit()" [formGroup]="aFormGroup">
           <div class="form-group">
@@ -35,6 +32,7 @@
               </div>
             </div>
           </div>
+          <br>
           <div class="form-group">
             <label>Contraseña*</label>
             <div class="input-group">
@@ -59,6 +57,7 @@
               </div>
             </div>
           </div>
+          <br>
           <div class="recaptcha2" *ngIf="this.contador > 3">
             <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha" [ngClass]="{
               'is-invalid':
@@ -73,20 +72,19 @@
               El captcha es obligatorio
             </div>
           </div>
-          <br />
+          <br>
+          <br>
           <div class="d-flex justify-content-center">
-            <button style="background-color: #0078D7; color: white;" class="btn btn-main  btn-group-justified"
+            <button style="background-color: #9F2241; color: white;" class="btn btn-main  btn-group-justified"
               type="submit" [disabled]="!aFormGroup.valid">
-              Entrar
+              Iniciar Sesi&oacute;n
             </button>
           </div>
         </form>
       </div>
-    </div>
-    <br>
-    <div class="d-flex justify-content-center">
-      <div> <b> {{appAlias}} v{{appVersion}}</b></div>
+      <div class="d-flex justify-content-center">
+        <b>{{appAlias}} v{{appVersion}}</b>
+      </div>
     </div>
   </div>
-
 </div>

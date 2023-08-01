@@ -1,0 +1,22 @@
+<router-outlet></router-outlet>
+
+<div class="card centrar">
+  <p-card>
+    <h4 style="text-align:center;">Detalle del Permiso</h4>
+
+    <div class="p-fluid p-grid">
+
+      <div class="p-field p-col-12 p-md-3">
+        <label for="permission">Permiso</label>
+        <input id="permission" type="text" class="form-control" value="{{ permission.permission }}" disabled />
+      </div>
+      <div class="p-field p-col-12 p-md-3">
+        <label for="description">Descripción</label>
+        <input id="description" type="text" class="form-control" value="{{ permission.description }}" disabled />
+      </div>
+
+      <p-button [routerLink]="['/managment/manage-permissions']" label="Regresar" icon="pi pi-arrow-left"
+        styleClass="p-button-sm p-button-danger" id="btnReturn"></p-button>
+    </div>
+  </p-card>
+</div>

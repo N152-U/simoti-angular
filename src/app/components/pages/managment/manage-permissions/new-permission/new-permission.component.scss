@@ -1,0 +1,32 @@
+.centrar {
+  width       : 90%;
+  margin-left : auto;
+  margin-right: auto;
+  margin-top  : 100px;
+}
+
+.col-md-12 {
+  margin: .3em 0;
+}
+
+label {
+  margin: 0;
+}
+
+.buttons {
+  display        : flex;
+  justify-content: center;
+  margin         : .3em auto;
+}
+
+.size {
+  max-width: 50vw;
+  margin   : 2em auto;
+}
+
+@media only screen and (max-width: 500px) {
+  .size {
+    max-width: 80vw;
+    margin   : 2em auto;
+  }
+}

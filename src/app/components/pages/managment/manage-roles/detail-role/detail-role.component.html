@@ -1,0 +1,25 @@
+<router-outlet></router-outlet>
+
+<div class="card centrar">
+  <p-card header="Detalle del Rol" styleClass="p-card-shadow">
+    <div class="form-row">
+      <div class="col-md-12 mb-3">
+        <label>Nombre del rol</label>
+        <input id="role" type="text" class="form-control" value="{{ roles['role'] }}" disabled />
+      </div>
+      <br>
+
+      <label>Permisos:</label>
+      <div class="col-md-12 mb-3" *ngIf="roles.permissions?.length === 0">
+        <label>No hay permisos asignados</label>
+      </div>
+      <div class="col-md-12 mb-3">
+        <div *ngFor="let permission of roles.permissions!; let i = index">
+          <label>&nbsp;&nbsp;&nbsp;{{permission.description}}</label>
+        </div>
+      </div>
+    </div>
+    <p-button [routerLink]="['/managment/manage-roles']" label="Regresar" icon="pi pi-arrow-left"
+      styleClass="p-button-sm p-button-danger" id="btnReturn"></p-button>
+  </p-card>
+</div>

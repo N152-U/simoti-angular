@@ -3,14 +3,13 @@
   max-width  : 100% !important;
   min-height : 100%;
   min-height : 56vh;
-  /* display : flex; */
   align-items: center;
   margin     : 16vh 0vh;
 
 }
 
 .button {
-  background   : #A11F41;
+  background   : #9F2241;
   border-radius: 5px;
   color        : #ffffff;
 }
@@ -21,17 +20,16 @@
 }
 
 .pane {
-  background-color  : rgb(255, 255, 255);
-  -webkit-transition: background-color 0.7s;
-  transition        : background-color 0.7s;
-  -webkit-box-shadow: 0 0 8px #ddd;
-  box-shadow        : 0 0 8px #ddd;
-  margin-bottom     : 28px;
-  border-radius     : 7px;
-  position          : relative;
-  padding           : 40px;
-  //box-shadow        : 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius     : 22px;
+  background-color    : rgb(255, 255, 255);
+  -webkit-transition  : background-color 0.7s;
+  transition          : background-color 0.7s;
+  -webkit-box-shadow  : 0 0 8px #ddd;
+  box-shadow          : 0 0 8px #ddd;
+  margin-bottom       : 28px;
+  border-radius       : 7px;
+  position            : relative;
+  padding             : 40px;
+  border-radius       : 22px;
 }
 
 .row {
@@ -86,11 +84,12 @@
     -webkit-transform-origin: 0;
   }
 }
+
 .pane-header .avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  position: absolute;
-  top: -50px;
-  left: calc(50% - 50px);
+  width        : 150px;
+  height       : 150px;
+  // border-radius: 50%;
+  position     : absolute;
+  top          : -75px;
+  left         : calc(50% - 75px);
 }

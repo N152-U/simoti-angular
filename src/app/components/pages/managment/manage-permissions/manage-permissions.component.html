@@ -1,0 +1,86 @@
+<router-outlet></router-outlet>
+<div *ngIf="router.url == '/managment/manage-permissions'">
+  <div class="card centrar">
+    <header>
+      <h1 class="text-center title">Administraci&oacute;n de permisos</h1>
+    </header>
+    <p-toolbar styleClass="p-mb-4">
+      <ng-template pTemplate="left">
+        <p-button styleClass="p-button-sm" label="Inicio" [routerLink]="['/home']"></p-button>
+      </ng-template>
+      <ng-template pTemplate="right">
+        <ng-template [ngxPermissionsOnly]="[]">
+          <p-button styleClass="p-button-sm p-button-success" label="Nuevo Permiso" icon="pi pi-plus"
+            [routerLink]="['new-permission']"></p-button>
+        </ng-template>
+      </ng-template>
+    </p-toolbar>
+    <p-table styleClass="p-datatable-sm p-datatable-striped p-datatable-responsive-demo" #dt [value]="permissions"
+      [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+      currentPageReportTemplate="Registros del {first} al {last} de {totalRecords} Registros" [scrollable]="true"
+      dataKey="id" scrollHeight="400px" [style]="{ width: '100%' }" [rowsPerPageOptions]="[5,10,20, 50]"
+      (onLazyLoad)="loadPermissions($event)" [loading]="loadingTable" [totalRecords]="totalRecords">
+      <ng-template pTemplate="header" let-rowData="rowData">
+        <tr>
+          <th pSortableColumn="permission">Permiso</th>
+          <th pSortableColumn="description">Descripcion</th>
+          <th pSortableColumn="status">Status</th>
+          <th>Acciones</th>
+        </tr>
+        <tr>
+          <th>
+            <input pInputText type="text" (input)="applyFilterGlobal($event,'permission', 'contains')"
+              placeholder="Busqueda por permiso" class="p-column-filter p-inputtext-sm" />
+          </th>
+          <th>
+            <input pInputText type="text" (input)="applyFilterGlobal($event,'description', 'contains')"
+              placeholder="Busqueda por descripcion" class="p-column-filter p-inputtext-sm" />
+          </th>
+          <th></th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-permission let-i>
+        <tr [pSelectableRow]="permission">
+          <td>{{ permission.permission }}</td>
+          <td>{{ permission.description }}</td>
+          <td>
+            <span class="badge {{ permission.active == 1 ? 'bg-success' : 'bg-warning' }}">{{ permission.active == 1 ?
+              "ACTIVO" : "BLOQUEADO" }}</span>
+          </td>
+          <td>
+
+            <ng-template [ngxPermissionsOnly]="[]">
+              <button class="btn btn-primary btnEditar" [routerLink]="['edit-permission/', permission.id]">
+                <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
+              </button>
+            </ng-template>
+            &nbsp;
+            <ng-template [ngxPermissionsOnly]="[]">
+              <button class="btn btn-secondary" [routerLink]="['detail-permission/', permission.id]">
+                <i class="pi pi-eye"></i>
+              </button>
+            </ng-template>
+            &nbsp;
+            <ng-template [ngxPermissionsOnly]="[]">
+              <button class="btn btn-danger" (click)="deletePermission(permission)">
+                <i class="pi pi-trash"></i>
+              </button>
+            </ng-template>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorleft"> </ng-template>
+      <ng-template pTemplate="paginatorright"> </ng-template>
+    </p-table>
+  </div>
+
+  <div *ngIf="!cargando && permissions.length === 0"
+    class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+  </div>
+
+</div>

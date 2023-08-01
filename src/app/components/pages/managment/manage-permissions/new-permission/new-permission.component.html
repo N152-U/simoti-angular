@@ -1,0 +1,63 @@
+<router-outlet></router-outlet>
+
+<div class="card centrar">
+  <p-card header="Nuevo Registro de Permiso">
+    <form [formGroup]="newDetailGroup" (ngSubmit)="CreatePermission()" class="needs-validation center"
+      novalidate="novalidate">
+      <div class="p-fluid p-grid">
+        <div class="p-field p-col-12 p-md-3">
+          <label>Permiso<span class="text-danger text-lg font-weight-bold">*</span></label>
+          <input type="text" class="form-control" placeholder="Permiso" id="permission" name="permission"
+            formControlName="permission" [class]="{
+              'is-invalid':
+              permission.invalid &&
+                (permission.dirty ||
+                permission.touched ||
+                permission.errors.minlength ||
+                permission.errors.maxlength),
+              'is-valid': permission.valid
+            }" />
+          <div *ngIf="
+                    permission.invalid && (permission.dirty || permission.touched)
+            " class="invalid-feedback">
+            <div *ngIf="permission.errors.required">
+              El nombre del permiso es obligatorio
+            </div>
+            <div *ngIf="permission.errors.minlength">
+              El nombre del permiso debe ser de al menos 4 caracteres
+            </div>
+          </div>
+        </div>
+
+        <div class="p-field p-col-12 p-md-3">
+          <label>Descripcion<span class="text-danger text-lg font-weight-bold">*</span></label>
+          <input type="text" class="form-control" placeholder="Descripcion" id="description" name="description"
+            formControlName="description" [class]="{
+      'is-invalid':
+      description.invalid &&
+        (description.dirty ||
+        description.touched ||
+        description.errors.minlength ||
+        description.errors.maxlength),
+      'is-valid': description.valid
+    }" />
+          <div *ngIf="description.invalid && (description.dirty || description.touched)" class="invalid-feedback">
+            <div *ngIf="description.errors.required">
+              La descripción es obligatorio
+            </div>
+            <div *ngIf="description.errors.minlength">
+              La descripci&oacute;on debe ser de al menos 4 caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="buttons">
+        <p-button type="submit" label="Guardar" icon="pi pi-check" styleClass="p-button-sm p-button-success"
+          [disabled]="!newDetailGroup.valid"></p-button>
+        <p-button [routerLink]="['/managment/manage-permissions']" label="Cancelar" icon="pi pi-times"
+          styleClass="p-button-sm p-button-danger" [style]="{ 'margin-left': '.4em' }"></p-button>
+      </div>
+    </form>
+  </p-card>
+</div>

@@ -1,5 +1,6 @@
-<!-- <app-sidebar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebar>
-<div class="content" [ngClass]="{ 'sidebarExpanded': sidebarExpanded }"> -->
-  <app-scroll-to-top></app-scroll-to-top>
-<router-outlet></router-outlet>
-<!-- </div> -->
+<app-sidebar *ngIf="hasUser" (sideBar)="addItem($event)"></app-sidebar>
+<app-header *ngIf="hasUser == false"></app-header>
+<app-footer *ngIf="hasUser == false"></app-footer>
+<div class="contenido" id="sidebar">
+  <router-outlet></router-outlet>
+</div>

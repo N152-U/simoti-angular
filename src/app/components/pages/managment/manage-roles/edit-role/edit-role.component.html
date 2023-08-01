@@ -1,0 +1,54 @@
+<router-outlet></router-outlet>
+
+<div class="card centrar">
+  <p-card header="Edici&oacute;n de rol" styleClass="p-card-shadow">
+    <form (ngSubmit)="UpdateRole()" [formGroup]="formRoleUpdateGroup" class="needs-validation center" novalidate>
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <label>Nombre del Rol*</label>
+          <div class="input-group">
+            <input id="role" name="role" type="text" class="form-control" formControlName="role"
+              placeholder="Nombre del role" [class]="{
+                'is-invalid':
+                  role.invalid &&
+                  (role.dirty ||
+                    role.touched ||
+                    role.errors.minlength),
+                'is-valid': role.valid
+              }" />
+            <div *ngIf="role.invalid && (role.dirty || role.touched)" class="invalid-feedback">
+              <div *ngIf="role.errors.required">
+                El campo es obligatorio
+              </div>
+              <div *ngIf="role.errors.minlength">
+                El nombre debe ser de al menos 2 caracteres
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row m-3">
+            Seleccione las opciones sobre las que tiene permisos
+            <b>(al menos una)</b>
+          </div>
+        </div>
+
+        <div formGroupName="permissions">
+          <div *ngFor="
+              let permission of permissionsData;
+              let i = index
+            " class="p-field-checkbox col-md-12">
+            <p-checkbox [formControlName]="permission.id!" name="permissions" [binary]="true"
+              (onChange)="onCheckboxChange($event)" [inputId]=$any(permission.id) [value]="permission.id"></p-checkbox>
+            <label [for]=" permission.id ">{{ permission.description }}</label>
+          </div>
+        </div>
+      </div>
+      <br />
+      <p-button type="submit" label="Guardar" icon="pi pi-check" styleClass="p-button-sm p-button-success"
+        [disabled]="!formRoleUpdateGroup.valid">
+      </p-button>
+      <p-button [routerLink]="['/managment/manage-roles']" label="Cancelar" icon="pi pi-times"
+        styleClass="p-button-sm p-button-danger" [style]="{ 'margin-left': '.4em' }"></p-button>
+    </form>
+  </p-card>
+</div>

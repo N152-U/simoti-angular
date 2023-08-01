@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://127.0.0.1:8000',
+  apiUrl: 'http://10.11.115.23:3002/simode/api/v1',
   version: "1.0.0",
-  alias: "SIMOTI"
+  alias: "Template Angular"
 };

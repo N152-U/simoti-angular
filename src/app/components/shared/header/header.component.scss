@@ -1,0 +1,85 @@
+.navbar {
+  background-color: #9F2241 !important;
+  box-shadow      : 0 0 8px #9F2241;
+  display         : block;
+  height : 59px;
+}
+
+.navbar-top-links {
+  display: inline-block;
+  height : 59px;
+}
+
+@media only screen and (max-width: 500px) {
+  .a-text {
+    display: none;
+  }
+}
+
+
+
+.wrapper .sidebar ul li a {
+  display      : block;
+  padding      : 13px 30px;
+  border-bottom: 1px solid #9F2241;
+  color        : rgb(241, 237, 237);
+  font-size    : 16px;
+  position     : relative;
+}
+
+.wrapper .sidebar ul li a .icon {
+  color  : #dee4ec;
+  width  : 30px;
+  display: inline-block;
+}
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active {
+  color: #0c7db1;
+
+  background  : white;
+  border-right: 2px solid rgb(5, 68, 104);
+}
+
+.wrapper .sidebar ul li a:hover .icon,
+.wrapper .sidebar ul li a.active .icon {
+  color: #0c7db1;
+}
+
+.wrapper .sidebar ul li a:hover:before,
+.wrapper .sidebar ul li a.active:before {
+  display: block;
+}
+
+.wrapper .section {
+  width      : calc(100% - 225px);
+  margin-left: 225px;
+  transition : all 0.5s ease;
+}
+
+.wrapper .section .top_navbar {
+  background : rgb(7, 105, 185);
+  height     : 50px;
+  display    : flex;
+  align-items: center;
+  padding    : 0 30px;
+
+}
+
+.wrapper .section .top_navbar .hamburger a {
+  font-size: 28px;
+  color    : #f4fbff;
+}
+
+.wrapper .section .top_navbar .hamburger a:hover {
+  color: #a2ecff;
+}
+
+body.active .wrapper .sidebar {
+  left: -225px;
+}
+
+body.active .wrapper .section {
+  margin-left: 0;
+  width      : 100%;
+}

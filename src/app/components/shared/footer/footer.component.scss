@@ -1,0 +1,11 @@
+.navbar {
+  background-color: #9F2241 !important;
+  box-shadow      : 0 0 8px #9F2241;
+  display         : block;
+}
+
+.navbar-center {
+  position :relative;
+  left     : 50%;
+  transform: translatex(-50%);
+}

@@ -1,0 +1,50 @@
+<div class="card centrar">
+  <p-card header="Nuevo Registro de Rol" styleClass="p-card-shadow">
+    <form (ngSubmit)="save()" #f="ngForm" [formGroup]="aFormGroup" class="needs-validation center" novalidate>
+      <div class="form-row">
+        <div class="col-md-12">
+          <label>Nombre del rol*</label>
+          <div class="input-group">
+            <input (onChange)="roleChanged()" id="role" name="role" type="text" class="form-control"
+              formControlName="role" placeholder="Nombre del rol" [class]="{
+              'is-invalid':
+                role.invalid &&
+                (role.dirty ||
+                  role.touched ||
+                  role.errors.minlength),
+              'is-valid': role.valid
+            }" />
+            <div *ngIf="role.invalid && (role.dirty || role.touched)" class="invalid-feedback">
+              <div *ngIf="role.errors.required">
+                El campo es obligatorio
+              </div>
+              <div *ngIf="role.errors.minlength">
+                El nombre debe ser de al menos 2 caracteres
+              </div>
+            </div>
+          </div>
+          <br />
+          <div>
+            Seleccione las opciones sobre las que tiene permisos
+            <b>(al menos una)*</b>
+          </div>
+          <br>
+        </div>
+
+        <div *ngFor="let permission of permissionsData; let i=index" formArrayName="permissions"
+          class="p-field-checkbox col-md-12 ">
+          <p-checkbox (onChange)="CheckboxArray(permission.id, $event.checked, 'permissions')"
+            [value]="permission.id"></p-checkbox>
+          <label [for]=" permission.id ">{{ permission.description }}</label>
+        </div>
+      </div>
+
+      <br />
+      <p-button type="submit " label="Guardar " icon="pi pi-check " styleClass="p-button-sm p-button-success "
+        [disabled]="!aFormGroup.valid ">
+      </p-button>
+      <p-button [routerLink]="[ '/managment/manage-roles'] " label="Cancelar " icon="pi pi-times "
+        styleClass="p-button-sm p-button-danger " [style]="{ 'margin-left': '.4em' } "></p-button>
+    </form>
+  </p-card>
+</div>
