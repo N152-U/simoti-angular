@@ -20,38 +20,38 @@ export class SidebarComponent implements OnInit {
       link_name: "Home",
       link: "/home",
       icon: "pi pi-home",
+      ngxPermission: "READ.HOME",
       sub_menu: []
     }, {
       link_name: "Admnistración",
       icon: "pi pi-cog",
+      ngxPermission: "READ.MANAGEMENT",
       sub_menu: [{
         link_name: "Usuarios",
         link: "/managment/manage-users",
         icon: "pi pi-user",
-        sub_menu: []
+        ngxPermission_sub_menu: "READ.USER",
       }, {
         link_name: "Roles",
         link: "/managment/manage-roles",
         icon: "pi pi-id-card",
+        ngxPermission_sub_menu: "READ.ROLE",
       }, {
         link_name: "Permisos",
         link: "/managment/manage-permissions",
         icon: "pi pi-key",
+        ngxPermission_sub_menu: "READ.PERMISSION",
       }]
-    }, {
-      link_name: "Informes",
-      link: "/reports",
-      icon: "pi pi-file-edit",
-      sub_menu: []
-    }, {
-      link_name: "Mapa",
-      link: "/map",
-      icon: "pi pi-map",
-      sub_menu: []
     }
   ]
-  showSubmenu(itemEl: HTMLElement) {
+  showSubmenu(itemEl: HTMLElement,) {
     itemEl.classList.toggle("showMenu");
+    const lastChild = itemEl.lastElementChild
+    let numElements = lastChild?.childElementCount ?? 0;
+    numElements = numElements - 1;
+    if (numElements > 0) {
+      document.documentElement.style.setProperty(`--count`, `${numElements * 50}px`);
+    }
   }
 
   @Output() sideBar = new EventEmitter<boolean>();

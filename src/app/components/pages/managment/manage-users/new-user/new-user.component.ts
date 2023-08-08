@@ -18,7 +18,7 @@ export class NewUserComponent implements OnInit {
   newUserGroup: FormGroup | any;
   fieldTextType: boolean = false;
   fieldTextTypeConfirmation: boolean = false;
-  pattern = "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*$";
+  pattern = "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*[\-\._]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$";
   roles: Roles[] = [];
 
   data: Select2Data = [];
@@ -41,6 +41,7 @@ export class NewUserComponent implements OnInit {
             Validators.required,
             Validators.minLength(4),
             Validators.maxLength(50),
+            Validators.pattern(this.pattern)
           ],
         ],
         first_name: [
@@ -157,11 +158,11 @@ export class NewUserComponent implements OnInit {
   get confirmPassword() {
     return this.newUserGroup.get("confirmPassword");
   }
-  
+
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
-  
+
   toggleFieldTextTypeConfirmation() {
     this.fieldTextTypeConfirmation = !this.fieldTextTypeConfirmation;
   }

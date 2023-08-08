@@ -17,6 +17,7 @@ export class EditPermissionComponent implements OnInit {
   EditPermission: Permission[] = [];
   editDetailGroup: FormGroup | any;
   id: string | any;
+  patternText = "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*[\-\._]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$";
 
   constructor(
     private api: ManagePermissionsService,
@@ -33,13 +34,13 @@ export class EditPermissionComponent implements OnInit {
         permission: [
           "",
           [
-            Validators.required,
+            Validators.required, Validators.pattern(this.patternText)
           ],
         ],
         description: [
           "",
           [
-            Validators.required,
+            Validators.required, Validators.pattern(this.patternText)
           ],
         ],
       },

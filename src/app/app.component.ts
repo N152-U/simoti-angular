@@ -7,7 +7,7 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'sacmex-desinfeccion-angular';
+  title = 'simoti-angular';
   hasUser: boolean = false;
   user: any;
   sidebarExpanded = false;

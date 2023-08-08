@@ -18,6 +18,7 @@ export class NewPermissionComponent implements OnInit {
   newDetailGroup: FormGroup | any;
   fieldTextType: boolean = false;
   fieldTextTypeConfirmation: boolean = false;
+  patternText = "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*[\-\._]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$";
 
   constructor(
     private router: Router,
@@ -29,8 +30,8 @@ export class NewPermissionComponent implements OnInit {
 
     this.newDetailGroup = this.formBuilder.group(
       {
-        permission: ["", [Validators.required, Validators.minLength(4)],],
-        description: ["", [Validators.required, Validators.minLength(4)],],
+        permission: ["", [Validators.required, Validators.minLength(4), Validators.pattern(this.patternText)],],
+        description: ["", [Validators.required, Validators.minLength(4), Validators.pattern(this.patternText)],],
       },
     );
   }

@@ -26,6 +26,9 @@
             <div *ngIf="permission.errors.minlength">
               El nombre del permiso debe ser de al menos 4 caracteres
             </div>
+            <div *ngIf="permission.errors.pattern">
+              El nombre del permiso no debe contener caracteres y no debe contener espacios vacíos de inicio ni fin
+            </div>
           </div>
         </div>
 
@@ -47,6 +50,9 @@
             </div>
             <div *ngIf="description.errors.minlength">
               La descripci&oacute;on debe ser de al menos 4 caracteres
+            </div>
+            <div *ngIf="permission.errors.pattern">
+              El nombre del permiso no debe contener caracteres y no debe contener espacios vacíos de inicio ni fin
             </div>
           </div>
         </div>

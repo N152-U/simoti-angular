@@ -22,6 +22,7 @@ export class NewRoleComponent implements OnInit {
   newRole: roleModel = new roleModel();
   aFormGroup: any;
   permissionsData: PermissionModel[] = [];
+  patternText = "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*[\-\._]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$";
 
   constructor(
     private mmc: CatalogsService,
@@ -37,7 +38,7 @@ export class NewRoleComponent implements OnInit {
     );
 
     this.aFormGroup = this.formBuilder.group({
-      role: ["", [Validators.required, Validators.minLength(2)]],
+      role: ["", [Validators.required, Validators.minLength(2), Validators.pattern(this.patternText)]],
       permissions: this.formBuilder.array([], [Validators.required, Validators.minLength(1)])
     });
   }

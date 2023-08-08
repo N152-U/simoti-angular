@@ -9,7 +9,7 @@
         <p-button styleClass="p-button-sm" label="Inicio" [routerLink]="['/home']"></p-button>
       </ng-template>
       <ng-template pTemplate="right">
-        <ng-template [ngxPermissionsOnly]="[]">
+        <ng-template [ngxPermissionsOnly]="['CREATE.PERMISSION']">
           <p-button styleClass="p-button-sm p-button-success" label="Nuevo Permiso" icon="pi pi-plus"
             [routerLink]="['new-permission']"></p-button>
         </ng-template>
@@ -22,22 +22,22 @@
       (onLazyLoad)="loadPermissions($event)" [loading]="loadingTable" [totalRecords]="totalRecords">
       <ng-template pTemplate="header" let-rowData="rowData">
         <tr>
-          <th pSortableColumn="permission">Permiso</th>
-          <th pSortableColumn="description">Descripcion</th>
-          <th pSortableColumn="status">Status</th>
-          <th>Acciones</th>
+          <th pSortableColumn="permission" style="border: none">Permiso</th>
+          <th pSortableColumn="description" style="border: none">Descripción</th>
+          <th pSortableColumn="status" style="border: none">Status</th>
+          <th style="border: none">Acciones</th>
         </tr>
         <tr>
-          <th>
+          <th style="border: none">
             <input pInputText type="text" (input)="applyFilterGlobal($event,'permission', 'contains')"
               placeholder="Busqueda por permiso" class="p-column-filter p-inputtext-sm" />
           </th>
-          <th>
+          <th style="border: none">
             <input pInputText type="text" (input)="applyFilterGlobal($event,'description', 'contains')"
-              placeholder="Busqueda por descripcion" class="p-column-filter p-inputtext-sm" />
+              placeholder="Busqueda por descripción" class="p-column-filter p-inputtext-sm" />
           </th>
-          <th></th>
-          <th></th>
+          <th style="border: none"></th>
+          <th style="border: none"></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-permission let-i>
@@ -50,19 +50,19 @@
           </td>
           <td>
 
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['UPDATE.PERMISSION']">
               <button class="btn btn-primary btnEditar" [routerLink]="['edit-permission/', permission.id]">
                 <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['READ.PERMISSION']">
               <button class="btn btn-secondary" [routerLink]="['detail-permission/', permission.id]">
                 <i class="pi pi-eye"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['DELETE.PERMISSION']">
               <button class="btn btn-danger" (click)="deletePermission(permission)">
                 <i class="pi pi-trash"></i>
               </button>

@@ -10,7 +10,7 @@
       </ng-template>
 
       <ng-template pTemplate="right">
-        <ng-template [ngxPermissionsOnly]="[]">
+        <ng-template [ngxPermissionsOnly]="['CREATE.USER']">
           <p-button styleClass="p-button-sm p-button-success" label="Nuevo Usuario" icon="pi pi-plus"
             [routerLink]="['new-user']"></p-button>
         </ng-template>
@@ -24,45 +24,45 @@
 
       <ng-template pTemplate="header" let-rowData="rowData">
         <tr>
-          <th pSortableColumn="username">Usuario</th>
-          <th pSortableColumn="firstName">Nombre</th>
-          <th pSortableColumn="middleName">
+          <th pSortableColumn="username" style="border: none">Usuario</th>
+          <th pSortableColumn="firstName" style="border: none">Nombre</th>
+          <th pSortableColumn="middleName" style="border: none">
             Apellido Paterno
           </th>
-          <th pSortableColumn="lastName">
+          <th pSortableColumn="lastName" style="border: none">
             Apellido Materno
           </th>
 
-          <th pSortableColumn="roles.role">Role</th>
-          <th pSortableColumn="status">Status</th>
-          <th>Acciones</th>
+          <th pSortableColumn="roles.role" style="border: none">Rol</th>
+          <th pSortableColumn="status" style="border: none">Status</th>
+          <th style="border: none" >Acciones</th>
         </tr>
         <tr>
-          <th>
+          <th style="border: none">
             <input pInputText type="text" (input)="applyFilterGlobal($event, 'username', 'contains')"
               placeholder="Busqueda por usuario" class="p-column-filter p-inputtext-sm" />
           </th>
-          <th>
+          <th style="border: none">
             <input pInputText type="text" (input)="applyFilterGlobal($event, 'firstName', 'contains')"
               placeholder="Busqueda por nombre" class="p-column-filter p-inputtext-sm" />
           </th>
-          <th>
+          <th style="border: none">
             <input pInputText type="text" (input)="
             applyFilterGlobal($event, 'middleName', 'contains')" placeholder="Busqueda por apellido paterno"
               class="p-column-filter p-inputtext-sm" />
           </th>
-          <th>
+          <th style="border: none">
             <input pInputText type="text" (input)="applyFilterGlobal($event, 'lastName', 'contains')"
               placeholder="Busqueda por apellido materno" class="p-column-filter p-inputtext-sm" />
           </th>
 
-          <th>
+          <th style="border: none">
             <input pInputText type="text" (input)="
-            applyFilterGlobal($event, 'roleName', 'contains')" placeholder="Busqueda por role"
+            applyFilterGlobal($event, 'roleName', 'contains')" placeholder="Busqueda por rol"
               class="p-column-filter p-inputtext-sm" />
           </th>
-          <th></th>
-          <th></th>
+          <th style="border: none"></th>
+          <th style="border: none"></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-user let-i>
@@ -77,19 +77,19 @@
               "BLOQUEADO" }}</span>
           </td>
           <td>
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['UPDATE.USER']">
               <button class="btn btn-primary btnEditar" [routerLink]="['edit-user', user.hash]">
                 <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['READ.USER']">
               <button class="btn btn-secondary" [routerLink]="['detail-user', user.hash]">
                 <i class="pi pi-eye"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['DELETE.USER']">
               <button class="btn btn-danger" (click)="DeleteUser(user, i)">
                 <i class="pi pi-trash"></i>
               </button>

@@ -18,7 +18,7 @@ export class EditUserComponent implements OnInit{
   editUserGroup: FormGroup | any;
   fieldTextType: boolean = false;
   fieldTextTypeConfirmation: boolean = false;
-  pattern = "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*$";
+  pattern = "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*[\-\._]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$";
   hash: string = '';
   roles: Roles[] = [];
 
@@ -44,6 +44,7 @@ export class EditUserComponent implements OnInit{
             Validators.required,
             Validators.minLength(4),
             Validators.maxLength(50),
+            Validators.pattern(this.pattern)
           ],
         ],
         first_name: [
@@ -109,9 +110,11 @@ export class EditUserComponent implements OnInit{
       });
     });
 
-    this.userService.GetUpdateByHash(this.hash).subscribe((res) => {
-      this.editUserGroup.patchValue(res);
-    });
+    setTimeout(()=>{
+      this.userService.GetUpdateByHash(this.hash).subscribe((res) => {
+        this.editUserGroup.patchValue(res);
+      });
+    }, 500);
   }
 
   EditUser() {

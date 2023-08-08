@@ -21,6 +21,9 @@
             <div *ngIf="permission.errors.required">
               El campo es obligatorio
             </div>
+            <div *ngIf="permission.errors.pattern">
+              El nombre del permiso no debe contener caracteres y no debe contener espacios vacíos de inicio ni fin
+            </div>
           </div>
         </div>
 
@@ -37,6 +40,9 @@
           <div *ngIf="description.invalid && (description.dirty || description.touched)" class="invalid-feedback">
             <div *ngIf="description.errors.required">
               El campo es obligatorio
+            </div>
+            <div *ngIf="permission.errors.pattern">
+              El nombre del permiso no debe contener caracteres y no debe contener espacios vacíos de inicio ni fin
             </div>
           </div>
         </div>

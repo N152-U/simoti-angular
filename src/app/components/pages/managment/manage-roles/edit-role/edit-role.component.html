@@ -23,6 +23,9 @@
               <div *ngIf="role.errors.minlength">
                 El nombre debe ser de al menos 2 caracteres
               </div>
+              <div *ngIf="role.errors.pattern">
+                El rol no debe contener caracteres y no debe contener espacios vacíos de inicio ni fin
+              </div>
             </div>
           </div>
           <br />

@@ -39,7 +39,7 @@
                                     username.errors.minlength ||
                                     username.errors.maxlength),
                                 'is-valid': username.valid
-                        }"/>
+                        }" readonly/>
                         <div *ngIf="username.invalid && (username.dirty || username.touched)" class="invalid-feedback">
                             <div *ngIf="username.errors.required">El campo es obligatorio</div>
                             <div *ngIf="username.errors.minlength">

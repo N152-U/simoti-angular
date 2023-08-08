@@ -48,6 +48,9 @@
                             <div *ngIf="username.errors.maxlength">
                                 El usuario máximo debe tener 50 caracteres
                             </div>
+                            <div *ngIf="username.errors.pattern">
+                              El usuario solo debe contener letras
+                            </div>
                         </div>
 
                     </div>

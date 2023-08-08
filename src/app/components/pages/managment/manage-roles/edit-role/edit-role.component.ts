@@ -30,6 +30,7 @@ export class EditRoleComponent implements OnInit {
   permissionsId: number[] = [];
   checked: any = false;
   hash = require('object-hash');
+  patternText = "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*[\-\._]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$";
 
   showLinkedRisksOnly = true;
   condition = true;
@@ -48,7 +49,7 @@ export class EditRoleComponent implements OnInit {
     this.hash = this.route.snapshot.params["hash"];
 
     this.formRoleUpdateGroup = this._formBuilder.group({
-      role: ["", [Validators.required, Validators.minLength(2)]],
+      role: ["", [Validators.required, Validators.minLength(2), Validators.pattern(this.patternText)]],
       permissions: this._formBuilder.group([]),
     });
 

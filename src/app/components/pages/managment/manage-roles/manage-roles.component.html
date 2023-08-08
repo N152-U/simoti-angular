@@ -12,7 +12,7 @@
       </ng-template>
 
       <ng-template pTemplate="right">
-        <ng-template [ngxPermissionsOnly]="[]">
+        <ng-template [ngxPermissionsOnly]="['CREATE.ROLE']">
           <p-button styleClass="p-button-sm p-button-success" label="Nuevo Rol" icon="pi pi-plus"
             [routerLink]="['new-role']"></p-button>
         </ng-template>
@@ -25,17 +25,17 @@
       (onLazyLoad)="loadRoles($event)" [loading]="loadingTable" [totalRecords]="totalRecords">
       <ng-template pTemplate="header" let-rowData="rowData">
         <tr>
-          <th pSortableColumn="role">Role</th>
-          <th>Status</th>
-          <th>Acciones</th>
+          <th pSortableColumn="role" style="border: none">Rol</th>
+          <th style="border: none">Status</th>
+          <th style="border: none">Acciones</th>
         </tr>
         <tr>
-          <th>
+          <th style="border: none">
             <input pInputText type="text" (input)="applyFilterGlobal($event,'role', 'contains')"
-              placeholder="Busqueda por role" class="p-column-filter p-inputtext-sm" />
+              placeholder="Busqueda por rol" class="p-column-filter p-inputtext-sm" />
           </th>
-          <th></th>
-          <th></th>
+          <th style="border: none"></th>
+          <th style="border: none"></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-role let-i>
@@ -48,20 +48,20 @@
           </td>
 
           <td>
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['UPDATE.ROLE']">
               <button class="btn btn-primary btnEditar" [routerLink]="['edit-role', role.hash]">
                 <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['READ.ROLE']">
               <button class="btn btn-secondary" [routerLink]="['detail-role', role.hash]">
                 <i class="pi pi-eye"></i>
               </button>
             </ng-template>
             &nbsp;
 
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['DELETE.ROLE']">
               <button class="btn btn-danger" (click)="deleteRole(role, i)">
                 <i class="pi pi-trash"></i>
               </button>
