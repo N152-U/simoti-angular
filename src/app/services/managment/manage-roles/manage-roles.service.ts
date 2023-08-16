@@ -21,7 +21,7 @@ export class ManageRolesService {
   ) { }
 
   CreateRole(role: roleModel) {
-    return this.http.post(`${environment.apiUrl}/roles`, role).pipe(
+    return this.http.post(`${environment.apiUrl}/roles/add`, role).pipe(
       map((resp: any) => {
         role.id = resp.id;
         return role;
