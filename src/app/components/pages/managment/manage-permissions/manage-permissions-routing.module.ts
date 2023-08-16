@@ -8,7 +8,7 @@ import { DetailPermissionComponent } from './detail-permission/detail-permission
 import { AuthGuard } from '@app/guards/auth.guard';
 const routes: Routes = [
   {
-    path: '', component: ManagePermissionsComponent, canActivate: [AuthGuard],
+    path: '', component: ManagePermissionsComponent, /* canActivate: [AuthGuard], */
     children: [
       { path: 'new-permission', component: NewPermissionComponent, canActivate: [AuthGuard] },
       { path: 'edit-permission/:id', component: EditPermissionComponent, canActivate: [AuthGuard] },
