@@ -62,6 +62,6 @@ export class ManageRolesService {
   }
 
   UpdateRole(hash: string, params: any) {
-    return this.http.put(`${environment.apiUrl}/roles/${hash}`, params);
+    return this.http.put(`${environment.apiUrl}/roles/update/${hash}`, params);
   }
 }

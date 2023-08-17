@@ -100,12 +100,12 @@ export class EditRoleComponent implements OnInit {
       if (result.isConfirmed) {
         const formData = this.formRoleUpdateGroup.value;
 
-        let permissionsId: number[] = [];
+        let permissionsId: string[] = [];
         let index = 0;
         Object.entries(formData.permissions).forEach(([key, value]) => {
 
           if (value == true) {
-            permissionsId[index] = Number(key);
+            permissionsId[index] = key;
             index++;
           }
         });
