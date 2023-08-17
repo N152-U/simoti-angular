@@ -46,7 +46,7 @@ export class ManageRolesComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.roles.splice(i, 1);
-        this.api.DeleteRole(role.hash!).subscribe((resp) => {
+        this.api.DeleteRole(role.id!).subscribe((resp) => {
           Swal.fire({
             position: "center",
             icon: "success",

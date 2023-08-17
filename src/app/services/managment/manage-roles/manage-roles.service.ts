@@ -42,7 +42,7 @@ export class ManageRolesService {
   }
 
   DeleteRole(hash: string) {
-    return this.http.delete(`${environment.apiUrl}/roles/${hash}`);
+    return this.http.delete(`${environment.apiUrl}/roles/delete/${hash}`);
   }
 
   GetIdRoleDetail(hash: string): Observable<any> {
