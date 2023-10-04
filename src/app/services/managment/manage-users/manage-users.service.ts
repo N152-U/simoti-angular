@@ -34,7 +34,7 @@ export class ManageUsersService {
 
   /*  FUNCION POST CreateUser */
   CreateUser(user: any) {
-    return this.http.post(`${environment.apiUrl}/users`, user).pipe(
+    return this.http.post(`${environment.apiUrl}/users/add`, user).pipe(
       map((resp: any) => {
         return resp;
       })
@@ -67,7 +67,7 @@ export class ManageUsersService {
   }
   /*FUNCION PUT UpdateUser */
   UpdateUser(hashUser: string, user: any) {
-    return this.http.put(`${environment.apiUrl}/users/${hashUser}`, user);
+    return this.http.put(`${environment.apiUrl}/users/update/${hashUser}`, user);
   }
   /*FUNCION PUT UpdatePassword */
   UpdatePassword(username: string, password: any) {
@@ -75,7 +75,7 @@ export class ManageUsersService {
   }
   /*  FUNCION DELETE DeleteUser */
   DeleteUser(hashUser: string) {
-    return this.http.delete(`${environment.apiUrl}/users/${hashUser}`);
+    return this.http.delete(`${environment.apiUrl}/users/delete/${hashUser}`);
   }
   /* FUNCION GetIdUser */
   GetUserByHash(hash: string) {

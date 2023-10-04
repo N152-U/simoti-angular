@@ -43,7 +43,7 @@ export class ManageUsersComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.users.splice(i, 1);
-          this.mmu.DeleteUser(user.hash).subscribe((resp) => {
+          this.mmu.DeleteUser(user.id).subscribe((resp) => {
           Swal.fire({
             position: "center",
             icon: "success",

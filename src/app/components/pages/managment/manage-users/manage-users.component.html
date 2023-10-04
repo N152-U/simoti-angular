@@ -10,7 +10,7 @@
       </ng-template>
 
       <ng-template pTemplate="right">
-        <ng-template [ngxPermissionsOnly]="['CREATE.USER']">
+        <ng-template [ngxPermissionsOnly]="[]">
           <p-button styleClass="p-button-sm p-button-success" label="Nuevo Usuario" icon="pi pi-plus"
             [routerLink]="['new-user']"></p-button>
         </ng-template>
@@ -77,19 +77,19 @@
               "BLOQUEADO" }}</span>
           </td>
           <td>
-            <ng-template [ngxPermissionsOnly]="['UPDATE.USER']">
-              <button class="btn btn-primary btnEditar" [routerLink]="['edit-user', user.hash]">
+            <ng-template [ngxPermissionsOnly]="[]">
+              <button class="btn btn-primary btnEditar" [routerLink]="['edit-user', user.id]">
                 <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="['READ.USER']">
-              <button class="btn btn-secondary" [routerLink]="['detail-user', user.hash]">
+            <ng-template [ngxPermissionsOnly]="[]">
+              <button class="btn btn-secondary" [routerLink]="['detail-user', user.id]">
                 <i class="pi pi-eye"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="['DELETE.USER']">
+            <ng-template [ngxPermissionsOnly]="[]">
               <button class="btn btn-danger" (click)="DeleteUser(user, i)">
                 <i class="pi pi-trash"></i>
               </button>
