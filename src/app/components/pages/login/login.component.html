@@ -1,44 +1,29 @@
 <div class="row">
+
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
     <div class="login-content">
       <div class="pane pane-basic login-box">
         <div class="pane-header">
-          <img
-            src="assets/images/user-circle-fill.svg"
-            class="avatar"
-            alt="Avatar Image"
-          />
-          <br />
-          <h3 class="d-flex justify-content-center">
-            Ingreso a la aplicaci&oacute;n
-          </h3>
-          <br />
+          <img src="assets/images/user-circle-fill.svg" class="avatar" alt="Avatar Image">
+          <br>
+          <h2 class="d-flex justify-content-center">Ingreso a la aplicaci&oacute;n</h2>
+          <br>
         </div>
         <form (ngSubmit)="onSubmit()" [formGroup]="aFormGroup">
           <div class="form-group">
-            <label>Nombre de usuario<span style="color: red">*</span> </label>
-            <input
-              name="username"
-              type="text"
-              class="form-control"
-              formcontrolname="username"
-              placeholder="Nombre de usuario"
-              required
-              [ngClass]="{
-                'is-invalid':
-                  username.invalid &&
-                  (username.dirty ||
-                    username.touched ||
-                    username.errors.minlength),
-                'is-valid': username.valid
-              }"
-            />
+            <label>Nombre de usuario:</label>
+            <input name="username" type="text" class="form-control" formControlName="username"
+              placeholder="Nombre de usuario" required [ngClass]="{
+              'is-invalid':
+                username.invalid &&
+                (username.dirty ||
+                  username.touched ||
+                  username.errors.minlength),
+              'is-valid': username.valid
+            }" />
 
-            <div
-              *ngIf="username.invalid && (username.dirty || username.touched)"
-              class="invalid-feedback"
-            >
+            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="invalid-feedback">
               <div *ngIf="username.errors.required">
                 El campo es obligatorio
               </div>
@@ -47,59 +32,39 @@
               </div>
             </div>
           </div>
-          <br />
+          <br>
           <div class="form-group">
-            <label>Contraseña<span style="color: red">*</span></label>
+            <label>Contraseña*</label>
             <div class="input-group">
-              <input
-                [type]="fieldTextType ? 'text' : 'password'"
-                class="form-control"
-                placeholder="Contraseña"
-                id="password"
-                name="password"
-                formcontrolname="password"
-                [class]="{
-                  'is-invalid':
-                    password.invalid && (password.dirty || password.touched),
-                  'is-valid': password.valid
-                }"
-              />
+              <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" placeholder="Contraseña"
+                id="password" name="password" formControlName="password" [class]="{
+                                'is-invalid':
+                                  password.invalid &&
+                                  (password.dirty ||
+                                    password.touched),
+                                'is-valid': password.valid
+                              }" />
               <div class="input-group-append">
                 <span class="input-group-text">
-                  <fa-icon
-                    [icon]="faEyeSlash"
-                    *ngIf="!fieldTextType"
-                    (click)="toggleFieldTextType()"
-                  />
-                  <fa-icon
-                    [icon]="faEye"
-                    *ngIf="fieldTextType"
-                    (click)="toggleFieldTextType()"
-                  />
+                  <fa-icon [icon]="faEyeSlash" *ngIf="!fieldTextType" (click)="toggleFieldTextType()" />
+                  <fa-icon [icon]="faEye" *ngIf="fieldTextType" (click)="toggleFieldTextType()" />
                 </span>
               </div>
-              <div
-                *ngIf="password.invalid && (password.dirty || password.touched)"
-                class="invalid-feedback"
-              >
+              <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
                 <div *ngIf="password.errors.required">
                   Contraseña obligatoria
                 </div>
               </div>
             </div>
           </div>
-          <br />
+          <br>
           <div class="recaptcha2" *ngIf="this.contador > 3">
-            <ngx-recaptcha2
-              #captchaElem
-              [siteKey]="siteKey"
-              formcontrolname="recaptcha"
-              [ngClass]="{
-                'is-invalid':
-                  recaptcha.invalid && (recaptcha.dirty || recaptcha.touched),
-                'is-valid': recaptcha.valid
-              }"
-            ></ngx-recaptcha2>
+            <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha" [ngClass]="{
+              'is-invalid':
+                recaptcha.invalid && (recaptcha.dirty || recaptcha.touched),
+              'is-valid': recaptcha.valid
+            }">
+            </ngx-recaptcha2>
           </div>
 
           <div *ngIf="recaptcha.invalid" class="invalid-feedback">
@@ -107,22 +72,18 @@
               El captcha es obligatorio
             </div>
           </div>
-          <br />
-          <br />
+          <br>
+          <br>
           <div class="d-flex justify-content-center">
-            <button
-              style="background-color: #163e74; color: white"
-              class="btn btn-main btn-group-justified"
-              type="submit"
-              [disabled]="!aFormGroup.valid"
-            >
+            <button style="background-color: #163e74; color: white;" class="btn btn-main  btn-group-justified"
+              type="submit" [disabled]="!aFormGroup.valid">
               Iniciar Sesi&oacute;n
             </button>
           </div>
         </form>
       </div>
       <div class="d-flex justify-content-center">
-        <b>{{ appAlias }} v{{ appVersion }}</b>
+        <b>{{appAlias}} v{{appVersion}}</b>
       </div>
     </div>
   </div>
