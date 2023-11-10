@@ -9,7 +9,7 @@
         <p-button styleClass="p-button-sm" label="Inicio" [routerLink]="['/home']"></p-button>
       </ng-template>
       <ng-template pTemplate="right">
-        <ng-template [ngxPermissionsOnly]="[]">
+        <ng-template [ngxPermissionsOnly]="['CREATE.PERMISSION']">
           <p-button styleClass="p-button-sm p-button-success" label="Nuevo Permiso" icon="pi pi-plus"
             [routerLink]="['new-permission']"></p-button>
         </ng-template>
@@ -50,19 +50,19 @@
           </td>
           <td>
 
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['EDIT.PERMISSION']">
               <button class="btn btn-primary btnEditar" [routerLink]="['edit-permission/', permission.id]">
                 <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['READ.PERMISSION']">
               <button class="btn btn-secondary" [routerLink]="['detail-permission/', permission.id]">
                 <i class="pi pi-eye"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['DELETE.PERMISSION']">
               <button class="btn btn-danger" (click)="deletePermission(permission)">
                 <i class="pi pi-trash"></i>
               </button>
