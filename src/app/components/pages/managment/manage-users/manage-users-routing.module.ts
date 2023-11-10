@@ -10,11 +10,11 @@ import { AuthGuard } from '@app/guards/auth.guard';
 const routes: Routes = [
 
   {
-    path: '', component: ManageUsersComponent, /* canActivate: [AuthGuard], */
+    path: '', component: ManageUsersComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'new-user', component: NewUserComponent/* , canActivate: [AuthGuard] */ },
-      { path: "edit-user/:hash", component: EditUserComponent/* , canActivate: [AuthGuard] */ },
-      { path: "detail-user/:hash", component: DetailUserComponent/* , canActivate: [AuthGuard]  */}
+      { path: 'new-user', component: NewUserComponent, canActivate: [AuthGuard] },
+      { path: "edit-user/:hash", component: EditUserComponent, canActivate: [AuthGuard] },
+      { path: "detail-user/:hash", component: DetailUserComponent, canActivate: [AuthGuard] }
     ]
   },
 ];

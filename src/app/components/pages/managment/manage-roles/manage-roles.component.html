@@ -12,7 +12,7 @@
       </ng-template>
 
       <ng-template pTemplate="right">
-        <ng-template [ngxPermissionsOnly]="[]">
+        <ng-template [ngxPermissionsOnly]="['CREATE.ROLE']">
           <p-button styleClass="p-button-sm p-button-success" label="Nuevo Rol" icon="pi pi-plus"
             [routerLink]="['new-role']"></p-button>
         </ng-template>
@@ -48,20 +48,20 @@
           </td>
 
           <td>
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['EDIT.ROLE']">
               <button class="btn btn-primary btnEditar" [routerLink]="['edit-role', role.id]">
                 <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['READ.ROLE']">
               <button class="btn btn-secondary" [routerLink]="['detail-role', role.id]">
                 <i class="pi pi-eye"></i>
               </button>
             </ng-template>
             &nbsp;
 
-            <ng-template [ngxPermissionsOnly]="[]">
+            <ng-template [ngxPermissionsOnly]="['DELETE.ROLE']">
               <button class="btn btn-danger" (click)="deleteRole(role, i)">
                 <i class="pi pi-trash"></i>
               </button>

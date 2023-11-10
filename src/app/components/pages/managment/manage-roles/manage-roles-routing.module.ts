@@ -9,11 +9,11 @@ import { AuthGuard } from '@app/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: '', component: ManageRolesComponent,/*  canActivate: [AuthGuard], */
+    path: '', component: ManageRolesComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'new-role', component: NewRoleComponent/* , canActivate: [AuthGuard]  */},
-      { path: 'edit-role/:hash', component: EditRoleComponent/* , canActivate: [AuthGuard]  */},
-      { path: 'detail-role/:hash', component: DetailRoleComponent/* , canActivate: [AuthGuard]  */},
+      { path: 'new-role', component: NewRoleComponent, canActivate: [AuthGuard] },
+      { path: 'edit-role/:hash', component: EditRoleComponent, canActivate: [AuthGuard] },
+      { path: 'detail-role/:hash', component: DetailRoleComponent, canActivate: [AuthGuard] },
     ]
   }
 ];

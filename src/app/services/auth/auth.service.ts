@@ -48,6 +48,7 @@ export class AuthService {
       //Hacemos la carga del rol con sus respectivos permisos
       //Rol y permisos provenientes desde la base de datos
       this.getLoggedUserPermissions(decodedToken.username).subscribe((data) => {
+
         this.rs.addRoleWithPermissions(data.payload.role, data.payload.permissions);
       });
 

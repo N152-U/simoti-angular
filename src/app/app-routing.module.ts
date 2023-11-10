@@ -16,12 +16,12 @@ const managmentModule = () => import('./components/pages/managment/managment.mod
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'login', component: LoginComponent },
-  { path: 'managment', loadChildren: managmentModule/* , canActivate: [AuthGuard]  */ },
-  { path: 'home', component: HomeComponent/* , canActivate: [AuthGuard]  */ },
-  { path: 'profile', component: ProfileComponent/* , canActivate: [AuthGuard]  */ },
-  { path: 'map', component: MapComponent/* , canActivate: [AuthGuard]  */ },
-  { path: 'reports', component: ReportsComponent/* , canActivate: [AuthGuard] */ },
-  { path: 'about', component: AboutComponent/* , canActivate: [AuthGuard] */ },
+  { path: 'managment', loadChildren: managmentModule, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'map', component: MapComponent, canActivate: [AuthGuard] },
+  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard] },
+  { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'mantainance', component: MantainanceComponent },
   { path: '**', component: LoginComponent }
 ];
