@@ -10,11 +10,11 @@
           <h2 class="d-flex justify-content-center">Ingreso a la aplicaci&oacute;n</h2>
           <br>
         </div>
-        <form (ngSubmit)="onSubmit()" [formGroup]="aFormGroup">
+        <form (ngSubmit)="onSubmit()" [formGroup]="aFormGroup" >
           <div class="form-group">
             <label>Nombre de usuario:</label>
             <input name="username" type="text" class="form-control" formControlName="username"
-              placeholder="Nombre de usuario" required [ngClass]="{
+              placeholder="Nombre de usuario" autocomplete="off" required [ngClass]="{
               'is-invalid':
                 username.invalid &&
                 (username.dirty ||
@@ -37,7 +37,7 @@
             <label>Contraseña*</label>
             <div class="input-group">
               <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" placeholder="Contraseña"
-                id="password" name="password" formControlName="password" [class]="{
+                id="password" name="password" formControlName="password" autocomplete="off" [class]="{
                                 'is-invalid':
                                   password.invalid &&
                                   (password.dirty ||
