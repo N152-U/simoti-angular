@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="profile">
-    <img src="assets/images/user.png" alt="profile_picture">
+    <img src={{dataUser.pic}} alt="profile_picture">
     <h3>{{dataUser.username}}</h3>
     <p>{{dataUser.role}}</p>
     <a routerLink="profile" class="showProfile">
@@ -51,36 +51,36 @@
                 <a [routerLink]="[item_sub.link]">{{ item_sub.link_name }}</a>
               </li>
             </ng-template>
-
           </ul>
         </li>
-
       </ng-template>
-
     </div>
-
   </ul>
-
-  <ul class="logout">
-    <a (click)="logOut()">
-      <li #itemEl routerLinkActive="active">
+  <ul class="logout nav-links">
+    <div>
+      <li routerLinkActive="active">
         <div class="dropdown-title">
-          <a href="#">
-            <i class="pi pi-power-off" #itemEl routerLinkActive="active"></i>
-            <span class="link_name_log_out">Cerrar Sesión</span>
+          <a (click)="logOut()">
+            <i class="pi pi-power-off"></i>
+            <span class="link_name">Cerrar&nbsp;sesión</span>
           </a>
         </div>
+        <ul class="sub-menu blank">
+          <li>
+            <a class="link_name">Cerrar&nbsp;sesión</a>
+          </li>
+        </ul>
       </li>
-    </a>
+    </div>
   </ul>
-
 </div>
 <section class="home-section">
   <div class="home-header">
     <a class="navbar-brand" href="#">
       <h4 class="text-white">
-        <!-- <img src="assets/images/cdmx-tlaloc.png" height="35"> -->
-        <span class="a-text" id="topBarTitle">Sistema para la monitorización de los signos vitales.</span>
+        <img src="assets/images/cdmx-tlaloc.png" height="35">
+        <!-- <img src="assets/images/tlaloc.png" width="55" height="35"> -->
+        <span class="a-text" id="topBarTitle"> Sistema de Desinfección</span>
       </h4>
     </a>
   </div>

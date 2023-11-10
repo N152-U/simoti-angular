@@ -61,6 +61,7 @@ export class SidebarComponent implements OnInit {
   constructor(private auth: AuthService) { }
   ngOnInit() {
     this.dataUser = this.auth.getTokenData();
+    if (this.dataUser.pic == null) this.dataUser.pic = 'assets/images/user.png';
   }
 
   logOut() {
