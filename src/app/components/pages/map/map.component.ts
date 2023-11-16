@@ -13,7 +13,7 @@ import LayerList from "@arcgis/core/widgets/LayerList.js";
 import Expand from "@arcgis/core/widgets/Expand.js";
 import Fullscreen from "@arcgis/core/widgets/Fullscreen.js";
 import Sketch from "@arcgis/core/widgets/Sketch.js";
-import Home from "@arcgis/core/widgets/Home.js";
+import PopupTemplate from "@arcgis/core/PopupTemplate.js";
 
 import { CatalogsService } from '@app/services/managment/catalogs/catalogs.service';
 import { Municipality } from '@app/interfaces/municipalities';
@@ -82,11 +82,7 @@ export class MapComponent implements OnInit, OnDestroy {
         await trigger.layer.when(); //carga de las capas al menu
 
         if (trigger.title == "general") {
-          trigger.actionsSections = [[{
-            title: "vision general",
-            className: "esri-icon-zoom-out-fixed",
-            id: "full-extent"
-          }], [
+          trigger.actionsSections = [[
             {
               title: "Aumentar opacidad",
               className: "esri-icon-up",
@@ -138,8 +134,10 @@ export class MapComponent implements OnInit, OnDestroy {
 
     sketch.on("create", function (event) {
       if (event.state === "complete") {
-        console.log("event", event.graphic);
-
+        event.graphic.popupTemplate = new PopupTemplate({
+          title: "Poligono Trazado",
+          content: "hola"
+        });
         viewer.popup.features = [event.graphic];
         viewer.popup.visible = true;
       }
