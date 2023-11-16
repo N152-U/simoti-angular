@@ -42,7 +42,14 @@ export class SidebarComponent implements OnInit {
         icon: "pi pi-key",
         ngxPermission_sub_menu: "READ.PERMISSION",
       }]
-    }
+    },
+    {
+      link_name: "Mapa",
+      link: "/map",
+      icon: "pi pi-map",
+      ngxPermission: "READ.MAP",
+      sub_menu: []
+    },
   ]
   showSubmenu(itemEl: HTMLElement,) {
     itemEl.classList.toggle("showMenu");

@@ -26,7 +26,7 @@ export class CatalogsService {
   }
 
   GetAllMunicipalitiesShapes(): Observable<any> {
-    return this.http.get<{ payload: Municipality }>(`${environment.apiUrl}/municipalities/shapes`)
+    return this.http.get<{ payload: Municipality }>(`${environment.apiUrl}/catalog/municipalities/shapes`)
       .pipe(tap(data => {
 
         return data;
