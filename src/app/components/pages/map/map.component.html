@@ -1,6 +1,27 @@
 <div class="card centrar">
   <h5 class="card-header text-center">Geolocalizaci&oacute;n</h5>
   <div class="card-body">
+    <form [formGroup]="shapesGroup" (ngSubmit)="AddShapes()" class="needs-validation center" novalidate="novalidate">
+      <div class="row">
+        <div class="flex-container">
+          <div class="flex-item">
+            <div style="font-weight: bold;color:grey;">&nbsp;&nbsp;Capas</div>
+            <select2 [data]="shapes" styleMode='default' [templates]="template" id="shape_id"
+
+            formControlName="shape_id" displaySearchStatus="always" placeholder="Selecciona las capas para añadir" [class]="{
+          'is-invalid': shape_id.invalid && (shape_id.dirty || shape_id.touched),
+          'is-valid': shape_id.valid}">
+              <ng-template #template let-data="data">{{data?.name}}</ng-template>
+            </select2>
+          </div>
+          <div class="flex-item">
+            <br>
+            <a id="add_layer" href="#!" class="btn btn-primary btn-labeled"><i class="pli-wizard btn-label"
+                onclick="addLayers()"></i> Añadir Capa</a>
+          </div>
+        </div>
+      </div>
+    </form>
     <div class="mapStyle">
       <div #mapViewNode></div>
     </div>

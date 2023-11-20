@@ -72,8 +72,7 @@ import { MapComponent } from './components/pages/map/map.component';
 import { UserDetailComponent } from './components/shared/profile/user-detail/user-detail.component';
 import { UserUpdatePasswordComponent } from './components/shared/profile/user-update-password/user-update-password.component';
 import { ReportsComponent } from './components/pages/reports/reports.component';
-
-
+import { Select2Module } from 'ng-select2-component';
 
 @NgModule({
   declarations: [
@@ -90,7 +89,7 @@ import { ReportsComponent } from './components/pages/reports/reports.component';
     MapComponent,
     UserDetailComponent,
     UserUpdatePasswordComponent,
-    ReportsComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -137,7 +136,8 @@ import { ReportsComponent } from './components/pages/reports/reports.component';
     DividerModule,
     ToastrModule,
     NgxCaptchaModule,
-    DataTablesModule
+    DataTablesModule,
+    Select2Module
   ],
   providers: [UserModel, AuthService, {
     provide: HTTP_INTERCEPTORS,
@@ -148,7 +148,8 @@ import { ReportsComponent } from './components/pages/reports/reports.component';
   bootstrap: [AppComponent],
   exports: [
     BsDatepickerModule,
-    NgxPermissionsModule
+    NgxPermissionsModule,
+    Select2Module
   ]
 })
 export class AppModule { }

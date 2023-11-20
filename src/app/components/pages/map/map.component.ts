@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
+import { Select2Data, Select2Option } from 'ng-select2-component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import WebMap from '@arcgis/core/WebMap';
 import MapView from '@arcgis/core/views/MapView';
@@ -25,9 +27,21 @@ import { Municipality } from '@app/interfaces/municipalities';
 })
 export class MapComponent implements OnInit, OnDestroy {
 
+  shapes: Select2Data = [{
+    value: "municipalities_edomex",
+    label: "Municipios EDOMEX",
+    data: {
+      id: "municipalities_edomex",
+      name: "Municipios EDOMEX"
+    }
+  }];
+  shapesGroup: FormGroup | any;
+  optionsSelect: Select2Option | any;
+
   constructor(
     private mcs: CatalogsService,
-    public router: Router
+    public router: Router,
+    public formBuilder: FormBuilder,
   ) { }
 
   @ViewChild('mapViewNode', { static: true }) private mapa!: ElementRef;
@@ -44,12 +58,6 @@ export class MapComponent implements OnInit, OnDestroy {
 
     const graphicsLayer = new GraphicsLayer();
 
-    const config = new GroupLayer({
-      title: "General",
-      visible: true,
-      layers: [MunicipalitiesLayer, graphicsLayer]
-    });
-
     graphicsLayer.title = "Poligono Trazado";
     /*----------------------------------------------------------------------------------------------------------------------------------------------------- */
     /*-----------------------------------------------------------------INICIAR MAPA--------------------------------------------------------------- */
@@ -58,7 +66,7 @@ export class MapComponent implements OnInit, OnDestroy {
         id: 'aa1d3f80270146208328cf66d022e09c',
       },
       basemap: "gray-vector",
-      layers: [config]
+      layers: [MunicipalitiesLayer, graphicsLayer]
     });
     /*----------------------------------------------------------------------------------------------------------------------------------------------------- */
     const viewer = new MapView({
@@ -77,25 +85,9 @@ export class MapComponent implements OnInit, OnDestroy {
       listItemCreatedFunction: async function (event) {
         let trigger = event.item;
 
-        webmap.layers.remove(webmap.layers.getItemAt(1));
+        webmap.layers.remove(webmap.layers.getItemAt(2));
 
         await trigger.layer.when(); //carga de las capas al menu
-
-        if (trigger.title == "general") {
-          trigger.actionsSections = [[
-            {
-              title: "Aumentar opacidad",
-              className: "esri-icon-up",
-              id: "increase-opacity"
-            },
-            {
-              title: "Disminuir opacidad",
-              className: "esri-icon-down",
-              id: "decrease-opacity"
-            }
-          ]
-          ];
-        }
       }
     });
     /*************Para expander o minimizar el cuadro de capas**************/
@@ -143,27 +135,6 @@ export class MapComponent implements OnInit, OnDestroy {
       }
     });
 
-    capas.on("trigger-action", (event) => {
-      // The layer visible in the view at the time of the trigger.
-      const visibleLayer = config.visible ? config : config;
-
-      // Capture the action id.
-      const accion = event.action.id;
-
-      if (accion === "full-extent") {
-        viewer.goTo(visibleLayer.set("zoom", 10));
-      } else if (accion === "increase-opacity") {
-        if (visibleLayer.opacity < 1) {
-          visibleLayer.opacity += 0.25;
-        }
-      } else if (accion === "decrease-opacity") {
-        if (visibleLayer.opacity > 0) {
-          visibleLayer.opacity -= 0.25;
-        }
-      }
-
-    });
-
     this.mcs.GetAllMunicipalitiesShapes().subscribe(
       (res: Municipality[]) => {
         res.forEach(shape => {
@@ -200,14 +171,36 @@ export class MapComponent implements OnInit, OnDestroy {
     return this.views.when();
   }
 
+
+
   ngOnInit(): void {
+    this.shapesGroup = this.formBuilder.group(
+      {
+        shape_id: ["", Validators.required]
+      }
+    );
+
+    this.optionsSelect = {
+      placeholder: "Select option...",
+      allowClear: true,
+      width: "100%"
+    }
+
     this.initializeMap().then(() => {
     });
+  }
+
+  AddShapes() {
+
   }
 
   ngOnDestroy(): void {
     if (this.views) {
       this.views.destroy();
     }
+  }
+
+  get shape_id() {
+    return this.shapesGroup.get("shape_id");
   }
 }

@@ -18,16 +18,24 @@
 @media (min-width: 1080px) {
   .mapStyle {
     margin-left: 3px;
-    margin-top : 72px;
+    margin-top : 30px;
   }
 }
 
 @media (min-width: 1440px) {
   .mapStyle {
     margin-left: 3px;
-    margin-top : 72px;
+    margin-top : 30px;
   }
 }
+
+@media (max-width: 1440px) {
+  .mapStyle {
+    margin-left: 3px;
+    margin-top : 30px;
+  }
+}
+
 
 .esri-view {
   padding: 0;
@@ -42,4 +50,25 @@
   margin-right : auto;
   margin-top   : 100px;
   margin-bottom: 100px;
+}
+
+.flex-container {
+  display       : flex;
+  flex-direction: row;
+}
+
+.flex-item {
+  flex        : 20px;
+  margin-right: 15px;
+}
+
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 912px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
+.select2-container--default {
+  width: 100% !important;
 }
