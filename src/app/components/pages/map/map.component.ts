@@ -17,6 +17,7 @@ import Fullscreen from "@arcgis/core/widgets/Fullscreen.js";
 import Sketch from "@arcgis/core/widgets/Sketch.js";
 import PopupTemplate from "@arcgis/core/PopupTemplate.js";
 import DistanceMeasurement2D from "@arcgis/core/widgets/DistanceMeasurement2D.js";
+import Basemap from '@arcgis/core/Basemap';
 
 import { CatalogsService } from '@app/services/managment/catalogs/catalogs.service';
 import { Municipality } from '@app/interfaces/municipalities';
@@ -79,6 +80,11 @@ export class MapComponent implements OnInit, OnDestroy {
     });
 
     viewer.watch("zoom", function (newZoom) {
+      if (newZoom < 17 && newZoom !== -1) {
+        webmap.basemap = 'gray-vector' as any as Basemap;
+      } else {
+        webmap.basemap = 'hybrid' as any as Basemap;
+      }
     });
 
     const capas = new LayerList({
