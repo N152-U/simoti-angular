@@ -16,6 +16,7 @@ import Expand from "@arcgis/core/widgets/Expand.js";
 import Fullscreen from "@arcgis/core/widgets/Fullscreen.js";
 import Sketch from "@arcgis/core/widgets/Sketch.js";
 import PopupTemplate from "@arcgis/core/PopupTemplate.js";
+import DistanceMeasurement2D from "@arcgis/core/widgets/DistanceMeasurement2D.js";
 
 import { CatalogsService } from '@app/services/managment/catalogs/catalogs.service';
 import { Municipality } from '@app/interfaces/municipalities';
@@ -107,6 +108,53 @@ export class MapComponent implements OnInit, OnDestroy {
     });
 
     viewer.ui.add(fullscreen, "top-right");
+
+    /***********************Mediciones **********************/
+    viewer.ui.add("topbar", "top-right");
+
+    function setActiveButton(selectedButton: any) {
+      viewer.focus();
+      let elements = document.getElementsByClassName("active");
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.remove("active");
+      }
+      if (selectedButton) {
+        selectedButton.classList.add("active");
+      }
+    }
+    let activeWidget: DistanceMeasurement2D | null = null;
+
+    function setActiveWidget(type: any) {
+      switch (type) {
+        case "distance":
+          activeWidget = new DistanceMeasurement2D({
+            view: viewer
+          });
+
+          activeWidget.viewModel.start();
+
+          viewer.ui.add(activeWidget, "top-right");
+          setActiveButton(document.getElementById("distanceButton"));
+          break;
+        case null:
+          if (activeWidget) {
+            viewer.ui.remove(activeWidget);
+            activeWidget.destroy();
+            activeWidget = null;
+          }
+          break;
+      }
+    }
+
+    document.getElementById("distanceButton")?.addEventListener("click", function () {
+      setActiveWidget(null);
+      if (!this.classList.contains("active")) {
+        setActiveWidget("distance");
+      } else {
+        setActiveButton(null);
+      }
+    });
+
     /***************Trazado de poligonos personalizados***************/
     const sketch = new Sketch({
       layer: graphicsLayer,

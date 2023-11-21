@@ -6,9 +6,8 @@
         <div class="flex-container">
           <div class="flex-item">
             <div style="font-weight: bold;color:grey;">&nbsp;&nbsp;Capas</div>
-            <select2 [data]="shapes" styleMode='default' [templates]="template" id="shape_id"
-
-            formControlName="shape_id" displaySearchStatus="always" placeholder="Selecciona las capas para añadir" [class]="{
+            <select2 [data]="shapes" styleMode='default' [templates]="template" id="shape_id" formControlName="shape_id"
+              displaySearchStatus="always" placeholder="Selecciona las capas para añadir" [class]="{
           'is-invalid': shape_id.invalid && (shape_id.dirty || shape_id.touched),
           'is-valid': shape_id.valid}">
               <ng-template #template let-data="data">{{data?.name}}</ng-template>
@@ -22,8 +21,16 @@
         </div>
       </div>
     </form>
-    <div class="mapStyle">
-      <div #mapViewNode></div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mapStyle">
+          <div #mapViewNode></div>
+        </div>
+        <div id="topbar">
+          <button class="action-button esri-icon-measure-line" id="distanceButton" type="button"
+            title="Medir distancia entre dos o más puntos"></button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
