@@ -50,6 +50,10 @@ export class MapComponent implements OnInit, OnDestroy {
   public views: any = null;
 
   initializeMap(): Promise<any> {
+    const INIT_ZOOM = 9;
+    const INIT_CENTER_LNG = -99.1425698;
+    const INIT_CENTER_LAT = 19.2511604;
+
     const container = this.mapa.nativeElement;
 
     /*---------------------------------------------------CREACION DE CAPAS Y GRUPOS--------------------------------------------------------------------------- */
@@ -72,11 +76,10 @@ export class MapComponent implements OnInit, OnDestroy {
     });
     /*----------------------------------------------------------------------------------------------------------------------------------------------------- */
     const viewer = new MapView({
-      container,
+      container: "viewDiv",
       map: webmap,
-      zoom: 9,
-
-      center: [-99.1425698, 19.2511604]
+      zoom: INIT_ZOOM,
+      center: [INIT_CENTER_LNG, INIT_CENTER_LAT]
     });
 
     viewer.watch("zoom", function (newZoom) {
@@ -273,22 +276,22 @@ export class MapComponent implements OnInit, OnDestroy {
       return date;
     }
 
-   /*  const updateTimeSlider = () => {
-      let start = new Date($("#start_date").val())
-      start = addHours(start, 6); //Horario GMT-6
-      let endTimeExtent = new Date(start);
-      endTimeExtent.setDate(endTimeExtent.getDate() + 1);
-      let end = new Date($("#end_date").val())
-      end = addHours(end, 30);
-      timeSlider.fullTimeExtent = {
-        start: start,
-        end: end,
-      } as any;
-      timeSlider.timeExtent = {
-        start,
-        end: endTimeExtent,
-      } as any;
-    } */
+    /*  const updateTimeSlider = () => {
+       let start = new Date($("#start_date").val())
+       start = addHours(start, 6); //Horario GMT-6
+       let endTimeExtent = new Date(start);
+       endTimeExtent.setDate(endTimeExtent.getDate() + 1);
+       let end = new Date($("#end_date").val())
+       end = addHours(end, 30);
+       timeSlider.fullTimeExtent = {
+         start: start,
+         end: end,
+       } as any;
+       timeSlider.timeExtent = {
+         start,
+         end: endTimeExtent,
+       } as any;
+     } */
 
     const timeSlider = new TimeSlider({
       container: "timeSlider",

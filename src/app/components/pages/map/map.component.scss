@@ -1,4 +1,4 @@
-// @import 'https://js.arcgis.com/4.27/esri/themes/light/main.css';
+@import 'https://js.arcgis.com/4.23/esri/themes/light/main.css';
 #timeSlider {
   position: absolute;
   left    : 5%;
@@ -25,39 +25,15 @@
   clear  : both;
 }
 
-@media (max-width: 750px) {
-  .mapStyle {
-    margin-left: 3px;
-    margin-top : 150px;
-  }
-}
-
-@media (min-width: 768px) {
-  .mapStyle {
-    margin-left: 3px;
-    margin-top : 72px;
-  }
-}
-
-@media (min-width: 1080px) {
-  .mapStyle {
-    margin-left: 3px;
-    margin-top : 30px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .mapStyle {
-    margin-left: 3px;
-    margin-top : 30px;
-  }
-}
-
-@media (max-width: 1440px) {
-  .mapStyle {
-    margin-left: 3px;
-    margin-top : 30px;
-  }
+#viewDiv {
+  margin-top: 20px!important;
+  height    : 100%;
+  background: rgba(50, 50, 50);
+  padding   : 0;
+  margin    : 0;
+  height    : 600px;
+  max-height: 600px;
+  width     : 100%;
 }
 
 .esri-view {
