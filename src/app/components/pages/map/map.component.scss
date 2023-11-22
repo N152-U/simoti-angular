@@ -1,5 +1,11 @@
 // @import 'https://js.arcgis.com/4.27/esri/themes/light/main.css';
-
+#timeSlider {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  width: 0px;
+  bottom: 280%;
+}
 
 @media (min-width: 320px) {
   .mapStyle {

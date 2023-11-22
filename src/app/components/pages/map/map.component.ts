@@ -15,7 +15,7 @@ import LayerList from "@arcgis/core/widgets/LayerList.js";
 import Expand from "@arcgis/core/widgets/Expand.js";
 import Fullscreen from "@arcgis/core/widgets/Fullscreen.js";
 import Sketch from "@arcgis/core/widgets/Sketch.js";
-import PopupTemplate from "@arcgis/core/PopupTemplate.js";
+import TimeSlider from "@arcgis/core/widgets/TimeSlider";
 import DistanceMeasurement2D from "@arcgis/core/widgets/DistanceMeasurement2D.js";
 import Basemap from '@arcgis/core/Basemap';
 
@@ -178,20 +178,62 @@ export class MapComponent implements OnInit, OnDestroy {
 
     viewer.ui.add(sketchExpand, "top-right");
 
+
+    async function getInformationPopup(target: any) {
+      let totalFaltaAguaArea = 0;
+
+      return (
+        "<b>" +
+        "<ul>" +
+        "<li> Total de incidentes: " +
+        totalFaltaAguaArea +
+        "</li>" +
+        "</ul>"
+      );
+
+    }
+
     sketch.on("create", function (event) {
       if (event.state === "complete") {
-        event.graphic.popupTemplate = new PopupTemplate({
+        /*  event.graphic.popupTemplate = new PopupTemplate({
+           title: "Poligono Trazado",
+           content: "hola"
+         }); */
+
+
+        event.graphic.popupTemplate = {
           title: "Poligono Trazado",
-          content: "hola"
-        });
-        viewer.popup.features = [event.graphic];
+          content: getInformationPopup
+        } as any;
+
+
+        viewer.popup.features = [event.graphic]
         viewer.popup.visible = true;
       }
     });
 
+
+    async function getInformationPopupMunicipalities(target: any) {
+      const attributes = target.graphic.attributes;
+      const geometry = target.graphic.geometry;
+
+      let total = 0;
+
+      return (
+        "<b>" +
+        "<ul>" +
+        "<li> Total: " +
+        total +
+        "</li>" +
+        "</ul>"
+      );
+
+    }
+
     this.mcs.GetAllMunicipalitiesShapes().subscribe(
       (res: Municipality[]) => {
         res.forEach(shape => {
+
           const element = shape.geo_shape.coordinates[0];
 
           let rings = element;
@@ -214,6 +256,10 @@ export class MapComponent implements OnInit, OnDestroy {
           const polygonGraphic = new Graphic({
             geometry: polygon,
             symbol: simpleFillSymbol,
+            popupTemplate: {
+              title: shape.municipality,
+              content: getInformationPopupMunicipalities,
+            }
 
           });
           MunicipalitiesLayer.add(polygonGraphic);
@@ -221,8 +267,53 @@ export class MapComponent implements OnInit, OnDestroy {
       }
     );
 
+    /**************** Linea de tiempo ***************/
+    function addHours(date: any, hours: any) {
+      date.setHours(date.getHours() + hours);
+      return date;
+    }
+
+   /*  const updateTimeSlider = () => {
+      let start = new Date($("#start_date").val())
+      start = addHours(start, 6); //Horario GMT-6
+      let endTimeExtent = new Date(start);
+      endTimeExtent.setDate(endTimeExtent.getDate() + 1);
+      let end = new Date($("#end_date").val())
+      end = addHours(end, 30);
+      timeSlider.fullTimeExtent = {
+        start: start,
+        end: end,
+      } as any;
+      timeSlider.timeExtent = {
+        start,
+        end: endTimeExtent,
+      } as any;
+    } */
+
+    const timeSlider = new TimeSlider({
+      container: "timeSlider",
+      playRate: 250,
+      stops: {
+        interval: {
+          value: 1,
+          unit: "days"
+        } as any
+      }
+    });
+
+    const timeExpand = new Expand({
+      expandIconClass: "esri-icon-expand",
+      view: viewer,
+      content: timeSlider,
+      expanded: true,
+    });
+
+    viewer.ui.add(timeExpand, "bottom-left");
+
     this.views = viewer;
+
     return this.views.when();
+
   }
 
 
