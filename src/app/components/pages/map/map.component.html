@@ -21,15 +21,31 @@
         </div>
       </div>
     </form>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="mapStyle">
-          <div #mapViewNode></div>
-        </div>
-        <div id="timeSlider"></div>
-        <div id="topbar">
-          <button class="action-button esri-icon-measure-line" id="distanceButton" type="button"
-            title="Medir distancia entre dos o más puntos"></button>
+    <div class="col-md-12">
+      <div class="row">
+        <section id="loading">
+          <div id="loading-content"></div>
+          <div id="loading-message" hidden>PROCESANDO RESULTADOS</div>
+        </section>
+
+        <section id="error">
+          <div id="error-content"></div>
+          <div id="error-message" hidden>HA OCURRIDO UN ERROR</div>
+        </section>
+
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mapStyle">
+                <div #mapViewNode></div>
+              </div>
+              <div id="timeSlider"></div>
+              <div id="topbar">
+                <button class="action-button esri-icon-measure-line" id="distanceButton" type="button"
+                  title="Medir distancia entre dos o más puntos"></button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

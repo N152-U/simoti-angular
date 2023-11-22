@@ -1,16 +1,34 @@
 // @import 'https://js.arcgis.com/4.27/esri/themes/light/main.css';
 #timeSlider {
   position: absolute;
-  left: 5%;
-  right: 5%;
-  width: 0px;
-  bottom: 280%;
+  left    : 5%;
+  right   : 5%;
+  width   : 0px;
+  bottom  : 280%;
 }
 
-@media (min-width: 320px) {
+#infoDiv {
+  height : 200px;
+  padding: 10px;
+  width  : 280px;
+}
+
+#infoDiv span {
+  color      : #F9C653;
+  font-size  : 12pt;
+  font-weight: bolder;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear  : both;
+}
+
+@media (max-width: 750px) {
   .mapStyle {
     margin-left: 3px;
-    margin-top : 72px;
+    margin-top : 150px;
   }
 }
 
@@ -81,4 +99,101 @@
 #topbar {
   background: #fff;
   padding   : 7px;
+}
+
+
+.error-content {
+  position     : absolute;
+  border       : 8px solid #f3f3f3;
+  border-top   : 8px solid #bb1f1f;
+  border-radius: 50%;
+  width        : 50px;
+  height       : 50px;
+  top          : 40%;
+  left         : 45%;
+  animation    : spin 2s linear infinite;
+}
+
+
+.error-message {
+  display      : block;
+  color        : white;
+  position     : absolute;
+  border-radius: 50%;
+  width        : 200px;
+  height       : 50px;
+  top          : 45%;
+  left         : 50%;
+}
+
+.loading {
+  z-index         : 20;
+  position        : absolute;
+  top             : 0;
+  left            : -5px;
+  width           : 100%;
+  height          : 100%;
+  background-color: rgba(0, 0, 0, 0.767);
+}
+
+.loading-content {
+  position     : absolute;
+  border       : 8px solid #f3f3f3;
+  border-top   : 8px solid #1fbb23;
+  border-radius: 50%;
+  width        : 50px;
+  height       : 50px;
+  top          : 40%;
+  left         : 45%;
+  animation    : spin 2s linear infinite;
+}
+
+
+.loading-message {
+  display      : block;
+  color        : white;
+  position     : absolute;
+  border-radius: 50%;
+  width        : 200px;
+  height       : 50px;
+  top          : 45%;
+  left         : 50%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.esri-expand__container--expanded {
+  max-height: 500px;
+  max-width : 500px;
+  position  : relative !important;
+
+}
+
+.esri-expand__mask--expanded {
+  background-color: rgba(0, 0, 0, 0) !important;
+  width           : 500px !important;
+  height          : 500px !important;
+}
+
+.select2-container--default {
+  width: 100% !important;
+}
+
+.error {
+  z-index         : 20;
+  position        : absolute;
+  top             : 0;
+  left            : -5px;
+  width           : 100%;
+  height          : 100%;
+  background-color: rgba(0, 0, 0, 0.767);
 }
