@@ -4,6 +4,27 @@
     <form [formGroup]="shapesGroup" (ngSubmit)="AddShapes()" class="needs-validation center" novalidate="novalidate">
       <div class="row">
         <div class="flex-container">
+          <div class="col-sm-2">
+            <label for="initialDate">Fecha de inicio<span style="color: red">*</span></label><input type="date"
+              class="form-control" formControlName="initialDate" id="initialDate">
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-2">
+            <label for="endDate">Fecha de fin<span style="color: red">*</span></label><input type="date"
+              class="form-control" formControlName="endDate" id="endDate">
+          </div>
+          <div class="flex-item-search">
+            <br>
+            <a id="add_layer" href="#!" class="btn btn-primary btn-labeled"><i class="pli-wizard btn-label"
+                onclick="addLayers()"></i>Buscar datos</a>
+          </div>
+        </div>
+      </div>
+    </form>
+    <br>
+    <form [formGroup]="shapesGroup" (ngSubmit)="AddShapes()" class="needs-validation center" novalidate="novalidate">
+      <div class="row">
+        <div class="flex-container">
           <div class="flex-item">
             <div style="font-weight: bold;color:grey;">&nbsp;&nbsp;Capas</div>
             <select2 [data]="shapes" styleMode='default' [templates]="template" id="shape_id" formControlName="shape_id"

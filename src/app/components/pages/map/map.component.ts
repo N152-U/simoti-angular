@@ -76,8 +76,8 @@ export class MapComponent implements OnInit, OnDestroy {
     });
     /*----------------------------------------------------------------------------------------------------------------------------------------------------- */
     const viewer = new MapView({
-      container: "viewDiv",
       map: webmap,
+      container: "viewDiv",
       zoom: INIT_ZOOM,
       center: [INIT_CENTER_LNG, INIT_CENTER_LAT]
     });
@@ -198,11 +198,6 @@ export class MapComponent implements OnInit, OnDestroy {
 
     sketch.on("create", function (event) {
       if (event.state === "complete") {
-        /*  event.graphic.popupTemplate = new PopupTemplate({
-           title: "Poligono Trazado",
-           content: "hola"
-         }); */
-
 
         event.graphic.popupTemplate = {
           title: "Poligono Trazado",
