@@ -25,6 +25,19 @@ export class CatalogsService {
         }))
   }
 
+  GetAllLocationsByDate(initialDate: any, endDate: any): Observable<any> {
+    return this.http.get<{ payload: Municipality }>(`${environment.apiUrl}/measurements/location/${initialDate}/${endDate}`)
+      .pipe(tap(data => {
+
+        return data;
+      }),
+        catchError((err: HttpErrorResponse) => {
+
+          return throwError(err);
+        }))
+  }
+
+
   GetAllMunicipalitiesShapes(): Observable<any> {
     return this.http.get<{ payload: Municipality }>(`${environment.apiUrl}/catalog/municipalities/shapes`)
       .pipe(tap(data => {

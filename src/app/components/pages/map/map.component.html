@@ -1,7 +1,7 @@
 <div class="card centrar">
   <h5 class="card-header text-center">Geolocalizaci&oacute;n</h5>
   <div class="card-body">
-    <form [formGroup]="shapesGroup" (ngSubmit)="AddShapes()" class="needs-validation center" novalidate="novalidate">
+    <form [formGroup]="datesGroup" (ngSubmit)="AddShapes()" class="needs-validation center" novalidate="novalidate">
       <div class="row">
         <div class="flex-container">
           <div class="col-sm-2">
@@ -15,8 +15,7 @@
           </div>
           <div class="flex-item-search">
             <br>
-            <a id="add_layer" href="#!" class="btn btn-primary btn-labeled"><i class="pli-wizard btn-label"
-                onclick="addLayers()"></i>Buscar datos</a>
+            <p-button icon="pi pi-search" [loading]="loading" (onClick)="search()" label="Buscar datos"></p-button>
           </div>
         </div>
       </div>
@@ -36,8 +35,7 @@
           </div>
           <div class="flex-item">
             <br>
-            <a id="add_layer" href="#!" class="btn btn-primary btn-labeled"><i class="pli-wizard btn-label"
-                onclick="addLayers()"></i> Añadir Capa</a>
+            <p-button icon="pi pi-plus" [loading]="loading" (onClick)="AddShapes()" label="Añadir Capa" size="small"></p-button>
           </div>
         </div>
       </div>
@@ -61,6 +59,9 @@
                 <div #mapViewNode></div>
               </div>
               <div id="timeSlider"></div>
+              <div id="infoDiv" class="esri-widget">
+                <div #statsDiv id="statsDiv" class="esri-widget"></div><br />
+              </div>
               <div id="topbar">
                 <button class="action-button esri-icon-measure-line" id="distanceButton" type="button"
                   title="Medir distancia entre dos o más puntos"></button>

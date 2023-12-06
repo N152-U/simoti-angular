@@ -3,11 +3,14 @@ import { Router } from "@angular/router";
 import { Select2Data, Select2Option } from 'ng-select2-component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ButtonModule } from 'primeng/button';
+import * as moment from 'moment';
+import * as $ from 'jquery';
 import WebMap from '@arcgis/core/WebMap';
 import MapView from '@arcgis/core/views/MapView';
 import Graphic from "@arcgis/core/Graphic.js";
 import GraphicsLayer from '@arcgis/core/layers/GraphicsLayer'
-import GroupLayer from "@arcgis/core/layers/GroupLayer.js";
+import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer.js";
 import Point from "@arcgis/core/geometry/Point";
 import PictureMarkerSymbol from "@arcgis/core/symbols/PictureMarkerSymbol.js";
 import Polygon from "@arcgis/core/geometry/Polygon.js";
@@ -28,6 +31,8 @@ import { Municipality } from '@app/interfaces/municipalities';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit, OnDestroy {
+  @ViewChild('search') el: ElementRef | any;
+  loading: boolean = false;
 
   shapes: Select2Data = [{
     value: "municipalities_edomex",
@@ -38,7 +43,9 @@ export class MapComponent implements OnInit, OnDestroy {
     }
   }];
   shapesGroup: FormGroup | any;
+  datesGroup: FormGroup | any;
   optionsSelect: Select2Option | any;
+  layer: any = null;
 
   constructor(
     private mcs: CatalogsService,
@@ -47,7 +54,14 @@ export class MapComponent implements OnInit, OnDestroy {
   ) { }
 
   @ViewChild('mapViewNode', { static: true }) private mapa!: ElementRef;
+  @ViewChild('statsDiv') private statsDiv!: ElementRef;
   public views: any = null;
+
+  LocationsLayer = new GraphicsLayer({
+    id: "1001",
+    title: "Localizaciones",
+    visible: true
+  });
 
   initializeMap(): Promise<any> {
     const INIT_ZOOM = 9;
@@ -62,6 +76,12 @@ export class MapComponent implements OnInit, OnDestroy {
       title: "Alcaldías",
     });
 
+    const LocationsLayer = new GraphicsLayer({
+      id: "1001",
+      title: "Localizaciones",
+      visible: true
+    });
+
     const graphicsLayer = new GraphicsLayer();
 
     graphicsLayer.title = "Poligono Trazado";
@@ -72,7 +92,7 @@ export class MapComponent implements OnInit, OnDestroy {
         id: 'aa1d3f80270146208328cf66d022e09c',
       },
       basemap: "gray-vector",
-      layers: [MunicipalitiesLayer, graphicsLayer]
+      layers: [graphicsLayer, MunicipalitiesLayer, this.LocationsLayer]
     });
     /*----------------------------------------------------------------------------------------------------------------------------------------------------- */
     const viewer = new MapView({
@@ -95,7 +115,7 @@ export class MapComponent implements OnInit, OnDestroy {
       listItemCreatedFunction: async function (event) {
         let trigger = event.item;
 
-        webmap.layers.remove(webmap.layers.getItemAt(2));
+        webmap.layers.remove(webmap.layers.getItemAt(3));
 
         await trigger.layer.when(); //carga de las capas al menu
       }
@@ -323,17 +343,83 @@ export class MapComponent implements OnInit, OnDestroy {
       }
     );
 
+    this.datesGroup = this.formBuilder.group({
+      initialDate: ["", Validators.required],
+      endDate: ["", Validators.required]
+
+    });
+
     this.optionsSelect = {
       placeholder: "Select option...",
       allowClear: true,
       width: "100%"
     }
 
+    let ct = this;
+
     this.initializeMap().then(() => {
+      const statsDiv = this.statsDiv.nativeElement;
+      $(statsDiv).empty();
+
+      let initialDate = document.getElementById("initialDate") as HTMLInputElement | null;
+      initialDate ? initialDate.value = moment().format('YYYY-MM-DD') : '';
+      let endDate = document.getElementById("endDate") as HTMLInputElement | null;
+      endDate ? endDate.value = moment().format('YYYY-MM-DD') : '';
+
     });
+
   }
 
   AddShapes() {
+
+  }
+
+  search() {
+    this.loading = true;
+
+    let initialDate = document.getElementById("initialDate") as HTMLInputElement | null;
+    let endDate = document.getElementById("endDate") as HTMLInputElement | null;
+
+    this.mcs.GetAllLocationsByDate(initialDate?.value, endDate?.value).subscribe(
+      (res) => {
+        res.forEach((location: any) => {
+
+          const point = new Point({
+            longitude: parseFloat(location.longitude),
+            latitude: parseFloat(location.latitude)
+          });
+
+          const simpleMarkerSymbol = new PictureMarkerSymbol({
+            url: "https://png.pngtree.com/png-clipart/20220521/ourmid/pngtree-red-location-icon-sign-png-image_4644037.png",
+            width: "24px",
+            height: "24px"
+          });
+
+          const attributes = {
+            id: location.patient_id,
+            Name: location.patient_id,
+            Description: "<b>Paciente</b>"
+          }
+
+          const popupTemplate = {
+            title: "{Name}",
+            content: "{Description}"
+          }
+
+          const pointGraphic = new Graphic({
+            geometry: point,
+            symbol: simpleMarkerSymbol,
+            attributes: attributes,
+            popupTemplate: popupTemplate
+          });
+
+          this.LocationsLayer.add(pointGraphic);
+        });
+
+      });
+    setTimeout(() => {
+      this.loading = false
+    }, 2000);
 
   }
 
@@ -345,5 +431,11 @@ export class MapComponent implements OnInit, OnDestroy {
 
   get shape_id() {
     return this.shapesGroup.get("shape_id");
+  }
+  get initialDate() {
+    return this.shapesGroup.get("initialDate");
+  }
+  get endDate() {
+    return this.shapesGroup.get("endDate");
   }
 }
