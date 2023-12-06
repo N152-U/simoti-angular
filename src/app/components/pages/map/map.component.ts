@@ -9,6 +9,7 @@ import * as $ from 'jquery';
 import WebMap from '@arcgis/core/WebMap';
 import MapView from '@arcgis/core/views/MapView';
 import Graphic from "@arcgis/core/Graphic.js";
+import * as reactiveUtils from "@arcgis/core/core/reactiveUtils.js";
 import GraphicsLayer from '@arcgis/core/layers/GraphicsLayer'
 import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer.js";
 import Point from "@arcgis/core/geometry/Point";
@@ -380,6 +381,12 @@ export class MapComponent implements OnInit, OnDestroy {
     let initialDate = document.getElementById("initialDate") as HTMLInputElement | null;
     let endDate = document.getElementById("endDate") as HTMLInputElement | null;
 
+    const streetviewThisAction = {
+      title: "Google Streetview.",
+      id: "map-this",
+      className: "esri-icon-map-pin"
+    }
+
     this.mcs.GetAllLocationsByDate(initialDate?.value, endDate?.value).subscribe(
       (res) => {
         res.forEach((location: any) => {
@@ -398,19 +405,41 @@ export class MapComponent implements OnInit, OnDestroy {
           const attributes = {
             id: location.patient_id,
             Name: location.patient_id,
-            Description: "<b>Paciente</b>"
+            Description: "<b>Paciente</b><br><a target='_blank' href='http://maps.google.com/maps?q=Your+Sign+Location+in+Street+View@" +
+              location.longitude + "," + location.latitude + "&cbll=" + location.latitude + "," +
+              location.longitude + "&layer=c" + "'>Ver Lugar</a>"
           }
 
           const popupTemplate = {
             title: "{Name}",
-            content: "{Description}"
+            content: "{Description}",
+            actions: [streetviewThisAction]
           }
+
+          function openStreetview() {
+            const latitude = location.latitude
+            const longitude = location.longitude
+            let url = "http://maps.google.com/maps?q=Your+Sign+Location+in+Street+View@" +
+              longitude + "," + latitude + "&cbll=" + latitude + "," +
+              longitude + "&layer=c";
+            window.open(url, 'Streetview', "height=500,width=800,resizable=yes,scrollbars=yes");
+          }
+
+          /*    reactiveUtils.on(
+               () => viewer.popup,
+               "trigger-action",
+               (event) => {
+                 if (event.action.id === "map-this") {
+                   openStreetview();
+                 }
+               }
+             ); */
 
           const pointGraphic = new Graphic({
             geometry: point,
             symbol: simpleMarkerSymbol,
             attributes: attributes,
-            popupTemplate: popupTemplate
+            popupTemplate: popupTemplate as any
           });
 
           this.LocationsLayer.add(pointGraphic);
