@@ -397,7 +397,7 @@ export class MapComponent implements OnInit, OnDestroy {
           });
 
           const simpleMarkerSymbol = new PictureMarkerSymbol({
-            url: "https://png.pngtree.com/png-clipart/20220521/ourmid/pngtree-red-location-icon-sign-png-image_4644037.png",
+            url: "assets/images/location.png",
             width: "24px",
             height: "24px"
           });
@@ -425,15 +425,7 @@ export class MapComponent implements OnInit, OnDestroy {
             window.open(url, 'Streetview', "height=500,width=800,resizable=yes,scrollbars=yes");
           }
 
-          /*    reactiveUtils.on(
-               () => viewer.popup,
-               "trigger-action",
-               (event) => {
-                 if (event.action.id === "map-this") {
-                   openStreetview();
-                 }
-               }
-             ); */
+
 
           const pointGraphic = new Graphic({
             geometry: point,
@@ -441,6 +433,17 @@ export class MapComponent implements OnInit, OnDestroy {
             attributes: attributes,
             popupTemplate: popupTemplate as any
           });
+
+
+          reactiveUtils.on(
+            () => point as any,
+            "trigger-action",
+            (event) => {
+              if (event.action.id === "map-this") {
+                openStreetview();
+              }
+            }
+          );
 
           this.LocationsLayer.add(pointGraphic);
         });
