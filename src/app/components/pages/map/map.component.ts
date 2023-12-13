@@ -12,8 +12,8 @@ import Graphic from "@arcgis/core/Graphic.js";
 import * as reactiveUtils from "@arcgis/core/core/reactiveUtils.js";
 import GraphicsLayer from '@arcgis/core/layers/GraphicsLayer'
 import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer.js";
-import Point from "@arcgis/core/geometry/Point";
-import PictureMarkerSymbol from "@arcgis/core/symbols/PictureMarkerSymbol.js";
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
+import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol.js";
 import Polygon from "@arcgis/core/geometry/Polygon.js";
 import LayerList from "@arcgis/core/widgets/LayerList.js";
 import Expand from "@arcgis/core/widgets/Expand.js";
@@ -25,7 +25,7 @@ import DistanceMeasurement2D from "@arcgis/core/widgets/DistanceMeasurement2D.js
 import Basemap from '@arcgis/core/Basemap';
 
 import { CatalogsService } from '@app/services/managment/catalogs/catalogs.service';
-import { Municipality } from '@app/interfaces/municipalities';
+import { Municipality, MunicipalityEdomex } from '@app/interfaces/municipalities';
 import { environment } from "@environments/environment";
 
 function addHours(date: any, hours: any) {
@@ -40,6 +40,7 @@ function addHours(date: any, hours: any) {
 export class MapComponent implements OnInit, OnDestroy {
   @ViewChild('search') el: ElementRef | any;
   loading: boolean = false;
+  loadingShapes: boolean = false;
 
   shapes: Select2Data = [{
     value: "municipalities_edomex",
@@ -237,18 +238,18 @@ export class MapComponent implements OnInit, OnDestroy {
 
       if (ct.layerView) {
         const queryLayerView = ct.layerView.featureEffect.filter
-            .createQuery()
+          .createQuery()
         queryLayerView.geometry = geometry;
         queryLayerView.outStatistics = [
-            locationCount
+          locationCount
         ]
         total += await ct.layer.queryFeatures(queryLayerView)
-            .then(function(
-                Qresults:any) {
-                return Qresults.features[0].attributes[
-                    "locations_count"]
-            });
-    }
+          .then(function (
+            Qresults: any) {
+            return Qresults.features[0].attributes[
+              "locations_count"]
+          });
+      }
 
       return (
         "<b>" +
@@ -442,8 +443,93 @@ export class MapComponent implements OnInit, OnDestroy {
 
   }
 
-  AddShapes() {
 
+  AddShapes() {
+    let ct = this;
+    this.loadingShapes = true;
+
+
+
+
+    const selectLayer = this.shapesGroup.get('shape_id');
+
+    let option = $('<option>', {
+      value: selectLayer + "_remove",
+      id: selectLayer + "_remove",
+
+    });
+
+    //switch dependiendo el value
+    switch (selectLayer?.value) {
+      case 'municipalities_edomex':
+
+        const municipalityFields = [{
+          name: "ObjectID",
+          alias: "ObjectID",
+          type: "oid"
+        }, {
+          name: "name",
+          alias: "name",
+          type: "string"
+        }
+        ];
+
+        this.mcs.GetAllMunicipalitiesEdomexShapes().subscribe(
+          (res: MunicipalityEdomex[]) => {
+            let municipalitiesPolygons = res.map(municipality => {
+              return {
+                "geometry": new Polygon({
+
+                  "rings": municipality.geometry.coordinates
+                }),
+                "attributes": municipality.properties
+              }
+            });
+
+            let municipalitiesEdomexLayer = new FeatureLayer({
+              outFields: ["*"],
+              fields: municipalityFields as any,
+              objectIdField: "ObjectID",
+              geometryType: "polygon",
+              spatialReference: {
+                wkid: 4326
+              },
+              source: municipalitiesPolygons,
+              renderer: {
+                type: "simple",
+                symbol: new SimpleFillSymbol({
+                  color: [137, 191, 63, 0.05],
+                  outline: {
+                    color: [137, 191, 63],
+                    width: 1
+                  }
+                })
+              } as any,
+              popupTemplate: {
+                title: "{title}",
+                content: [{
+                  type: "fields",
+                  fieldInfos: [{
+                    fieldName: "name",
+                    label: "Municipio",
+                    visible: true
+                  },]
+                }]
+              },
+            });
+
+            this.map.add(municipalitiesEdomexLayer, 4);
+            municipalitiesEdomexLayer.title = "Municipios EDOMEX";
+          }
+        );
+        //lo remueve del select
+        option.text("Municipios EDOMEX");
+        $("#municipalities_edomex").remove();
+        break;
+      default:
+        option = "" as any;
+        break;
+    }
   }
 
 

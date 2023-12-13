@@ -4,7 +4,7 @@ import { environment } from "@environments/environment";
 import { catchError, map, tap } from "rxjs/operators";
 import { Observable, throwError } from "rxjs";
 
-import { Municipality } from '@app/interfaces/municipalities';
+import { Municipality, MunicipalityEdomex } from '@app/interfaces/municipalities';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +40,17 @@ export class CatalogsService {
 
   GetAllMunicipalitiesShapes(): Observable<any> {
     return this.http.get<{ payload: Municipality }>(`${environment.apiUrl}/catalog/municipalities/shapes`)
+      .pipe(tap(data => {
+
+        return data;
+      }),
+        catchError((err: HttpErrorResponse) => {
+
+          return throwError(err);
+        }))
+  }
+  GetAllMunicipalitiesEdomexShapes(): Observable<any> {
+    return this.http.get<{ payload: MunicipalityEdomex }>(`${environment.apiUrl}/catalog/municipalities/edomex/shapes`)
       .pipe(tap(data => {
 
         return data;
