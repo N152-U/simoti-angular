@@ -139,12 +139,7 @@ export class MapComponent implements OnInit, OnDestroy {
     this.viewer.ui.add(shapesExpand, {
       position: "top-left"
     });
-    /**************Se habilita la pantalla completa**************/
-    const fullscreen = new Fullscreen({
-      view: this.viewer
-    });
 
-    this.viewer.ui.add(fullscreen, "top-right");
 
     /***********************Mediciones **********************/
     this.viewer.ui.add("topbar", "top-right");
@@ -380,6 +375,13 @@ export class MapComponent implements OnInit, OnDestroy {
           });
       }
     });
+
+    /**************Se habilita la pantalla completa**************/
+    const fullscreen = new Fullscreen({
+      view: this.viewer
+    });
+
+    this.viewer.ui.add(fullscreen, "top-right");
 
     const infoDiv = document.getElementById("infoDiv") as HTMLInputElement | null | any;
 
