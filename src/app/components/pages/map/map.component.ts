@@ -56,6 +56,7 @@ export class MapComponent implements OnInit, OnDestroy {
   webmap: any = null;
   layerView: any = null;
   timeSlider: any = null;
+  sbDateAxis: any = null;
 
 
   constructor(
@@ -295,6 +296,7 @@ export class MapComponent implements OnInit, OnDestroy {
     );
 
     /**************** Linea de tiempo ***************/
+
     this.timeSlider = new TimeSlider({
       container: "timeSlider",
       playRate: 250,
@@ -314,6 +316,81 @@ export class MapComponent implements OnInit, OnDestroy {
     });
 
     this.viewer.ui.add(timeExpand, "bottom-left");
+
+    const locationCount = {
+      onStatisticField: "reports",
+      outStatisticFieldName: "incidents_count",
+      statisticType: "count"
+    };
+
+
+    const statsDiv = document.getElementById("statsDiv") as HTMLInputElement | null | any;
+    $(statsDiv).empty();
+
+    this.timeSlider.watch("timeExtent", () => {
+      if (this.layerView) {
+        this.layerView.featureEffect = {
+          filter: {
+            timeExtent: this.timeSlider.timeExtent,
+          },
+          excludedEffect: "grayscale(0%) opacity(0%)"
+        };
+      }
+
+      this.sbDateAxis?.zoomToDates(
+        new Date(this.timeSlider.timeExtent.start.getTime()),
+        new Date(this.timeSlider.timeExtent.end.getTime())
+      );
+
+      if (this.layerView) {
+        const statQuery = this.layerView.featureEffect.filter.createQuery();
+        statQuery.outStatistics = [
+          locationCount
+        ];
+
+        this.layer.queryFeatures(statQuery).then((result: any) => {
+          let htmls: any[] = [];
+          statsDiv.innerHTML = "";
+          if (result.error) {
+            return result.error;
+          } else {
+            if (result.features.length >= 1) {
+              const attributes = result.features[0].attributes;
+              const yearHtml =
+                "<b>" +
+                " </b><br><br><b>Localizaciones SIMOTI</b><br><span>" +
+                result.features[0].attributes["incidents_count"] +
+                "</span> localizaciones registradas en esta zona entre el " +
+                this.timeSlider.timeExtent.start.toLocaleDateString() +
+                " - " +
+                this.timeSlider.timeExtent.end.toLocaleDateString() +
+                ".<br/>";
+
+              if (htmls[0] == undefined) {
+                statsDiv.innerHTML = yearHtml;
+              } else {
+                statsDiv.innerHTML =
+                  yearHtml + htmls[0];
+              }
+            }
+          }
+        })
+          .catch((error: any) => {
+            console.log(error);
+          });
+      }
+    });
+
+    const infoDiv = document.getElementById("infoDiv") as HTMLInputElement | null | any;
+
+    const infoDivExpand = new Expand({
+      expandIconClass: "esri-icon-expand",
+      expandTooltip: "Expand locations info",
+      view: this.viewer,
+      content: infoDiv,
+      expanded: false
+    });
+    this.viewer.ui.add(infoDivExpand, "top-right");
 
     this.views = this.viewer;
 
@@ -412,11 +489,14 @@ export class MapComponent implements OnInit, OnDestroy {
         }
       }
     );
-
-    let layer = new GeoJSONLayer({
+    if (this.layer != null) {
+      this.webmap.layers.remove(this.layer);
+      this.layer.refresh();
+    }
+    this.layer = new GeoJSONLayer({
       url: `${environment.apiUrl}/measurements/location/${initialDate?.value}/${endDate?.value}`,
-      copyright: `Incidentes`,
-      title: `Incidentes `,
+      copyright: `Localizaciones`,
+      title: `Localizaciones `,
       timeInfo: {
         startField: "time",
         interval: {
@@ -437,54 +517,29 @@ export class MapComponent implements OnInit, OnDestroy {
         },
       } as any,
       popupTemplate: {
-        title: "{codification_type}",
+        title: "Ubicación de {patient_name}",
         content: [{
           type: "fields",
           fieldInfos: [{
-            fieldName: "folio",
-            label: "Folio",
-            visible: true
-          }, {
             fieldName: "place",
             label: "Dirección",
             visible: true
-          },
-          {
-            fieldName: "codification_type",
-            label: "Tipo",
+          }, {
+            fieldName: "created_at",
+            label: "Fecha de registro",
             visible: true
-          },
-          {
-            fieldName: "reports",
-            label: "Reportes",
-            visible: true
-          },
-          {
-            fieldName: "status_name",
-            label: "Estatus",
-            visible: true
-          },
-          {
-            fieldName: "latitude",
-            label: "latitude",
-            visible: false
-          },
-          {
-            fieldName: "longitude",
-            label: "longitude",
-            visible: false
-          },
+          }
           ]
         }],
         actions: [streetviewThisAction] as any
       }
     });
 
-    this.webmap.add(layer, 3);
-    layer.title = `Localizaciones`;
+    this.webmap.add(this.layer, 3);
+    this.layer.title = `Localizaciones`;
 
     // wait till the layer view is loaded
-    this.viewer.whenLayerView(layer).then((lv: any) => {
+    this.viewer.whenLayerView(this.layer).then((lv: any) => {
       this.layerView = lv;
       updateTimeSlider(initialDate?.value, endDate?.value);
     });
