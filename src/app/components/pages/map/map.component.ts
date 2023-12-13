@@ -448,9 +448,6 @@ export class MapComponent implements OnInit, OnDestroy {
     let ct = this;
     this.loadingShapes = true;
 
-
-
-
     const selectLayer = this.shapesGroup.get('shape_id');
 
     let option = $('<option>', {
@@ -522,6 +519,10 @@ export class MapComponent implements OnInit, OnDestroy {
             municipalitiesEdomexLayer.title = "Municipios EDOMEX";
           }
         );
+
+        setTimeout(() => {
+          this.loadingShapes = false
+        }, 5000);
         //lo remueve del select
         option.text("Municipios EDOMEX");
         $("#municipalities_edomex").remove();
