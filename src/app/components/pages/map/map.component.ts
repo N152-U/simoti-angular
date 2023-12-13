@@ -295,25 +295,6 @@ export class MapComponent implements OnInit, OnDestroy {
     );
 
     /**************** Linea de tiempo ***************/
-
-
-    /*  const updateTimeSlider = () => {
-       let start = new Date($("#start_date").val())
-       start = addHours(start, 6); //Horario GMT-6
-       let endTimeExtent = new Date(start);
-       endTimeExtent.setDate(endTimeExtent.getDate() + 1);
-       let end = new Date($("#end_date").val())
-       end = addHours(end, 30);
-       timeSlider.fullTimeExtent = {
-         start: start,
-         end: end,
-       } as any;
-       timeSlider.timeExtent = {
-         start,
-         end: endTimeExtent,
-       } as any;
-     } */
-
     this.timeSlider = new TimeSlider({
       container: "timeSlider",
       playRate: 250,
@@ -508,46 +489,6 @@ export class MapComponent implements OnInit, OnDestroy {
       updateTimeSlider(initialDate?.value, endDate?.value);
     });
 
-    /*  this.mcs.GetAllLocationsByDate(initialDate?.value, endDate?.value).subscribe(
-       (res) => {
-         res.forEach((location: any) => {
-
-           const point = new Point({
-             longitude: parseFloat(location.longitude),
-             latitude: parseFloat(location.latitude)
-           });
-
-           const simpleMarkerSymbol = new PictureMarkerSymbol({
-             url: "assets/images/location.png",
-             width: "24px",
-             height: "24px"
-           });
-
-           const attributes = {
-             id: location.patient_id,
-             Name: location.patient_id,
-             Description: "<b>Paciente</b><br>"
-           }
-
-           const popupTemplate = {
-             title: "{Name}",
-             content: "{Description}",
-             actions: [streetviewThisAction]
-           }
-
-           const pointGraphic = new Graphic({
-             geometry: point,
-             symbol: simpleMarkerSymbol,
-             attributes: attributes,
-             popupTemplate: popupTemplate as any
-           });
-
-
-           LocationsLayer.add(pointGraphic);
-           this.webmap.add(LocationsLayer);
-         });
-
-       }); */
     setTimeout(() => {
       this.loading = false
     }, 2000);
