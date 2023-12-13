@@ -20,6 +20,7 @@ import Expand from "@arcgis/core/widgets/Expand.js";
 import Fullscreen from "@arcgis/core/widgets/Fullscreen.js";
 import Sketch from "@arcgis/core/widgets/Sketch.js";
 import TimeSlider from "@arcgis/core/widgets/TimeSlider";
+import Legend from "@arcgis/core/widgets/Legend";
 import DistanceMeasurement2D from "@arcgis/core/widgets/DistanceMeasurement2D.js";
 import Basemap from '@arcgis/core/Basemap';
 
@@ -48,12 +49,13 @@ export class MapComponent implements OnInit, OnDestroy {
       name: "Municipios EDOMEX"
     }
   }];
+
   shapesGroup: FormGroup | any;
   datesGroup: FormGroup | any;
   optionsSelect: Select2Option | any;
   layer: any = null;
   viewer: any = null;
-  webmap: any = null;
+  map: any = null;
   layerView: any = null;
   timeSlider: any = null;
   sbDateAxis: any = null;
@@ -66,26 +68,17 @@ export class MapComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  @ViewChild('mapViewNode', { static: true }) private mapa!: ElementRef;
   @ViewChild('statsDiv') private statsDiv!: ElementRef;
   public views: any = null;
-
-
-  LocationsLayer = new GraphicsLayer({
-    id: "1001",
-    title: "Localizaciones",
-    visible: true
-  });
 
   initializeMap(): Promise<any> {
     const INIT_ZOOM = 9;
     const INIT_CENTER_LNG = -99.1425698;
     const INIT_CENTER_LAT = 19.2511604;
 
-    const container = this.mapa.nativeElement;
     let ct = this;
 
-    /*---------------------------------------------------CREACION DE CAPAS Y GRUPOS--------------------------------------------------------------------------- */
+    /*--------CREACION DE CAPAS Y GRUPOS---- */
     const MunicipalitiesLayer = new GraphicsLayer({
       id: "1000",
       title: "Alcaldías",
@@ -96,15 +89,16 @@ export class MapComponent implements OnInit, OnDestroy {
     const graphicsLayer = new GraphicsLayer();
 
     graphicsLayer.title = "Poligono Trazado";
-    /*----------------------------------------------------------------------------------------------------------------------------------------------------- */
-    /*-----------------------------------------------------------------INICIAR MAPA--------------------------------------------------------------- */
-    this.webmap = new Map({
+
+    /*----------INICIAR MAPA-------- */
+
+    this.map = new Map({
       basemap: "gray-vector" as any,
       layers: [graphicsLayer, MunicipalitiesLayer]
     });
     /*----------------------------------------------------------------------------------------------------------------------------------------------------- */
     this.viewer = new MapView({
-      map: this.webmap,
+      map: this.map,
       container: "viewDiv",
       zoom: INIT_ZOOM,
       center: [INIT_CENTER_LNG, INIT_CENTER_LAT]
@@ -112,9 +106,9 @@ export class MapComponent implements OnInit, OnDestroy {
 
     this.viewer.watch("zoom", function (newZoom: any) {
       if (newZoom < 17 && newZoom !== -1) {
-        ct.webmap.basemap = 'gray-vector' as any as Basemap;
+        ct.map.basemap = 'gray-vector' as any as Basemap;
       } else {
-        ct.webmap.basemap = 'hybrid' as any as Basemap;
+        ct.map.basemap = 'hybrid' as any as Basemap;
       }
     });
 
@@ -123,7 +117,7 @@ export class MapComponent implements OnInit, OnDestroy {
       listItemCreatedFunction: async function (event) {
         let trigger = event.item;
 
-        ct.webmap.layers.remove(ct.webmap.layers.getItemAt(3));
+        ct.map.layers.remove(ct.map.layers.getItemAt(3));
 
         await trigger.layer.when(); //carga de las capas al menu
       }
@@ -237,10 +231,24 @@ export class MapComponent implements OnInit, OnDestroy {
     });
 
     async function getInformationPopupMunicipalities(target: any) {
-      const attributes = target.graphic.attributes;
       const geometry = target.graphic.geometry;
 
       let total = 0;
+
+      if (ct.layerView) {
+        const queryLayerView = ct.layerView.featureEffect.filter
+            .createQuery()
+        queryLayerView.geometry = geometry;
+        queryLayerView.outStatistics = [
+            locationCount
+        ]
+        total += await ct.layer.queryFeatures(queryLayerView)
+            .then(function(
+                Qresults:any) {
+                return Qresults.features[0].attributes[
+                    "locations_count"]
+            });
+    }
 
       return (
         "<b>" +
@@ -313,8 +321,8 @@ export class MapComponent implements OnInit, OnDestroy {
     this.viewer.ui.add(timeExpand, "bottom-left");
 
     const locationCount = {
-      onStatisticField: "reports",
-      outStatisticFieldName: "incidents_count",
+      onStatisticField: "patient_id",
+      outStatisticFieldName: "locations_count",
       statisticType: "count"
     };
 
@@ -354,7 +362,7 @@ export class MapComponent implements OnInit, OnDestroy {
               const yearHtml =
                 "<b>" +
                 " </b><br><br><b>Localizaciones SIMOTI</b><br><span>" +
-                result.features[0].attributes["incidents_count"] +
+                result.features[0].attributes["locations_count"] +
                 "</span> localizaciones registradas en esta zona entre el " +
                 this.timeSlider.timeExtent.start.toLocaleDateString() +
                 " - " +
@@ -492,7 +500,7 @@ export class MapComponent implements OnInit, OnDestroy {
       }
     );
     if (this.layer != null) {
-      this.webmap.layers.remove(this.layer);
+      this.map.layers.remove(this.layer);
       this.layer.refresh();
     }
     this.layer = new GeoJSONLayer({
@@ -537,7 +545,7 @@ export class MapComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.webmap.add(this.layer, 3);
+    this.map.add(this.layer, 3);
     this.layer.title = `Localizaciones`;
 
     // wait till the layer view is loaded
