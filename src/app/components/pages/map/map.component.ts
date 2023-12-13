@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import * as moment from 'moment';
 import * as $ from 'jquery';
-import WebMap from '@arcgis/core/WebMap';
+import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import Graphic from "@arcgis/core/Graphic.js";
 import * as reactiveUtils from "@arcgis/core/core/reactiveUtils.js";
@@ -25,7 +25,12 @@ import Basemap from '@arcgis/core/Basemap';
 
 import { CatalogsService } from '@app/services/managment/catalogs/catalogs.service';
 import { Municipality } from '@app/interfaces/municipalities';
+import { environment } from "@environments/environment";
 
+function addHours(date: any, hours: any) {
+  date.setHours(date.getHours() + hours);
+  return date;
+}
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -47,16 +52,23 @@ export class MapComponent implements OnInit, OnDestroy {
   datesGroup: FormGroup | any;
   optionsSelect: Select2Option | any;
   layer: any = null;
+  viewer: any = null;
+  webmap: any = null;
+  layerView: any = null;
+  timeSlider: any = null;
+
 
   constructor(
     private mcs: CatalogsService,
     public router: Router,
     public formBuilder: FormBuilder,
-  ) { }
+  ) {
+  }
 
   @ViewChild('mapViewNode', { static: true }) private mapa!: ElementRef;
   @ViewChild('statsDiv') private statsDiv!: ElementRef;
   public views: any = null;
+
 
   LocationsLayer = new GraphicsLayer({
     id: "1001",
@@ -70,6 +82,7 @@ export class MapComponent implements OnInit, OnDestroy {
     const INIT_CENTER_LAT = 19.2511604;
 
     const container = this.mapa.nativeElement;
+    let ct = this;
 
     /*---------------------------------------------------CREACION DE CAPAS Y GRUPOS--------------------------------------------------------------------------- */
     const MunicipalitiesLayer = new GraphicsLayer({
@@ -77,46 +90,39 @@ export class MapComponent implements OnInit, OnDestroy {
       title: "Alcaldías",
     });
 
-    const LocationsLayer = new GraphicsLayer({
-      id: "1001",
-      title: "Localizaciones",
-      visible: true
-    });
+
 
     const graphicsLayer = new GraphicsLayer();
 
     graphicsLayer.title = "Poligono Trazado";
     /*----------------------------------------------------------------------------------------------------------------------------------------------------- */
     /*-----------------------------------------------------------------INICIAR MAPA--------------------------------------------------------------- */
-    const webmap = new WebMap({
-      portalItem: {
-        id: 'aa1d3f80270146208328cf66d022e09c',
-      },
-      basemap: "gray-vector",
-      layers: [graphicsLayer, MunicipalitiesLayer, this.LocationsLayer]
+    this.webmap = new Map({
+      basemap: "gray-vector" as any,
+      layers: [graphicsLayer, MunicipalitiesLayer]
     });
     /*----------------------------------------------------------------------------------------------------------------------------------------------------- */
-    const viewer = new MapView({
-      map: webmap,
+    this.viewer = new MapView({
+      map: this.webmap,
       container: "viewDiv",
       zoom: INIT_ZOOM,
       center: [INIT_CENTER_LNG, INIT_CENTER_LAT]
     });
 
-    viewer.watch("zoom", function (newZoom) {
+    this.viewer.watch("zoom", function (newZoom: any) {
       if (newZoom < 17 && newZoom !== -1) {
-        webmap.basemap = 'gray-vector' as any as Basemap;
+        ct.webmap.basemap = 'gray-vector' as any as Basemap;
       } else {
-        webmap.basemap = 'hybrid' as any as Basemap;
+        ct.webmap.basemap = 'hybrid' as any as Basemap;
       }
     });
 
     const capas = new LayerList({
-      view: viewer,
+      view: this.viewer,
       listItemCreatedFunction: async function (event) {
         let trigger = event.item;
 
-        webmap.layers.remove(webmap.layers.getItemAt(3));
+        ct.webmap.layers.remove(ct.webmap.layers.getItemAt(3));
 
         await trigger.layer.when(); //carga de las capas al menu
       }
@@ -124,26 +130,26 @@ export class MapComponent implements OnInit, OnDestroy {
     /*************Para expander o minimizar el cuadro de capas**************/
     const shapesExpand = new Expand({
       expandIconClass: "esri-icon-expand",
-      view: viewer,
+      view: this.viewer,
       content: capas,
       expanded: true,
     });
 
-    viewer.ui.add(shapesExpand, {
+    this.viewer.ui.add(shapesExpand, {
       position: "top-left"
     });
     /**************Se habilita la pantalla completa**************/
     const fullscreen = new Fullscreen({
-      view: viewer
+      view: this.viewer
     });
 
-    viewer.ui.add(fullscreen, "top-right");
+    this.viewer.ui.add(fullscreen, "top-right");
 
     /***********************Mediciones **********************/
-    viewer.ui.add("topbar", "top-right");
+    this.viewer.ui.add("topbar", "top-right");
 
     function setActiveButton(selectedButton: any) {
-      viewer.focus();
+      ct.viewer.focus();
       let elements = document.getElementsByClassName("active");
       for (let i = 0; i < elements.length; i++) {
         elements[i].classList.remove("active");
@@ -158,17 +164,17 @@ export class MapComponent implements OnInit, OnDestroy {
       switch (type) {
         case "distance":
           activeWidget = new DistanceMeasurement2D({
-            view: viewer
+            view: ct.viewer
           });
 
           activeWidget.viewModel.start();
 
-          viewer.ui.add(activeWidget, "top-right");
+          ct.viewer.ui.add(activeWidget, "top-right");
           setActiveButton(document.getElementById("distanceButton"));
           break;
         case null:
           if (activeWidget) {
-            viewer.ui.remove(activeWidget);
+            ct.viewer.ui.remove(activeWidget);
             activeWidget.destroy();
             activeWidget = null;
           }
@@ -188,29 +194,32 @@ export class MapComponent implements OnInit, OnDestroy {
     /***************Trazado de poligonos personalizados***************/
     const sketch = new Sketch({
       layer: graphicsLayer,
-      view: viewer,
+      view: this.viewer,
       availableCreateTools: ["polygon", "rectangle", "circle"],
       creationMode: "update",
     });
 
     const sketchExpand = new Expand({
       expandIconClass: "esri-icon-expand",
-      view: viewer,
+      view: this.viewer,
       content: sketch,
       expanded: true,
     });
 
-    viewer.ui.add(sketchExpand, "top-right");
+    this.viewer.ui.add(sketchExpand, "top-right");
 
 
     async function getInformationPopup(target: any) {
-      let totalFaltaAguaArea = 0;
+      const attributes = target.graphic.attributes;
+      const geometry = target.graphic.geometry;
+
+      let total = 0;
 
       return (
         "<b>" +
         "<ul>" +
-        "<li> Total de incidentes: " +
-        totalFaltaAguaArea +
+        "<li> Total: " +
+        total +
         "</li>" +
         "</ul>"
       );
@@ -226,11 +235,10 @@ export class MapComponent implements OnInit, OnDestroy {
         } as any;
 
 
-        viewer.popup.features = [event.graphic]
-        viewer.popup.visible = true;
+        ct.viewer.popup.features = [event.graphic]
+        ct.viewer.popup.visible = true;
       }
     });
-
 
     async function getInformationPopupMunicipalities(target: any) {
       const attributes = target.graphic.attributes;
@@ -287,10 +295,7 @@ export class MapComponent implements OnInit, OnDestroy {
     );
 
     /**************** Linea de tiempo ***************/
-    function addHours(date: any, hours: any) {
-      date.setHours(date.getHours() + hours);
-      return date;
-    }
+
 
     /*  const updateTimeSlider = () => {
        let start = new Date($("#start_date").val())
@@ -309,7 +314,7 @@ export class MapComponent implements OnInit, OnDestroy {
        } as any;
      } */
 
-    const timeSlider = new TimeSlider({
+    this.timeSlider = new TimeSlider({
       container: "timeSlider",
       playRate: 250,
       stops: {
@@ -322,14 +327,14 @@ export class MapComponent implements OnInit, OnDestroy {
 
     const timeExpand = new Expand({
       expandIconClass: "esri-icon-expand",
-      view: viewer,
-      content: timeSlider,
+      view: this.viewer,
+      content: this.timeSlider,
       expanded: true,
     });
 
-    viewer.ui.add(timeExpand, "bottom-left");
+    this.viewer.ui.add(timeExpand, "bottom-left");
 
-    this.views = viewer;
+    this.views = this.viewer;
 
     return this.views.when();
 
@@ -356,8 +361,6 @@ export class MapComponent implements OnInit, OnDestroy {
       width: "100%"
     }
 
-    let ct = this;
-
     this.initializeMap().then(() => {
       const statsDiv = this.statsDiv.nativeElement;
       $(statsDiv).empty();
@@ -375,80 +378,176 @@ export class MapComponent implements OnInit, OnDestroy {
 
   }
 
+
+
   search() {
+
+    let ct = this;
+
     this.loading = true;
 
     let initialDate = document.getElementById("initialDate") as HTMLInputElement | null;
     let endDate = document.getElementById("endDate") as HTMLInputElement | null;
 
+    /*****************streetview*****************/
     const streetviewThisAction = {
       title: "Google Streetview.",
       id: "map-this",
       className: "esri-icon-map-pin"
     }
 
-    this.mcs.GetAllLocationsByDate(initialDate?.value, endDate?.value).subscribe(
-      (res) => {
-        res.forEach((location: any) => {
+    const updateTimeSlider = (initialDate: any, endDate: any) => {
+      let start = new Date(initialDate)
+      start = addHours(start, 6); //Horario GMT-6
+      let endTimeExtent = new Date(start);
+      endTimeExtent.setDate(endTimeExtent.getDate() + 1);
+      let end = new Date(endDate)
+      end = addHours(end, 30);
+      this.timeSlider.fullTimeExtent = {
+        start: start,
+        end: end,
+      } as any;
+      this.timeSlider.timeExtent = {
+        start,
+        end: endTimeExtent,
+      } as any;
+    }
 
-          const point = new Point({
-            longitude: parseFloat(location.longitude),
-            latitude: parseFloat(location.latitude)
-          });
+    function openStreetview() {
+      const latitude = ct.viewer.popup.selectedFeature.geometry.latitude
+      const longitude = ct.viewer.popup.selectedFeature.geometry.longitude
+      let url = "http://maps.google.com/maps?q=Your+Sign+Location+in+Street+View@" +
+        longitude + "," + latitude + "&cbll=" + latitude + "," +
+        longitude + "&layer=c";
+      window.open(url, 'Streetview', "height=500,width=800,resizable=yes,scrollbars=yes");
+    }
 
-          const simpleMarkerSymbol = new PictureMarkerSymbol({
-            url: "assets/images/location.png",
-            width: "24px",
-            height: "24px"
-          });
+    reactiveUtils.on(
+      () => this.viewer.popup,
+      "trigger-action",
+      (event) => {
+        if (event.action.id === "map-this") {
+          openStreetview();
+        }
+      }
+    );
 
-          const attributes = {
-            id: location.patient_id,
-            Name: location.patient_id,
-            Description: "<b>Paciente</b><br><a target='_blank' href='http://maps.google.com/maps?q=Your+Sign+Location+in+Street+View@" +
-              location.longitude + "," + location.latitude + "&cbll=" + location.latitude + "," +
-              location.longitude + "&layer=c" + "'>Ver Lugar</a>"
-          }
+    let layer = new GeoJSONLayer({
+      url: `${environment.apiUrl}/measurements/location/${initialDate?.value}/${endDate?.value}`,
+      copyright: `Incidentes`,
+      title: `Incidentes `,
+      timeInfo: {
+        startField: "time",
+        interval: {
+          unit: "days",
+          value: 1
+        }
+      },
+      renderer: {
+        type: "simple",
+        symbol: {
+          type: "picture-marker",
+          url: "assets/images/location.png",
+          width: "15",
+          height: "17",
+          background: "#00F",
+          color: "blue",
+          position: "absolute",
+        },
+      } as any,
+      popupTemplate: {
+        title: "{codification_type}",
+        content: [{
+          type: "fields",
+          fieldInfos: [{
+            fieldName: "folio",
+            label: "Folio",
+            visible: true
+          }, {
+            fieldName: "place",
+            label: "Dirección",
+            visible: true
+          },
+          {
+            fieldName: "codification_type",
+            label: "Tipo",
+            visible: true
+          },
+          {
+            fieldName: "reports",
+            label: "Reportes",
+            visible: true
+          },
+          {
+            fieldName: "status_name",
+            label: "Estatus",
+            visible: true
+          },
+          {
+            fieldName: "latitude",
+            label: "latitude",
+            visible: false
+          },
+          {
+            fieldName: "longitude",
+            label: "longitude",
+            visible: false
+          },
+          ]
+        }],
+        actions: [streetviewThisAction] as any
+      }
+    });
 
-          const popupTemplate = {
-            title: "{Name}",
-            content: "{Description}",
-            actions: [streetviewThisAction]
-          }
+    this.webmap.add(layer, 3);
+    layer.title = `Localizaciones`;
 
-          function openStreetview() {
-            const latitude = location.latitude
-            const longitude = location.longitude
-            let url = "http://maps.google.com/maps?q=Your+Sign+Location+in+Street+View@" +
-              longitude + "," + latitude + "&cbll=" + latitude + "," +
-              longitude + "&layer=c";
-            window.open(url, 'Streetview', "height=500,width=800,resizable=yes,scrollbars=yes");
-          }
+    // wait till the layer view is loaded
+    this.viewer.whenLayerView(layer).then((lv: any) => {
+      this.layerView = lv;
+      updateTimeSlider(initialDate?.value, endDate?.value);
+    });
+
+    /*  this.mcs.GetAllLocationsByDate(initialDate?.value, endDate?.value).subscribe(
+       (res) => {
+         res.forEach((location: any) => {
+
+           const point = new Point({
+             longitude: parseFloat(location.longitude),
+             latitude: parseFloat(location.latitude)
+           });
+
+           const simpleMarkerSymbol = new PictureMarkerSymbol({
+             url: "assets/images/location.png",
+             width: "24px",
+             height: "24px"
+           });
+
+           const attributes = {
+             id: location.patient_id,
+             Name: location.patient_id,
+             Description: "<b>Paciente</b><br>"
+           }
+
+           const popupTemplate = {
+             title: "{Name}",
+             content: "{Description}",
+             actions: [streetviewThisAction]
+           }
+
+           const pointGraphic = new Graphic({
+             geometry: point,
+             symbol: simpleMarkerSymbol,
+             attributes: attributes,
+             popupTemplate: popupTemplate as any
+           });
 
 
+           LocationsLayer.add(pointGraphic);
+           this.webmap.add(LocationsLayer);
+         });
 
-          const pointGraphic = new Graphic({
-            geometry: point,
-            symbol: simpleMarkerSymbol,
-            attributes: attributes,
-            popupTemplate: popupTemplate as any
-          });
-
-
-          reactiveUtils.on(
-            () => point as any,
-            "trigger-action",
-            (event) => {
-              if (event.action.id === "map-this") {
-                openStreetview();
-              }
-            }
-          );
-
-          this.LocationsLayer.add(pointGraphic);
-        });
-
-      });
+       }); */
     setTimeout(() => {
       this.loading = false
     }, 2000);
