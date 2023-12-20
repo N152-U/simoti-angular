@@ -2,10 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
 import Swal from "sweetalert2";
 import { LazyLoadEvent } from 'primeng/api';
+import { Table } from 'primeng/table';
 
 import { ManagePermissionsService } from "@app/services/managment/manage-permissions/manage-permissions.service";
 import { Permission } from "@app/interfaces/permissions";
-import { Table } from 'primeng/table';
+
 
 @Component({
   selector: 'app-manage-permissions',
