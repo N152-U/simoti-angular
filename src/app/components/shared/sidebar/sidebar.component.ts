@@ -32,16 +32,6 @@ export class SidebarComponent implements OnInit {
         icon: "pi pi-user",
         ngxPermission_sub_menu: "READ.USER",
       }, {
-        link_name: "Pacientes",
-        link: "/managment/manage-patients",
-        icon: "pi pi-id-card",
-        ngxPermission_sub_menu: "READ.ROLE",
-      }, {
-        link_name: "Médicos",
-        link: "/managment/manage-doctors",
-        icon: "pi pi-id-card",
-        ngxPermission_sub_menu: "READ.ROLE",
-      }, {
         link_name: "Roles",
         link: "/managment/manage-roles",
         icon: "pi pi-id-card",

@@ -5,6 +5,7 @@ import { catchError, map, tap } from "rxjs/operators";
 import { Observable, throwError } from "rxjs";
 
 import { Municipality, MunicipalityEdomex } from '@app/interfaces/municipalities';
+import { TypesOfUsers } from '@app/interfaces/types';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,18 @@ export class CatalogsService {
 
           return throwError(err);
         }))
+  }
+
+  GetAllTypesUsers(): Observable<any> {
+    return this.http.get<{ payload: TypesOfUsers }>(`${environment.apiUrl}/catalog/typesOfUsers`)
+      .pipe(
+        tap((data) => {
+          return data;
+        }),
+        catchError((err: HttpErrorResponse) => {
+          return throwError(err);
+        })
+      );
   }
 
 
