@@ -1,12 +1,12 @@
-import { Component, EventEmitter, Output, OnInit } from "@angular/core";
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 
-import { AuthService } from "@app/services/auth/auth.service";
+import { AuthService } from '@app/services/auth/auth.service';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
   openSidebar: boolean = false;
@@ -17,47 +17,62 @@ export class SidebarComponent implements OnInit {
 
   menuSidebar = [
     {
-      link_name: "Home",
-      link: "/home",
-      icon: "pi pi-home",
-      ngxPermission: "READ.HOME",
-      sub_menu: []
-    }, {
-      link_name: "Admnistración",
-      icon: "pi pi-cog",
-      ngxPermission: "READ.MANAGEMENT",
-      sub_menu: [{
-        link_name: "Usuarios",
-        link: "/managment/manage-users",
-        icon: "pi pi-user",
-        ngxPermission_sub_menu: "READ.USER",
-      }, {
-        link_name: "Roles",
-        link: "/managment/manage-roles",
-        icon: "pi pi-id-card",
-        ngxPermission_sub_menu: "READ.ROLE",
-      }, {
-        link_name: "Permisos",
-        link: "/managment/manage-permissions",
-        icon: "pi pi-key",
-        ngxPermission_sub_menu: "READ.PERMISSION",
-      }]
+      link_name: 'Home',
+      link: '/home',
+      icon: 'pi pi-home',
+      ngxPermission: 'READ.HOME',
+      sub_menu: [],
     },
     {
-      link_name: "Mapa",
-      link: "/map",
-      icon: "pi pi-map",
-      ngxPermission: "READ.MAP",
-      sub_menu: []
+      link_name: 'Admnistración',
+      icon: 'pi pi-cog',
+      ngxPermission: 'READ.MANAGEMENT',
+      sub_menu: [
+        {
+          link_name: 'Usuarios',
+          link: '/managment/manage-users',
+          icon: 'pi pi-user',
+          ngxPermission_sub_menu: 'READ.USER',
+        },
+        {
+          link_name: 'Roles',
+          link: '/managment/manage-roles',
+          icon: 'pi pi-id-card',
+          ngxPermission_sub_menu: 'READ.ROLE',
+        },
+        {
+          link_name: 'Permisos',
+          link: '/managment/manage-permissions',
+          icon: 'pi pi-key',
+          ngxPermission_sub_menu: 'READ.PERMISSION',
+        },
+      ],
     },
-  ]
-  showSubmenu(itemEl: HTMLElement,) {
-    itemEl.classList.toggle("showMenu");
-    const lastChild = itemEl.lastElementChild
+    {
+      link_name: 'Pacientes',
+      link: '/managment/manage-patients',
+      icon: 'pi pi-users',
+      ngxPermission: 'READ.MAP',
+      sub_menu: [],
+    },
+    {
+      link_name: 'Mapa',
+      link: '/map',
+      icon: 'pi pi-map',
+      ngxPermission: 'READ.MAP',
+      sub_menu: [],
+    },
+  ];
+  showSubmenu(itemEl: HTMLElement) {
+    itemEl.classList.toggle('showMenu');
+    const lastChild = itemEl.lastElementChild;
     let numElements = lastChild?.childElementCount ?? 0;
     numElements = numElements - 1;
     if (numElements > 0) {
-      document.documentElement.style.setProperty(`--count`, `${numElements * 50}px`);
+      document.documentElement.style.setProperty(
+        `--count`,
+        `${numElements * 50}px`
+      );
     }
   }
 
@@ -65,7 +80,7 @@ export class SidebarComponent implements OnInit {
   opener() {
     this.sideBar.emit(this.openSidebar);
   }
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService) {}
   ngOnInit() {
     this.dataUser = this.auth.getTokenData();
     if (this.dataUser.pic == null) this.dataUser.pic = 'assets/images/user.png';

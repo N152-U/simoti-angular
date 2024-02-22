@@ -89,7 +89,7 @@ import { Select2Module } from 'ng-select2-component';
     MapComponent,
     UserDetailComponent,
     UserUpdatePasswordComponent,
-    ReportsComponent
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,
