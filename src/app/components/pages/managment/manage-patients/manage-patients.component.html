@@ -4,4 +4,16 @@
     <header>
       <h1 class="text-center title">Administraci&oacute;n de pacientes</h1>
     </header>
+    <p-toolbar styleClass="p-mb-4">
+      <ng-template pTemplate="left">
+        <p-button styleClass="p-button-sm" label="Inicio" [routerLink]="['/home']"></p-button>
+      </ng-template>
+
+      <ng-template pTemplate="right">
+        <ng-template [ngxPermissionsOnly]="['CREATE.PATIENT']">
+          <p-button styleClass="p-button-sm p-button-success" label="Nuevo Paciente" icon="pi pi-user-plus"
+            [routerLink]="['new-user']"></p-button>
+        </ng-template>
+      </ng-template>
+    </p-toolbar>
 </div>
