@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Roles } from '@app/interfaces/roles';
-import { TypesOfUsers } from '@app/interfaces/types';
 import { ManageRolesService } from '@app/services/managment/manage-roles/manage-roles.service';
 import { CatalogsService } from '@app/services/managment/catalogs/catalogs.service';
 import { ConfirmedValidator } from '@app/services/managment/manage-users/confirmed.validator';
@@ -23,7 +22,6 @@ export class NewUserComponent implements OnInit {
   fieldTextTypeConfirmation: boolean = false;
   pattern = "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*[\-\._]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$";
   roles: Roles[] = [];
-  types: TypesOfUsers[] = [];
 
   data: Select2Data = [];
   dataTypeUser: Select2Data = [];
@@ -41,7 +39,6 @@ export class NewUserComponent implements OnInit {
     this.newUserGroup = this.formBuilder.group(
       {
         role_id: ["", Validators.required],
-        type_user_id: ["", Validators.required],
         username: [
           "",
           [
@@ -113,20 +110,6 @@ export class NewUserComponent implements OnInit {
         });
       });
     });
-
-    this.cs.GetAllTypesUsers().subscribe((res: any) => {
-      this.types = res;
-      this.types.forEach((value) => {
-        this.dataTypeUser.push({
-          value: value.id,
-          label: value.name,
-          data: {
-            id: value.id,
-            name: value.name
-          }
-        });
-      });
-    });
   }
 
   CreateUser() {
@@ -161,20 +144,20 @@ export class NewUserComponent implements OnInit {
   }
 
   nextStep() {
-    let typeUser: any = document.getElementById("type_user_id") as HTMLInputElement | null;
+    /* let typeUser: any = document.getElementById("type_user_id") as HTMLInputElement | null;
     if (this.type_user_id.value == 1) {
       this.step1 = false;
       this.stepDoctor = true;
-    }
+    } */
 
   }
 
   get role_id() {
     return this.newUserGroup.get("role_id");
   }
-  get type_user_id() {
+ /*  get type_user_id() {
     return this.newUserGroup.get("type_user_id");
-  }
+  } */
   get username() {
     return this.newUserGroup.get("username");
   }

@@ -2,60 +2,82 @@
   <div class="logo-details">
     <div class="logo">
       <div class="hamburger-menu">
-        <input type="checkbox" id="checkbox-hamburger-menu" [(ngModel)]="openSidebar" (change)="opener()" />
+        <input
+          type="checkbox"
+          id="checkbox-hamburger-menu"
+          [(ngModel)]="openSidebar"
+          (change)="opener()"
+        />
         <label class="label-hamburger-menu" for="checkbox-hamburger-menu">
           <div class="bar"></div>
           <div class="bar"></div>
           <div class="bar"></div>
         </label>
-
       </div>
       <!-- insertar hamborgueso-->
     </div>
   </div>
   <div class="profile">
-    <img src={{dataUser.pic}} alt="profile_picture">
-    <h3>{{dataUser.username}}</h3>
-    <p>{{dataUser.role}}</p>
+    <img src="{{ dataUser.pic }}" alt="profile_picture" />
+    <h3>{{ dataUser.username }}</h3>
+    <p>{{ dataUser.rol }}</p>
     <a routerLink="profile" class="showProfile">
       <span>Ver perfil</span>
     </a>
   </div>
+
   <ul class="nav-links" id="nav-links">
-
-    <div *ngFor="let item of menuSidebar">
-
+    <div *ngFor="let item of menuSidebar; index as i">
       <ng-template [ngxPermissionsOnly]="[item.ngxPermission]">
-
-        <li #itemEl routerLinkActive="active">
+        <li class="nav-link" #itemEl routerLinkActive="active" id="{{ i }}">
           <div *ngIf="item.sub_menu.length == 0" class="dropdown-title">
             <a [routerLink]="[item.link]">
               <i [class]="item.icon" #itemEl routerLinkActive="active"></i>
               <span class="link_name">{{ item.link_name }}</span>
             </a>
           </div>
-          <div *ngIf="item.sub_menu.length > 0" class="dropdown-title" (click)="showSubmenu(itemEl)">
+          <div
+            *ngIf="item.sub_menu.length > 0"
+            class="dropdown-title"
+            (click)="showSubmenu(itemEl, i)"
+          >
             <a>
               <i [class]="item.icon" routerLinkActive="active"></i>
               <span class="link_name">{{ item.link_name }}</span>
             </a>
-            <i class="pi pi-chevron-down arrow" style="font-size: 13px;"></i>
+            <i class="pi pi-chevron-down arrow" style="font-size: 13px"></i>
           </div>
-          <ul class="sub-menu" [class.blank]="item.sub_menu.length == 0">
+          <ul
+            class="sub-menu"
+            [class.blank]="item.sub_menu.length == 0"
+            *ngIf="item.sub_menu.length == 0; else noSubMenuItems"
+            [routerLink]="[item.link]"
+          >
             <li>
               <a class="link_name">{{ item.link_name }}</a>
             </li>
-            <ng-template *ngFor="let item_sub of item.sub_menu;"
-              [ngxPermissionsOnly]="[item_sub.ngxPermission_sub_menu]">
-              <li routerLinkActive="active">
-                <a [routerLink]="[item_sub.link]">{{ item_sub.link_name }}</a>
-              </li>
-            </ng-template>
           </ul>
+
+          <ng-template #noSubMenuItems>
+            <ul class="sub-menu" [class.blank]="item.sub_menu.length == 0">
+              <li>
+                <a class="link_name">{{ item.link_name }}</a>
+              </li>
+              <ng-template
+                *ngFor="let item_sub of item.sub_menu"
+                [ngxPermissionsOnly]="[item_sub.ngxPermission_sub_menu]"
+              >
+                <li routerLinkActive="active">
+                  <a [routerLink]="[item_sub.link]">{{ item_sub.link_name }}</a>
+                </li>
+              </ng-template>
+            </ul>
+          </ng-template>
         </li>
       </ng-template>
     </div>
   </ul>
+
   <ul class="logout nav-links">
     <div>
       <li routerLinkActive="active">
@@ -65,7 +87,7 @@
             <span class="link_name">Cerrar&nbsp;sesión</span>
           </a>
         </div>
-        <ul class="sub-menu blank">
+        <ul class="sub-menu blank" (click)="logOut()">
           <li>
             <a class="link_name">Cerrar&nbsp;sesión</a>
           </li>
@@ -76,10 +98,12 @@
 </div>
 <section class="home-section">
   <div class="home-header">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand">
       <h4 class="text-white">
-        <img src="assets/images/doctor.png" height="35">
-        <span class="a-text" id="topBarTitle"> Sistema para la monitorización de los signos vitales.</span>
+        <img src="assets/images/doctor.png" height="25" />
+        <span class="a-text" id="topBarTitle">
+          Sistema para la monitorización de los signos vitales.</span
+        >
       </h4>
     </a>
   </div>

@@ -1,11 +1,36 @@
 .navbar {
-  background-color: #163E74 !important;
-  box-shadow      : 0 0 8px #163E74;
-  display         : block;
+  background-color: #8e8e8e;
+  box-shadow: 0 0 8px #8e8e8e;
+  display: block;
+  z-index: 1;
 }
 
 .navbar-center {
-  position :relative;
-  left     : 50%;
+  position: relative;
+  left: 50%;
   transform: translatex(-50%);
+}
+
+@media (max-width: 377px) {
+  .navbar-center {
+      font-size: 7px;
+  }
+}
+
+@media (min-width: 378px) and (max-width: 572px) {
+  .navbar-center {
+      font-size: 7px;
+  }
+}
+
+@media screen and (min-width: 573px) and (max-width: 961px) {
+  .navbar-center {
+      font-size: 10px;
+  }
+}
+
+@media (min-width: 962px) {
+  .navbar-center {
+      font-size: 12px;
+  }
 }
