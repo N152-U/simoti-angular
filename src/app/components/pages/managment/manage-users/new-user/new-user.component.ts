@@ -11,20 +11,24 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
-  styleUrls: ['./new-user.component.scss']
+  styleUrls: ['./new-user.component.scss'],
 })
 export class NewUserComponent implements OnInit {
-
   newUserGroup: FormGroup | any;
   fieldTextType: boolean = false;
   step1: boolean = true;
   stepDoctor: boolean = false;
   fieldTextTypeConfirmation: boolean = false;
-  pattern = "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*[\-\._]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$";
+  pattern =
+    '^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*[-._]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$';
   roles: Roles[] = [];
+  selectedRole: string = '';
 
   data: Select2Data = [];
   dataTypeUser: Select2Data = [];
+
+  showParentescoInput: boolean = false; // Controla la visibilidad del input "Parentesco"
+  showEspecialidadInput: boolean = false; // Controla la visibilidad del input "Especialidad"
 
   constructor(
     private router: Router,
@@ -32,24 +36,23 @@ export class NewUserComponent implements OnInit {
     private cs: CatalogsService,
     public formBuilder: FormBuilder,
     private userService: ManageUsersService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-
     this.newUserGroup = this.formBuilder.group(
       {
-        role_id: ["", Validators.required],
+        role_id: ['', Validators.required],
         username: [
-          "",
+          '',
           [
             Validators.required,
             Validators.minLength(4),
             Validators.maxLength(50),
-            Validators.pattern(this.pattern)
+            Validators.pattern(this.pattern),
           ],
         ],
         first_name: [
-          "",
+          '',
           [
             Validators.required,
             Validators.minLength(4),
@@ -58,7 +61,7 @@ export class NewUserComponent implements OnInit {
           ],
         ],
         middle_name: [
-          "",
+          '',
           [
             Validators.required,
             Validators.minLength(4),
@@ -67,7 +70,7 @@ export class NewUserComponent implements OnInit {
           ],
         ],
         last_name: [
-          "",
+          '',
           [
             Validators.required,
             Validators.minLength(4),
@@ -76,7 +79,7 @@ export class NewUserComponent implements OnInit {
           ],
         ],
         password: [
-          "",
+          '',
           [
             Validators.required,
             Validators.minLength(6),
@@ -84,16 +87,17 @@ export class NewUserComponent implements OnInit {
           ],
         ],
         confirmPassword: [
-          "",
+          '',
           [
             Validators.required,
             Validators.minLength(6),
             Validators.maxLength(15),
           ],
         ],
+        email: ['', [Validators.required, Validators.email]],
       },
       {
-        validator: ConfirmedValidator("password", "confirmPassword"),
+        validator: ConfirmedValidator('password', 'confirmPassword'),
       }
     );
 
@@ -105,31 +109,40 @@ export class NewUserComponent implements OnInit {
           label: value.role,
           data: {
             id: value.id,
-            name: value.role
-          }
+            name: value.role,
+          },
         });
       });
     });
   }
+  onRoleChange(roleId: string) {
+    const selectedRoleData = this.data.find((role) => role.data.id === roleId);
+    if (selectedRoleData) {
+      this.selectedRole = selectedRoleData.label;
+
+      this.showParentescoInput = selectedRoleData.label === 'Tutor';
+      this.showEspecialidadInput = selectedRoleData.label === 'Médico';
+    }
+  }
 
   CreateUser() {
     Swal.fire({
-      title: "¿Desea guardar el nuevo usuario?",
-      icon: "question",
+      title: '¿Desea guardar el nuevo usuario?',
+      icon: 'question',
       showDenyButton: true,
       confirmButtonText: `Confirmar`,
       denyButtonText: `Cancelar`,
     }).then((result) => {
       if (result.isConfirmed) {
         const formData = this.newUserGroup.value;
-        delete formData["confirmPassword"];
+        delete formData['confirmPassword'];
         console.log(formData);
 
         this.userService.CreateUser(formData).subscribe((res: any) => {
           Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Usuario guardado",
+            position: 'center',
+            icon: 'success',
+            title: 'Usuario guardado',
             showConfirmButton: false,
           });
           /*   this.router.navigate(["/managment/manage-users"]);
@@ -138,7 +151,7 @@ export class NewUserComponent implements OnInit {
             }, 1300); */
         });
       } else if (result.isDenied) {
-        Swal.fire("Usuario no guardado", "", "info");
+        Swal.fire('Usuario no guardado', '', 'info');
       }
     });
   }
@@ -149,32 +162,32 @@ export class NewUserComponent implements OnInit {
       this.step1 = false;
       this.stepDoctor = true;
     } */
-
   }
 
   get role_id() {
-    return this.newUserGroup.get("role_id");
+    return this.newUserGroup.get('role_id');
   }
- /*  get type_user_id() {
-    return this.newUserGroup.get("type_user_id");
-  } */
   get username() {
-    return this.newUserGroup.get("username");
+    return this.newUserGroup.get('username');
   }
   get first_name() {
-    return this.newUserGroup.get("first_name");
+    return this.newUserGroup.get('first_name');
   }
   get middle_name() {
-    return this.newUserGroup.get("middle_name");
+    return this.newUserGroup.get('middle_name');
   }
   get last_name() {
-    return this.newUserGroup.get("last_name");
+    return this.newUserGroup.get('last_name');
   }
   get password() {
-    return this.newUserGroup.get("password");
+    return this.newUserGroup.get('password');
   }
   get confirmPassword() {
-    return this.newUserGroup.get("confirmPassword");
+    return this.newUserGroup.get('confirmPassword');
+  }
+
+  get email() {
+    return this.newUserGroup.get('email');
   }
 
   toggleFieldTextType() {
@@ -184,5 +197,4 @@ export class NewUserComponent implements OnInit {
   toggleFieldTextTypeConfirmation() {
     this.fieldTextTypeConfirmation = !this.fieldTextTypeConfirmation;
   }
-
 }
