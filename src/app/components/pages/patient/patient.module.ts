@@ -39,6 +39,11 @@ import { PatientComponent } from './patient.component';
 import { NewPatientComponent } from './new-patient/new-patient.component';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { DetailPatientComponent } from './detail-patient/detail-patient.component';
+import { TemperaturePatientComponent } from './temperature-patient/temperature-patient.component';
+import { OxygenSaturationPatientComponent } from './oxygen-saturation-patient/oxygen-saturation-patient.component';
+import { LocationPatientComponent } from './location-patient/location-patient.component';
+import { HeartRatePatientComponent } from './heart-rate-patient/heart-rate-patient.component';
+import { FallDetectorPatientComponent } from './fall-detector-patient/fall-detector-patient.component';
 
 
 @NgModule({
@@ -46,7 +51,12 @@ import { DetailPatientComponent } from './detail-patient/detail-patient.componen
     PatientComponent,
     NewPatientComponent,
     EditPatientComponent,
-    DetailPatientComponent
+    DetailPatientComponent,
+    TemperaturePatientComponent,
+    OxygenSaturationPatientComponent,
+    LocationPatientComponent,
+    HeartRatePatientComponent,
+    FallDetectorPatientComponent
   ],
   imports: [
     CommonModule,
