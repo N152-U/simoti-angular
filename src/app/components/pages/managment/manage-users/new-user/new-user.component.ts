@@ -145,10 +145,10 @@ export class NewUserComponent implements OnInit {
             title: 'Usuario guardado',
             showConfirmButton: false,
           });
-          /*   this.router.navigate(["/managment/manage-users"]);
+             this.router.navigate(["/managment/manage-users"]);
             setTimeout(() => {
               window.location.reload();
-            }, 1300); */
+            }, 1300); 
         });
       } else if (result.isDenied) {
         Swal.fire('Usuario no guardado', '', 'info');

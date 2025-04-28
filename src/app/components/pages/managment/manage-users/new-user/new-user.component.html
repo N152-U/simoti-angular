@@ -14,7 +14,7 @@
         <div class="row">
           <div align="right" class="col-md-3">
             <label
-              >Rol<span class="text-danger text-lg font-weight-bold"
+              >Tipo<span class="text-danger text-lg font-weight-bold"
                 >*</span
               ></label
             >
@@ -231,13 +231,13 @@
                 El campo es obligatorio
               </div>
               <div *ngIf="last_name.errors.minlength">
-                El apellido paterno debe ser de al menos 4 caracteres
+                El apellido materno debe ser de al menos 4 caracteres
               </div>
               <div *ngIf="last_name.errors.maxlength">
-                El apellido paterno máximo debe tener 40 caracteres
+                El apellido materno máximo debe tener 40 caracteres
               </div>
               <div *ngIf="last_name.errors.pattern">
-                El apellido paterno solo debe contener letras
+                El apellido materno solo debe contener letras
               </div>
             </div>
           </div>
@@ -298,7 +298,7 @@
               <input
                 type="text"
                 class="form-control input-size"
-                placeholder="Apellido materno"
+                placeholder="Parentesco"
                 id="last_name"
                 name="last_name"
                 formControlName="last_name"
@@ -349,7 +349,7 @@
               <input
                 type="text"
                 class="form-control input-size"
-                placeholder="Apellido materno"
+                placeholder="Especialidad"
                 id="last_name"
                 name="last_name"
                 formControlName="last_name"

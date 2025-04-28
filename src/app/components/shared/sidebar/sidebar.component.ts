@@ -63,6 +63,13 @@ export class SidebarComponent {
       ],
     },
     {
+      link_name: 'Pacientes',
+      link: '/patient',
+      icon: 'pi pi-id-card',
+      ngxPermission: 'READ.PATIENT',
+      sub_menu: [],
+    },
+    {
       link_name: 'Mapa',
       link: '/map',
       icon: 'pi pi-map',

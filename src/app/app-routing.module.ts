@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'mantainance', component: MantainanceComponent },
+  { path: 'patient', loadChildren: () => import('./components/pages/patient/patient.module').then(m => m.PatientModule), canActivate: [AuthGuard] },
   { path: '**', component: LoginComponent }
 ];
 
