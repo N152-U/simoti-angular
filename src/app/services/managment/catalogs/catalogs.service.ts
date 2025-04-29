@@ -26,6 +26,18 @@ export class CatalogsService {
         }))
   }
 
+  GetAllRelationship(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/catalog/relationships`)
+      .pipe(tap(data => {
+
+        return data;
+      }),
+        catchError((err: HttpErrorResponse) => {
+
+          return throwError(err);
+        }))
+  }
+
   GetAllLocationsByDate(initialDate: any, endDate: any): Observable<any> {
     return this.http.get<{ payload: Municipality }>(`${environment.apiUrl}/measurements/location/${initialDate}/${endDate}`)
       .pipe(tap(data => {

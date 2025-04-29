@@ -295,41 +295,28 @@
               >
             </div>
             <div align="left" class="col-md-6">
-              <input
-                type="text"
-                class="form-control input-size"
-                placeholder="Parentesco"
-                id="last_name"
-                name="last_name"
-                formControlName="last_name"
+              <select2
+                [data]="dataRelationship"
+                [templates]="template1"
+                id="relationship_id"
+                formControlName="relationship_id"
+                style="height: 100px !important"
+                placeholder="Selecciona el parentesco"
                 [class]="{
                   'is-invalid':
-                    last_name.invalid &&
-                    (last_name.dirty ||
-                      last_name.touched ||
-                      last_name.errors.minlength ||
-                      last_name.errors.maxlength),
-                  'is-valid': last_name.valid
+                  relationship_id.invalid && (relationship_id.dirty || relationship_id.touched),
+                  'is-valid': relationship_id.valid
                 }"
-              />
+              >
+                <ng-template #template1 let-data="data">{{
+                  data?.name
+                }}</ng-template>
+              </select2>
               <div
-                *ngIf="
-                  last_name.invalid && (last_name.dirty || last_name.touched)
-                "
+                *ngIf="relationship_id.invalid && (relationship_id.dirty || relationship_id.touched)"
                 class="invalid-feedback"
               >
-                <div *ngIf="last_name.errors.required">
-                  El campo es obligatorio
-                </div>
-                <div *ngIf="last_name.errors.minlength">
-                  El apellido paterno debe ser de al menos 4 caracteres
-                </div>
-                <div *ngIf="last_name.errors.maxlength">
-                  El apellido paterno máximo debe tener 40 caracteres
-                </div>
-                <div *ngIf="last_name.errors.pattern">
-                  El apellido paterno solo debe contener letras
-                </div>
+                <div *ngIf="relationship_id.errors.required">El campo es obligatorio</div>
               </div>
             </div>
           </div>
@@ -350,36 +337,36 @@
                 type="text"
                 class="form-control input-size"
                 placeholder="Especialidad"
-                id="last_name"
-                name="last_name"
-                formControlName="last_name"
+                id="specialty"
+                name="specialty"
+                formControlName="specialty"
                 [class]="{
                   'is-invalid':
-                    last_name.invalid &&
-                    (last_name.dirty ||
-                      last_name.touched ||
-                      last_name.errors.minlength ||
-                      last_name.errors.maxlength),
-                  'is-valid': last_name.valid
+                    specialty.invalid &&
+                    (specialty.dirty ||
+                    specialty.touched ||
+                    specialty.errors.minlength ||
+                    specialty.errors.maxlength),
+                  'is-valid': specialty.valid
                 }"
               />
               <div
                 *ngIf="
-                  last_name.invalid && (last_name.dirty || last_name.touched)
+                specialty.invalid && (specialty.dirty || specialty.touched)
                 "
                 class="invalid-feedback"
               >
-                <div *ngIf="last_name.errors.required">
+                <div *ngIf="specialty.errors.required">
                   El campo es obligatorio
                 </div>
-                <div *ngIf="last_name.errors.minlength">
-                  El apellido paterno debe ser de al menos 4 caracteres
+                <div *ngIf="specialty.errors.minlength">
+                  La especialidad debe ser de al menos 4 caracteres
                 </div>
-                <div *ngIf="last_name.errors.maxlength">
-                  El apellido paterno máximo debe tener 40 caracteres
+                <div *ngIf="specialty.errors.maxlength">
+                  La especialidad máximo debe tener 40 caracteres
                 </div>
-                <div *ngIf="last_name.errors.pattern">
-                  El apellido paterno solo debe contener letras
+                <div *ngIf="specialty.errors.pattern">
+                  La especialidad solo debe contener letras
                 </div>
               </div>
             </div>
