@@ -195,14 +195,14 @@ export class NewUserComponent implements OnInit {
         const formData = this.newUserGroup.value;
         delete formData['confirmPassword'];
 
-        if (formData['role_id'] == 'f1eda9e1-49f2-473b-8099-126ea5d2c755') { //médico
+        /* if (formData['role_id'] == 'f1eda9e1-49f2-473b-8099-126ea5d2c755') { //médico
           delete formData['relationship_id'];
         } else if (formData['role_id'] == 'd88d9411-c944-463a-985c-8d938875d3e3') { //tutor
           delete formData['specialty'];
         } else {
           delete formData['specialty'];
           delete formData['relationship_id'];
-        }
+        } */
 
         console.log(formData);
 
