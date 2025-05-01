@@ -4,6 +4,7 @@ import { environment } from "@environments/environment";
 import { Router } from "@angular/router";
 /*---- MODELS---- */
 import { UserModel } from "../../../models/user/userModel.module";
+import { userTypeModel } from "../../../models/user/userTypeModel.module";
 import { catchError, map, tap } from "rxjs/operators";
 import { NgxRolesService } from "ngx-permissions";
 import { Observable, throwError } from "rxjs";
@@ -21,6 +22,19 @@ export class ManageUsersService {
   GetAllUsers(): Observable<any> {
     return this.http
       .get<{ payload: UserModel }>(`${environment.apiUrl}/users`)
+      .pipe(
+        tap((data) => {
+          return data;
+        }),
+        catchError((err: HttpErrorResponse) => {
+          return throwError(err);
+        })
+      );
+  }
+
+  GetByUsersType(type: any): Observable<any> {
+    return this.http
+      .get<{ payload: userTypeModel }>(`${environment.apiUrl}/users/type/${type}`)
       .pipe(
         tap((data) => {
           return data;

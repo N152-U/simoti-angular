@@ -81,3 +81,17 @@ h3 {
     }
   }
   
+
+  .radio-group {
+    display: flex;
+    gap: 2rem; /* espacio entre Sí y No */
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* espacio entre botón y etiqueta */
+  }
+  

@@ -33,6 +33,7 @@ import { MenuModule } from "primeng/menu";
 import { CardModule } from "primeng/card";
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { Select2Module } from 'ng-select2-component';
+import { StepsModule } from 'primeng/steps';
 
 import { PatientRoutingModule } from './patient-routing.module';
 import { PatientComponent } from './patient.component';
@@ -92,7 +93,8 @@ import { FallDetectorPatientComponent } from './fall-detector-patient/fall-detec
     RatingModule,
     Select2Module,
     NgxPermissionsModule.forChild(),
-    PatientRoutingModule
+    PatientRoutingModule,
+    StepsModule
   ]
 })
 export class PatientModule { }
