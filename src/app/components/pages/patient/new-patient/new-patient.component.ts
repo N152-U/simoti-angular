@@ -104,7 +104,8 @@ export class NewPatientComponent implements OnInit {
 
     });
 
-
+    this.cargarAvance();
+    
     this.mus.GetByUsersType("d88d9411-c944-463a-985c-8d938875d3e3").subscribe((res: any) => {
       this.tutors = res;
 
@@ -144,7 +145,19 @@ export class NewPatientComponent implements OnInit {
     if (this.currentStep > 0) this.currentStep--;
   }
 
-  submit() {
+  guardarAvance() {
+    localStorage.setItem('healthFormData', JSON.stringify(this.healthForm.value));
+    alert('Avance guardado exitosamente.');
+  }
+
+  cargarAvance() {
+    const savedData = localStorage.getItem('healthFormData');
+    if (savedData) {
+      this.healthForm.patchValue(JSON.parse(savedData));
+    }
+  }
+
+  CreatePatient() {
     console.log('Formulario enviado:', this.healthForm.value);
     alert('¡Formulario enviado con éxito!');
   }

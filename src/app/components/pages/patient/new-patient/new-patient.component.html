@@ -163,8 +163,19 @@
                         </div>
                     </div>
                     <br>
-                    <button pButton label="Siguiente" (click)="nextStep()" class="mt-3"></button>
+                    <br>
+                    <div class="buttons">
+                        <p-button [routerLink]="['/patient']" label="Cancelar" icon="pi pi-times"
+                            styleClass="p-button-sm p-button-danger" [style]="{ 'margin-right': '.6em' }"> </p-button>
+                        <p-button label="Guardar avance" icon="pi pi-save" iconPos="left" (click)="guardarAvance()"
+                            styleClass="p-button-sm p-button-warning" [style]="{ 'margin-right': '.6em' }">
+                        </p-button>
+                        <p-button label="Siguiente" icon="pi pi-arrow-right" iconPos="right" (click)="nextStep()"
+                            styleClass="p-button-sm p-button-primary">
+                        </p-button>
+                    </div>
                 </div>
+
 
                 <!-- Sección 2: Salud y Síntomas -->
                 <div *ngIf="currentStep === 1" class="p-fluid">
@@ -175,12 +186,12 @@
                         <label>¿Te has sentido bien en la última semana?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="estadoGeneral" value="Sí" formControlName="estadoGeneral"
+                                <p-radioButton name="estadoGeneral" value="1" formControlName="estadoGeneral"
                                     inputId="estadoGeneralSi"></p-radioButton>
                                 <label for="estadoGeneralSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="estadoGeneral" value="No" formControlName="estadoGeneral"
+                                <p-radioButton name="estadoGeneral" value="0" formControlName="estadoGeneral"
                                     inputId="estadoGeneralNo"></p-radioButton>
                                 <label for="estadoGeneralNo">No</label>
                             </div>
@@ -191,12 +202,12 @@
                         <label>¿Has tenido cambios en tu nivel de energía?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="energia" value="Sí" formControlName="energia"
+                                <p-radioButton name="energia" value="1" formControlName="energia"
                                     inputId="energiaSi"></p-radioButton>
                                 <label for="energiaSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="energia" value="No" formControlName="energia"
+                                <p-radioButton name="energia" value="0" formControlName="energia"
                                     inputId="energiaNo"></p-radioButton>
                                 <label for="energiaNo">No</label>
                             </div>
@@ -208,12 +219,12 @@
                         <label>¿Has tenido fiebre en los últimos días?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="fiebre" value="Sí" formControlName="fiebre"
+                                <p-radioButton name="fiebre" value="1" formControlName="fiebre"
                                     inputId="fiebreSi"></p-radioButton>
                                 <label for="fiebreSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="fiebre" value="No" formControlName="fiebre"
+                                <p-radioButton name="fiebre" value="0" formControlName="fiebre"
                                     inputId="fiebreNo"></p-radioButton>
                                 <label for="fiebreNo">No</label>
                             </div>
@@ -224,12 +235,12 @@
                         <label>¿Has sentido dolor en el pecho recientemente?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="dolorPecho" value="Sí" formControlName="dolorPecho"
+                                <p-radioButton name="dolorPecho" value="1" formControlName="dolorPecho"
                                     inputId="dolorPechoSi"></p-radioButton>
                                 <label for="dolorPechoSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="dolorPecho" value="No" formControlName="dolorPecho"
+                                <p-radioButton name="dolorPecho" value="0" formControlName="dolorPecho"
                                     inputId="dolorPechoNo"></p-radioButton>
                                 <label for="dolorPechoNo">No</label>
                             </div>
@@ -240,12 +251,12 @@
                         <label>¿Has experimentado mareos o desmayos en la última semana?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="mareos" value="Sí" formControlName="mareos"
+                                <p-radioButton name="mareos" value="1" formControlName="mareos"
                                     inputId="mareosSi"></p-radioButton>
                                 <label for="mareosSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="mareos" value="No" formControlName="mareos"
+                                <p-radioButton name="mareos" value="0" formControlName="mareos"
                                     inputId="mareosNo"></p-radioButton>
                                 <label for="mareosNo">No</label>
                             </div>
@@ -257,12 +268,12 @@
                         <label>¿Has notado que tu temperatura ha estado más alta de lo normal?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="tempAlta" value="Sí" formControlName="tempAlta"
+                                <p-radioButton name="tempAlta" value="1" formControlName="tempAlta"
                                     inputId="tempAltaSi"></p-radioButton>
                                 <label for="tempAltaSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="tempAlta" value="No" formControlName="tempAlta"
+                                <p-radioButton name="tempAlta" value="0" formControlName="tempAlta"
                                     inputId="tempAltaNo"></p-radioButton>
                                 <label for="tempAltaNo">No</label>
                             </div>
@@ -273,12 +284,12 @@
                         <label>¿Has tenido sudores nocturnos?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="sudores" value="Sí" formControlName="sudores"
+                                <p-radioButton name="sudores" value="1" formControlName="sudores"
                                     inputId="sudoresSi"></p-radioButton>
                                 <label for="sudoresSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="sudores" value="No" formControlName="sudores"
+                                <p-radioButton name="sudores" value="0" formControlName="sudores"
                                     inputId="sudoresNo"></p-radioButton>
                                 <label for="sudoresNo">No</label>
                             </div>
@@ -290,12 +301,12 @@
                         <label>¿Has sentido palpitaciones en el corazón?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="palpitaciones" value="Sí" formControlName="palpitaciones"
+                                <p-radioButton name="palpitaciones" value="1" formControlName="palpitaciones"
                                     inputId="palpitacionesSi"></p-radioButton>
                                 <label for="palpitacionesSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="palpitaciones" value="No" formControlName="palpitaciones"
+                                <p-radioButton name="palpitaciones" value="0" formControlName="palpitaciones"
                                     inputId="palpitacionesNo"></p-radioButton>
                                 <label for="palpitacionesNo">No</label>
                             </div>
@@ -306,12 +317,12 @@
                         <label>¿Tu corazón late más rápido de lo habitual en reposo?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="taquicardiaReposo" value="Sí" formControlName="taquicardiaReposo"
+                                <p-radioButton name="taquicardiaReposo" value="1" formControlName="taquicardiaReposo"
                                     inputId="taquicardiaSi"></p-radioButton>
                                 <label for="taquicardiaSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="taquicardiaReposo" value="No" formControlName="taquicardiaReposo"
+                                <p-radioButton name="taquicardiaReposo" value="0" formControlName="taquicardiaReposo"
                                     inputId="taquicardiaNo"></p-radioButton>
                                 <label for="taquicardiaNo">No</label>
                             </div>
@@ -323,12 +334,12 @@
                         <label>¿Has tenido alguna caída en el último mes?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="caidas" value="Sí" formControlName="caidas"
+                                <p-radioButton name="caidas" value="1" formControlName="caidas"
                                     inputId="caidasSi"></p-radioButton>
                                 <label for="caidasSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="caidas" value="No" formControlName="caidas"
+                                <p-radioButton name="caidas" value="0" formControlName="caidas"
                                     inputId="caidasNo"></p-radioButton>
                                 <label for="caidasNo">No</label>
                             </div>
@@ -339,12 +350,12 @@
                         <label>¿Te sientes inestable al caminar?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="inestabilidad" value="Sí" formControlName="inestabilidad"
+                                <p-radioButton name="inestabilidad" value="1" formControlName="inestabilidad"
                                     inputId="inestabilidadSi"></p-radioButton>
                                 <label for="inestabilidadSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="inestabilidad" value="No" formControlName="inestabilidad"
+                                <p-radioButton name="inestabilidad" value="0" formControlName="inestabilidad"
                                     inputId="inestabilidadNo"></p-radioButton>
                                 <label for="inestabilidadNo">No</label>
                             </div>
@@ -355,12 +366,12 @@
                         <label>¿Has experimentado cambios en tu salud al cambiar de lugar de residencia?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="cambioLugar" value="Sí" formControlName="cambioLugar"
+                                <p-radioButton name="cambioLugar" value="1" formControlName="cambioLugar"
                                     inputId="cambioLugarSi"></p-radioButton>
                                 <label for="cambioLugarSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="cambioLugar" value="No" formControlName="cambioLugar"
+                                <p-radioButton name="cambioLugar" value="0" formControlName="cambioLugar"
                                     inputId="cambioLugarNo"></p-radioButton>
                                 <label for="cambioLugarNo">No</label>
                             </div>
@@ -372,13 +383,13 @@
                         <label>¿Has tenido dificultad para respirar al hacer ejercicio?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="dificultadEjercicio" value="Sí"
+                                <p-radioButton name="dificultadEjercicio" value="1"
                                     formControlName="dificultadEjercicio"
                                     inputId="dificultadEjercicioSi"></p-radioButton>
                                 <label for="dificultadEjercicioSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="dificultadEjercicio" value="No"
+                                <p-radioButton name="dificultadEjercicio" value="0"
                                     formControlName="dificultadEjercicio"
                                     inputId="dificultadEjercicioNo"></p-radioButton>
                                 <label for="dificultadEjercicioNo">No</label>
@@ -390,25 +401,31 @@
                         <label>¿Te sientes corto de aliento al realizar actividades cotidianas?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="disneaActividades" value="Sí" formControlName="disneaActividades"
+                                <p-radioButton name="disneaActividades" value="1" formControlName="disneaActividades"
                                     inputId="disneaActividadesSi"></p-radioButton>
                                 <label for="disneaActividadesSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="disneaActividades" value="No" formControlName="disneaActividades"
+                                <p-radioButton name="disneaActividades" value="0" formControlName="disneaActividades"
                                     inputId="disneaActividadesNo"></p-radioButton>
                                 <label for="disneaActividadesNo">No</label>
                             </div>
                         </div>
                     </div>
 
-
-
-
-                    <div class="flex justify-content-between mt-4">
-                        <button pButton label="Atrás" (click)="prevStep()" class="p-button-secondary"></button>
-                        <button pButton label="Siguiente" (click)="nextStep()"></button>
+                    <div class="buttons">
+                        <p-button label="Atrás" icon="pi pi-arrow-left" iconPos="left" (click)="prevStep()"
+                            styleClass="p-button-sm p-button-danger" [style]="{ 'margin-right': '.6em' }">
+                        </p-button>
+                        <p-button label="Guardar avance" icon="pi pi-save" iconPos="left" (click)="guardarAvance()"
+                            styleClass="p-button-sm p-button-warning" [style]="{ 'margin-right': '.6em' }">
+                        </p-button>
+                        <p-button label="Siguiente" icon="pi pi-arrow-right" iconPos="right" (click)="nextStep()"
+                            styleClass="p-button-sm p-button-primary">
+                        </p-button>
                     </div>
+
+
                 </div>
 
                 <!-- Sección 3: Hábitos y Antecedentes -->
@@ -421,12 +438,12 @@
                         <label>¿Consumes frutas y verduras a diario?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="frutasVerduras" value="Sí" formControlName="frutasVerduras"
+                                <p-radioButton name="frutasVerduras" value="1" formControlName="frutasVerduras"
                                     inputId="frutasVerdurasSi"></p-radioButton>
                                 <label for="frutasVerdurasSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="frutasVerduras" value="No" formControlName="frutasVerduras"
+                                <p-radioButton name="frutasVerduras" value="0" formControlName="frutasVerduras"
                                     inputId="frutasVerdurasNo"></p-radioButton>
                                 <label for="frutasVerdurasNo">No</label>
                             </div>
@@ -437,12 +454,12 @@
                         <label>¿Bebes suficiente agua diariamente?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="agua" value="Sí" formControlName="agua"
+                                <p-radioButton name="agua" value="1" formControlName="agua"
                                     inputId="aguaSi"></p-radioButton>
                                 <label for="aguaSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="agua" value="No" formControlName="agua"
+                                <p-radioButton name="agua" value="0" formControlName="agua"
                                     inputId="aguaNo"></p-radioButton>
                                 <label for="aguaNo">No</label>
                             </div>
@@ -453,12 +470,12 @@
                         <label>¿Realizas actividad física al menos 3 veces por semana?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="actividadFisica" value="Sí" formControlName="actividadFisica"
+                                <p-radioButton name="actividadFisica" value="1" formControlName="actividadFisica"
                                     inputId="ejercicioSi"></p-radioButton>
                                 <label for="ejercicioSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="actividadFisica" value="No" formControlName="actividadFisica"
+                                <p-radioButton name="actividadFisica" value="0" formControlName="actividadFisica"
                                     inputId="ejercicioNo"></p-radioButton>
                                 <label for="ejercicioNo">No</label>
                             </div>
@@ -469,12 +486,12 @@
                         <label>¿Duermes al menos 7 horas por noche?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="horasSueño" value="Sí" formControlName="horasSueño"
+                                <p-radioButton name="horasSueño" value="1" formControlName="horasSueño"
                                     inputId="duerme7hSi"></p-radioButton>
                                 <label for="duerme7hSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="horasSueño" value="No" formControlName="horasSueño"
+                                <p-radioButton name="horasSueño" value="0" formControlName="horasSueño"
                                     inputId="duerme7hNo"></p-radioButton>
                                 <label for="duerme7hNo">No</label>
                             </div>
@@ -485,12 +502,12 @@
                         <label>¿Te despiertas durante la noche con frecuencia?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="despertarNocturno" value="Sí" formControlName="despertarNocturno"
+                                <p-radioButton name="despertarNocturno" value="1" formControlName="despertarNocturno"
                                     inputId="despiertaNocheSi"></p-radioButton>
                                 <label for="despiertaNocheSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="despertarNocturno" value="No" formControlName="despertarNocturno"
+                                <p-radioButton name="despertarNocturno" value="0" formControlName="despertarNocturno"
                                     inputId="despiertaNocheNo"></p-radioButton>
                                 <label for="despiertaNocheNo">No</label>
                             </div>
@@ -503,12 +520,12 @@
                         <label>¿Tienes alguna condición médica preexistente?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="historiaMedica" value="Sí" formControlName="historiaMedica"
+                                <p-radioButton name="historiaMedica" value="1" formControlName="historiaMedica"
                                     inputId="condicionMedicaSi"></p-radioButton>
                                 <label for="condicionMedicaSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="historiaMedica" value="No" formControlName="historiaMedica"
+                                <p-radioButton name="historiaMedica" value="0" formControlName="historiaMedica"
                                     inputId="condicionMedicaNo"></p-radioButton>
                                 <label for="condicionMedicaNo">No</label>
                             </div>
@@ -519,12 +536,12 @@
                         <label>¿Estás tomando medicamentos actualmente?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="medicamentos" value="Sí" formControlName="medicamentos"
+                                <p-radioButton name="medicamentos" value="1" formControlName="medicamentos"
                                     inputId="medicamentosSi"></p-radioButton>
                                 <label for="medicamentosSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="medicamentos" value="No" formControlName="medicamentos"
+                                <p-radioButton name="medicamentos" value="0" formControlName="medicamentos"
                                     inputId="medicamentosNo"></p-radioButton>
                                 <label for="medicamentosNo">No</label>
                             </div>
@@ -535,12 +552,12 @@
                         <label>¿Hay antecedentes familiares de enfermedades cardíacas?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="antecedentesCardiacos" value="Sí"
+                                <p-radioButton name="antecedentesCardiacos" value="1"
                                     formControlName="antecedentesCardiacos" inputId="cardiacasSi"></p-radioButton>
                                 <label for="cardiacasSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="antecedentesCardiacos" value="No"
+                                <p-radioButton name="antecedentesCardiacos" value="0"
                                     formControlName="antecedentesCardiacos" inputId="cardiacasNo"></p-radioButton>
                                 <label for="cardiacasNo">No</label>
                             </div>
@@ -551,13 +568,13 @@
                         <label>¿Hay antecedentes familiares de enfermedades respiratorias?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="antecedentesRespiratorios" value="Sí"
+                                <p-radioButton name="antecedentesRespiratorios" value="1"
                                     formControlName="antecedentesRespiratorios"
                                     inputId="respiratoriasSi"></p-radioButton>
                                 <label for="respiratoriasSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="antecedentesRespiratorios" value="No"
+                                <p-radioButton name="antecedentesRespiratorios" value="0"
                                     formControlName="antecedentesRespiratorios"
                                     inputId="respiratoriasNo"></p-radioButton>
                                 <label for="respiratoriasNo">No</label>
@@ -569,12 +586,12 @@
                         <label>¿Sufre de obesidad?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="obesidad" value="Sí" formControlName="obesidad"
+                                <p-radioButton name="obesidad" value="1" formControlName="obesidad"
                                     inputId="obesidadSi"></p-radioButton>
                                 <label for="obesidadSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="obesidad" value="No" formControlName="obesidad"
+                                <p-radioButton name="obesidad" value="0" formControlName="obesidad"
                                     inputId="obesidadNo"></p-radioButton>
                                 <label for="obesidadNo">No</label>
                             </div>
@@ -585,12 +602,12 @@
                         <label>¿Tiene familiares cercanos que padezcan diabetes mellitus?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="diabetesFamilia" value="Sí" formControlName="diabetesFamilia"
+                                <p-radioButton name="diabetesFamilia" value="1" formControlName="diabetesFamilia"
                                     inputId="diabetesFamiliaSi"></p-radioButton>
                                 <label for="diabetesFamiliaSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="diabetesFamilia" value="No" formControlName="diabetesFamilia"
+                                <p-radioButton name="diabetesFamilia" value="0" formControlName="diabetesFamilia"
                                     inputId="diabetesFamiliaNo"></p-radioButton>
                                 <label for="diabetesFamiliaNo">No</label>
                             </div>
@@ -606,12 +623,12 @@
                         <label>¿Padece diabetes mellitus?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="diabetes" value="Sí" formControlName="diabetes"
+                                <p-radioButton name="diabetes" value="1" formControlName="diabetes"
                                     inputId="diabetesPropiaSi"></p-radioButton>
                                 <label for="diabetesPropiaSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="diabetes" value="No" formControlName="diabetes"
+                                <p-radioButton name="diabetes" value="0" formControlName="diabetes"
                                     inputId="diabetesPropiaNo"></p-radioButton>
                                 <label for="diabetesPropiaNo">No</label>
                             </div>
@@ -627,12 +644,12 @@
                         <label>¿Tiene alguna enfermedad crónica?</label>
                         <div class="radio-group">
                             <div class="radio-option">
-                                <p-radioButton name="enfermedadCronica" value="Sí" formControlName="enfermedadCronica"
+                                <p-radioButton name="enfermedadCronica" value="1" formControlName="enfermedadCronica"
                                     inputId="enfermedadCronicaSi"></p-radioButton>
                                 <label for="enfermedadCronicaSi">Sí</label>
                             </div>
                             <div class="radio-option">
-                                <p-radioButton name="enfermedadCronica" value="No" formControlName="enfermedadCronica"
+                                <p-radioButton name="enfermedadCronica" value="0" formControlName="enfermedadCronica"
                                     inputId="enfermedadCronicaNo"></p-radioButton>
                                 <label for="enfermedadCronicaNo">No</label>
                             </div>
@@ -645,14 +662,15 @@
                             placeholder="Especifica la enfermedad" />
                     </div>
 
-
-                    <div class="flex gap-3 mt-4">
-                        <button pButton type="button" label="Atrás" (click)="prevStep()"
-                            class="p-button-secondary"></button>
-                        <button pButton type="button" label="Enviar" (click)="submit()"
-                            class="p-button-success"></button>
+                    <div class="buttons">
+                        <p-button label="Atrás" icon="pi pi-arrow-left" iconPos="left" (click)="prevStep()"
+                            styleClass="p-button-sm p-button-danger" [style]="{ 'margin-right': '.6em' }">
+                        </p-button>
+                        <p-button label="Enviar" icon="pi pi-arrow-right" iconPos="right" (click)="CreatePatient()"
+                            styleClass="p-button-sm p-button-success">
+                        </p-button>
                     </div>
-
+                    <!-- [disabled]="!healthForm.valid" -->
                 </div>
             </form>
         </div>
