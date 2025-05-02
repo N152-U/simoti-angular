@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Select2Data } from 'ng-select2-component';
+import Swal from 'sweetalert2';
+
+
 import { Tutor } from '@app/interfaces/tutors';
 import { Doctor } from '@app/interfaces/doctors';
 
@@ -105,7 +108,7 @@ export class NewPatientComponent implements OnInit {
     });
 
     this.cargarAvance();
-    
+
     this.mus.GetByUsersType("d88d9411-c944-463a-985c-8d938875d3e3").subscribe((res: any) => {
       this.tutors = res;
 
@@ -158,9 +161,28 @@ export class NewPatientComponent implements OnInit {
   }
 
   CreatePatient() {
-    console.log('Formulario enviado:', this.healthForm.value);
-    alert('¡Formulario enviado con éxito!');
+    
+    Swal.fire({
+      title: '¿Desea guardar el nuevo paciente?',
+      icon: 'question',
+      showDenyButton: true,
+      confirmButtonText: `Confirmar`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const formData = this.healthForm.value;
+        console.log('Formulario enviado:', formData);
+
+      } else if (result.isDenied) {
+        Swal.fire('Paciente no guardado', '', 'info');
+      }
+    });
   }
+
+  limpiarFormulario() {
+    this.healthForm.reset();
+  }
+  
   get first_name() {
     return this.healthForm.get('first_name');
   }

@@ -8,6 +8,12 @@
             <p-steps [model]="steps" [activeIndex]="currentStep" [readonly]="true" class="mb-4"></p-steps>
 
             <form [formGroup]="healthForm">
+                <br>
+                <div class="buttons-clean">
+                    <p-button label="Limpiar Formulario" icon="pi pi-eraser" iconPos="left" (click)="limpiarFormulario()"
+                        styleClass="p-button-sm p-button-warning" [style]="{ 'margin-right': '.6em' }">
+                    </p-button>
+                </div>
                 <!-- Sección 1: Datos Personales -->
                 <div *ngIf="currentStep === 0" class="p-fluid">
                     <br><br>
@@ -476,7 +482,7 @@
                             </div>
                             <div class="radio-option">
                                 <p-radioButton name="actividadFisica" value="0" formControlName="actividadFisica"
-                                    inputId="ejercicioNo"></p-radioButton>
+                                    inputId="ejercicioNo"></p-radioButton >
                                 <label for="ejercicioNo">No</label>
                             </div>
                         </div>
@@ -656,11 +662,12 @@
                         </div>
                     </div>
 
-                    <div class="field mb-4" *ngIf="healthForm.get('enfermedadCronica')?.value === 'Sí'">
+                    <div class="field mb-4" *ngIf="healthForm.get('enfermedadCronica')?.value === '1'">
                         <label for="cualEnfermedad">¿Cuál?</label>
                         <input id="cualEnfermedad" type="text" pInputText formControlName="cualEnfermedad"
                             placeholder="Especifica la enfermedad" />
                     </div>
+                    <br>
 
                     <div class="buttons">
                         <p-button label="Atrás" icon="pi pi-arrow-left" iconPos="left" (click)="prevStep()"
