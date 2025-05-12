@@ -9,7 +9,7 @@ import { AboutComponent } from './components/pages/about/about.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { ManagmentModule } from './components/pages/managment/managment.module';
 import { AuthGuard } from './guards/auth.guard';
-import { ReportsComponent } from './components/pages/reports/reports.component';
+
 //Rutas hijas
 const managmentModule = () => import('./components/pages/managment/managment.module').then(x => x.ManagmentModule);
 
@@ -20,7 +20,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'map', component: MapComponent, canActivate: [AuthGuard] },
-  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'mantainance', component: MantainanceComponent },
   { path: 'patient', loadChildren: () => import('./components/pages/patient/patient.module').then(m => m.PatientModule), canActivate: [AuthGuard] },

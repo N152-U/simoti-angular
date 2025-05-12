@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Select2Data } from 'ng-select2-component';
 import Swal from 'sweetalert2';
-
+import { Router } from '@angular/router';
 
 import { Tutor } from '@app/interfaces/tutors';
 import { Doctor } from '@app/interfaces/doctors';
 
 import { ManageUsersService } from '@app/services/managment/manage-users/manage-users.service';
+import { PatientsService } from '@app/services/managment/patients/patients.service';
 
 @Component({
   selector: 'app-new-patient',
@@ -34,7 +35,7 @@ export class NewPatientComponent implements OnInit {
 
   healthForm: FormGroup | any;
 
-  constructor(private fb: FormBuilder, private mus: ManageUsersService) {
+  constructor(private fb: FormBuilder, private mus: ManageUsersService, private ps: PatientsService,private router: Router) {
 
 
   }
@@ -171,7 +172,22 @@ export class NewPatientComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         const formData = this.healthForm.value;
+
         console.log('Formulario enviado:', formData);
+
+
+        this.ps.CreatePatient(formData).subscribe((res: any) => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Paciente guardado exitosamente',
+            showConfirmButton: false,
+          });
+/*           this.router.navigate(["/patient"]);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1300); */
+        });
 
       } else if (result.isDenied) {
         Swal.fire('Paciente no guardado', '', 'info');

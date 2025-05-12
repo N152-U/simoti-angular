@@ -71,7 +71,6 @@ import { BlockUIModule } from 'primeng/blockui';
 import { MapComponent } from './components/pages/map/map.component';
 import { UserDetailComponent } from './components/shared/profile/user-detail/user-detail.component';
 import { UserUpdatePasswordComponent } from './components/shared/profile/user-update-password/user-update-password.component';
-import { ReportsComponent } from './components/pages/reports/reports.component';
 import { Select2Module } from 'ng-select2-component';
 
 @NgModule({
@@ -88,8 +87,7 @@ import { Select2Module } from 'ng-select2-component';
     HeaderComponent,
     MapComponent,
     UserDetailComponent,
-    UserUpdatePasswordComponent,
-    ReportsComponent
+    UserUpdatePasswordComponent
   ],
   imports: [
     BrowserModule,
