@@ -183,10 +183,10 @@ export class NewPatientComponent implements OnInit {
             title: 'Paciente guardado exitosamente',
             showConfirmButton: false,
           });
-/*           this.router.navigate(["/patient"]);
+          this.router.navigate(["/patient"]);
           setTimeout(() => {
             window.location.reload();
-          }, 1300); */
+          }, 1300);
         });
 
       } else if (result.isDenied) {
