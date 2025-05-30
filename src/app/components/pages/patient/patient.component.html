@@ -66,19 +66,25 @@
           <td>{{ patient.tutor }}</td>
           <td>{{ patient.dateOfBirth | date:'dd-MM-yyyy' }}</td>
           <td>
-            <ng-template [ngxPermissionsOnly]="['EDIT.USER']">
+            <ng-template [ngxPermissionsOnly]="['EDIT.PATIENT']">
               <button class="btn btn-primary btnEditar" [routerLink]="['edit-patient', patient.id]">
                 <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="['READ.USER']">
+            <ng-template [ngxPermissionsOnly]="['READ.PATIENT']">
+              <button class="btn btn-success" [routerLink]="['detail-patient', patient.id]">
+                <i class="pi pi-id-card"></i>
+              </button>
+            </ng-template>
+            &nbsp;
+            <ng-template [ngxPermissionsOnly]="['READ.PATIENT']">
               <button class="btn btn-secondary" [routerLink]="['detail-patient', patient.id]">
                 <i class="pi pi-eye"></i>
               </button>
             </ng-template>
             &nbsp;
-            <ng-template [ngxPermissionsOnly]="['DELETE.USER']">
+            <ng-template [ngxPermissionsOnly]="['DELETE.PATIENT']">
               <button class="btn btn-danger">
                 <i class="pi pi-trash"></i>
               </button>
