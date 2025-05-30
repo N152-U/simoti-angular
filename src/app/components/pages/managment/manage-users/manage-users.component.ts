@@ -86,9 +86,6 @@ export class ManageUsersComponent implements OnInit {
   loadUsers(event: LazyLoadEvent) {
     if (event) {
       this.loadingTable = true;
-      /* this.mmu.getTotalRegisters(event.first, event.rows, event.filters["username"]?.value, event.filters["firstName"]?.value, event.filters["middleName"]?.value, event.filters["lastName"]?.value, event.filters["roles.role"]?.value).subscribe(res => {
-        this.totalRecords = res.payload;
-      }); */
       setTimeout(() => {
         this.mmu.GetAllUsers().subscribe(res => {
           this.users = res;

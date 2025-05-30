@@ -1,21 +1,102 @@
 <router-outlet></router-outlet>
 <div *ngIf="router.url == '/patient'">
-    <div class="card centrar">
-        <header>
-          <h1 class="text-center title">Administraci&oacute;n de pacientes</h1>
-        </header>
-        <p-toolbar styleClass="p-mb-4">
-          <ng-template pTemplate="left">
-            <p-button styleClass="p-button-sm" label="Inicio" [routerLink]="['/home']"></p-button>
-          </ng-template>
-    
-          <ng-template pTemplate="right">
-            <ng-template [ngxPermissionsOnly]="['CREATE.PATIENT']">
-              <p-button styleClass="p-button-sm p-button-success" label="Nuevo Paciente" icon="pi pi-plus"
-                [routerLink]="['new-patient']"></p-button>
-            </ng-template>
-          </ng-template>
-        </p-toolbar>
-      </div>
+  <div class="card centrar">
+    <header>
+      <h1 class="text-center title">Administraci&oacute;n de pacientes</h1>
+    </header>
+    <p-toolbar styleClass="p-mb-4">
+      <ng-template pTemplate="left">
+        <p-button styleClass="p-button-sm" label="Inicio" [routerLink]="['/home']"></p-button>
+      </ng-template>
 
+      <ng-template pTemplate="right">
+        <ng-template [ngxPermissionsOnly]="['CREATE.PATIENT']">
+          <p-button styleClass="p-button-sm p-button-success" label="Nuevo Paciente" icon="pi pi-plus"
+            [routerLink]="['new-patient']"></p-button>
+        </ng-template>
+      </ng-template>
+    </p-toolbar>
+    <p-table styleClass="p-datatable-sm p-datatable-striped p-datatable-responsive-demo" #dt [value]="patients"
+      [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+      currentPageReportTemplate="Registros del {first} al {last} de {totalRecords} Registros" [scrollable]="true"
+      dataKey="id" scrollHeight="500px" [style]="{ width: '100%' }" [rowsPerPageOptions]="[5, 10]"
+      (onLazyLoad)="loadPatients($event)" [loading]="loadingTable" [totalRecords]="totalRecords">
+
+      <ng-template pTemplate="header" let-rowData="rowData">
+        <tr>
+          <th pSortableColumn="firstName" style="border: none">Nombre</th>
+          <th pSortableColumn="middleName" style="border: none">
+            Apellido Paterno
+          </th>
+          <th pSortableColumn="lastName" style="border: none">
+            Apellido Materno
+          </th>
+
+          <th pSortableColumn="tutor" style="border: none">Tutor</th>
+          <th pSortableColumn="dateOfBirth" style="border: none">Fecha de Nacimiento</th>
+          <th style="border: none">Acciones</th>
+        </tr>
+        <tr>
+          <th style="border: none">
+            <input pInputText type="text" (input)="applyFilterGlobal($event, 'firstName', 'contains')"
+              placeholder="Busqueda por nombre" class="p-column-filter p-inputtext-sm" />
+          </th>
+          <th style="border: none">
+            <input pInputText type="text" (input)="applyFilterGlobal($event, 'middleName', 'contains')"
+              placeholder="Busqueda por a. paterno" class="p-column-filter p-inputtext-sm" />
+          </th>
+          <th style="border: none">
+            <input pInputText type="text" (input)="
+              applyFilterGlobal($event, 'lastName', 'contains')" placeholder="Busqueda por a. materno"
+              class="p-column-filter p-inputtext-sm" />
+          </th>
+          <th style="border: none">
+            <input pInputText type="text" (input)="applyFilterGlobal($event, 'tutor', 'contains')"
+              placeholder="Busqueda por tutor" class="p-column-filter p-inputtext-sm" />
+          </th>
+          <th style="border: none"></th>
+          <th style="border: none"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-patient let-i>
+        <tr [pSelectableRow]="patient">
+          <td>{{ patient.firstName }}</td>
+          <td>{{ patient.middleName }}</td>
+          <td>{{ patient.lastName }}</td>
+          <td>{{ patient.tutor }}</td>
+          <td>{{ patient.dateOfBirth | date:'dd-MM-yyyy' }}</td>
+          <td>
+            <ng-template [ngxPermissionsOnly]="['EDIT.USER']">
+              <button class="btn btn-primary btnEditar" [routerLink]="['edit-patient', patient.id]">
+                <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
+              </button>
+            </ng-template>
+            &nbsp;
+            <ng-template [ngxPermissionsOnly]="['READ.USER']">
+              <button class="btn btn-secondary" [routerLink]="['detail-patient', patient.id]">
+                <i class="pi pi-eye"></i>
+              </button>
+            </ng-template>
+            &nbsp;
+            <ng-template [ngxPermissionsOnly]="['DELETE.USER']">
+              <button class="btn btn-danger">
+                <i class="pi pi-trash"></i>
+              </button>
+            </ng-template>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorleft"> </ng-template>
+      <ng-template pTemplate="paginatorright"> </ng-template>
+    </p-table>
+  </div>
+
+
+
+  <div *ngIf="!cargando && patients.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+  </div>
 </div>
