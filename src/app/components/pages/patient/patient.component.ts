@@ -27,6 +27,31 @@ export class PatientComponent {
     this.loadPatients({ first: 0, rows: 10 });
   }
 
+  DeletePatient(patient: any, i: number) {
+    Swal.fire({
+      title: `¿Está seguro que desea borrar a ${patient.firstName}?`,
+      icon: "question",
+      showDenyButton: true,
+      confirmButtonText: `Confirmar`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.patients.splice(i, 1);
+          this.ps.DeletePatient(patient.id).subscribe((resp) => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Paciente eliminado",
+            showConfirmButton: false,
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 1300);
+        });
+      }
+    });
+  }
+
   cargar() {
     this.cargando = true;
   }

@@ -1,8 +1,75 @@
 <router-outlet></router-outlet>
 
 <div class="card centrar">
-    <p-card>
-        <h1 class="text-center title">Detección de caídas</h1>
-        <br />
-    </p-card>
+    <div class="container">
+        <div class="centrar position-relative">
+            <div class="row align-items-center mb-4" style="margin-top: -50px;">
+                <div class="col-sm-8">
+                    <h4 class="mb-2 text-primary" style="color: #F6901A!important;">{{namePatient}} - {{indicator}}</h4>
+                </div>
+                <div class="col-sm-4 text-end">
+                    <img src="assets/images/fall-detector.png"
+                        alt="Imagen Paciente" class="img-fluid rounded" style="max-height: 100px;">
+                </div>
+            </div>
+
+            <div class="row align-items-end mb-4">
+
+                <div class="col-md-3">
+                    <label for="fechaInicio" class="form-label">Fecha de inicio</label>
+                    <input type="date" id="fechaInicio" class="form-control" [(ngModel)]="fechaInicio">
+                </div>
+                <div class="col-md-3">
+                    <label for="fechaFin" class="form-label">Fecha de fin</label>
+                    <input type="date" id="fechaFin" class="form-control" [(ngModel)]="fechaFin">
+                </div>
+                <div class="col-md-2 text-end">
+                    <button class="btn btn-outline-primary w-100 mt-3" (click)="filtrar()"
+                        [disabled]="!fechaInicio || !fechaFin || (fechaInicio > fechaFin)" style="color: #F6901A;border-color: #F6901A;" >Filtrar</button>
+                </div>
+                <div *ngIf="fechaInicio && fechaFin && fechaInicio > fechaFin" class="text-danger mt-2">
+                    La fecha de inicio debe ser menor o igual a la fecha de fin.
+                </div>
+            </div>
+
+
+            <hr class="my-4">
+
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-secondary">Resumen de Indicadores</h5>
+                    <table class="table table-bordered table-hover text-center">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2022-05-10</td>
+                                <td>120/80</td>
+                            </tr>
+                            <tr>
+                                <td>2022-05-11</td>
+                                <td>72 bpm</td>
+                            </tr>
+                            <tr>
+                                <td>2022-05-12</td>
+                                <td>90 mg/dL</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-8">
+                    <h5 class="text-secondary">Historial de Resultados</h5>
+                    <div class="chart-container">
+                        <canvas id="MyChart">{{ chart }}</canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>

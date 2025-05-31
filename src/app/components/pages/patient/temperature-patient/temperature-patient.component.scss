@@ -81,3 +81,31 @@ h3 {
     }
   }
   
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px #dee2e6 dotted;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: #f8f9fa;
+  }
+  
+  .centrar {
+    max-width: 100%;
+    margin: 100px auto 0 auto;
+  }
+  
+  .chart-container {
+    max-width: 100%;
+  }
+  
+  .table th, .table td {
+    vertical-align: middle;
+  }
+  .table th{
+    background-color: #044599;
+    color: white;
+  }
+  

@@ -4,7 +4,7 @@
 
 $border-radius-size: 14px;
 
-$barbarian: #EC9B3B;
+$barbarian: #4955d3;
 
 $archer: #EE5487;
 
@@ -12,7 +12,7 @@ $giant: #F6901A;
 
 $goblin: #82BB30;
 
-$wizard: #4FACFF;
+$wizard: #8634d7;
 
 
 
@@ -47,13 +47,9 @@ body {
 .cards-list {
 
     z-index: 0;
-
-    width: 100%;
-
+    width: 90%;
     display: flex;
-
     justify-content: space-around;
-
     flex-wrap: wrap;
 
 }
@@ -102,6 +98,7 @@ body {
 
     display: inline-block;
 
+    margin-right: 10px!important;
     margin: auto;
 
     border-radius: $border-radius-size + 5;
@@ -140,13 +137,10 @@ body {
 
     img {
 
-        width: 300px;
-
+        width: 180px;
         position: absolute;
-
-        top: -80px;
-
-        left: 10px;
+        left: 60px;
+        top:15px;
 
     }
 
@@ -157,16 +151,12 @@ body {
 .clash-card__image--archer {
 
     background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/archer-bg.jpg');
-
     img {
 
-        width: 250px;
-
+        width: 180px;
         position: absolute;
-
-        top: -65px;
-
-        left: 25px;
+        left: 60px;
+        top:15px;
 
     }
 
@@ -180,13 +170,9 @@ body {
 
     img {
 
-        width: 250px;
-
+        width: 180px;
         position: absolute;
-
-        top: -75px;
-
-        left: 25px;
+        left: 60px;
 
     }
 
@@ -200,13 +186,9 @@ body {
 
     img {
 
-        width: 250px;
-
+        width: 180px;
         position: absolute;
-
-        top: -75px;
-
-        left: 27px;
+        left: 70px;
 
     }
 
@@ -219,15 +201,10 @@ body {
     background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard-bg.jpg');
 
     img {
-
-        width: 240px;
-
+        width: 180px;
         position: absolute;
-
-        top: -50px;
-
-        left: 35px;
-
+        top: 20px;
+        left: 60px;
     }
 
 }
@@ -320,7 +297,7 @@ body {
 
     .one-third {
 
-        border-right: 1px solid #BD7C2F;
+        border-right: 1px solid #362fbd;
 
     }
 

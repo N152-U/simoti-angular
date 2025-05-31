@@ -85,7 +85,7 @@
             </ng-template>
             &nbsp;
             <ng-template [ngxPermissionsOnly]="['DELETE.PATIENT']">
-              <button class="btn btn-danger">
+              <button class="btn btn-danger" (click)="DeletePatient(patient, i)">
                 <i class="pi pi-trash"></i>
               </button>
             </ng-template>

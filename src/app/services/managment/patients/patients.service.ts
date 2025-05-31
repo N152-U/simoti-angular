@@ -36,4 +36,18 @@ export class PatientsService {
         })
       );
   }
+
+  DeletePatient(hasPatient: string) {
+    return this.http.delete(`${environment.apiUrl}/patients/delete/${hasPatient}`);
+  }
+
+  GetPatientByHash(hash: string) {
+    return this.http
+      .get<{ payload: any }>(`${environment.apiUrl}/patients/${hash}`)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
 }
