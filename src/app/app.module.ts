@@ -72,7 +72,6 @@ import { MapComponent } from './components/pages/map/map.component';
 import { UserDetailComponent } from './components/shared/profile/user-detail/user-detail.component';
 import { UserUpdatePasswordComponent } from './components/shared/profile/user-update-password/user-update-password.component';
 import { Select2Module } from 'ng-select2-component';
-import { BooleanToYesNoPipe } from './pipes/boolean-to-yes-no.pipe';
 
 @NgModule({
   declarations: [
@@ -89,7 +88,6 @@ import { BooleanToYesNoPipe } from './pipes/boolean-to-yes-no.pipe';
     MapComponent,
     UserDetailComponent,
     UserUpdatePasswordComponent,
-    BooleanToYesNoPipe
   ],
   imports: [
     BrowserModule,
@@ -150,7 +148,6 @@ import { BooleanToYesNoPipe } from './pipes/boolean-to-yes-no.pipe';
     BsDatepickerModule,
     NgxPermissionsModule,
     Select2Module,
-    BooleanToYesNoPipe
   ]
 })
 export class AppModule { }
