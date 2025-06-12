@@ -1,0 +1,60 @@
+<router-outlet></router-outlet>
+
+<div class="container mt-4">
+    <div class="card shadow p-4 centrar position-relative">
+
+
+        <p-card header="Detalle del Paciente" styleClass="patient-detail-card mb-1 card-no-border">
+            <div class="row align-items-center mb-4">
+                <div class="col-sm-8">
+                    <p class="mb-1"><strong>Nombre:</strong> {{ namePatient }}</p>
+                    <p class="mb-1"><strong>Fecha de Nacimiento:</strong> {{ birthDate }}</p>
+                    <p class="mb-1"><strong>Tutor:</strong> Andrea Martinez</p>
+                    <p class="mb-1"><strong>Médico Asignado:</strong> Esthefania Lozano</p>
+                </div>
+                <div class="col-sm-4 text-end">
+                    <img src="assets/images/user.png" alt="Imagen Paciente" class="img-fluid rounded"
+                        style="max-height: 100px;">
+                </div>
+            </div>
+            <p-tabView>
+                <p-tabPanel header="Salud y Síntomas">
+                    <div class="scrollable-tab-content">
+                        <dl class="row">
+                            <ng-container *ngFor="let item of saludSintomas">
+                                <dt class="col-sm-8">{{ item.label }}</dt>
+                                <dd class="col-sm-4">{{ item.value | yesNo }}</dd>
+                            </ng-container>
+                        </dl>
+                    </div>
+                </p-tabPanel>
+                <p-tabPanel header="Antecedentes Médicos">
+                    <div class="scrollable-tab-content">
+                        <dl class="row">
+                            <ng-container *ngFor="let item of antecedentesMedicos">
+                                <dt class="col-sm-8">{{ item.label }}</dt>
+                                <dd class="col-sm-4">
+                                    {{ item.key === 'diabetesFamilia' || item.key === 'diabetes' || item.key ===
+                                    'cualEnfermedad'
+                                    ? patientData[item.key]
+                                    : (patientData[item.key] | yesNo) }}
+                                </dd>
+                            </ng-container>
+                            <div *ngIf="patientData.enfermedadCronica === '1'">
+                                <dt class="col-sm-8">¿Cuál?</dt>
+                                <dd class="col-sm-4">{{ patientData.cualEnfermedad }}</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </p-tabPanel>
+
+            </p-tabView>
+
+            <div class="mt-4 text-end">
+                <p-button label="Volver" icon="pi pi-arrow-left" (click)="volver()"
+                    styleClass="p-button-danger p-button-sm"></p-button>
+            </div>
+        </p-card>
+    </div>
+
+</div>

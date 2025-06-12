@@ -67,25 +67,25 @@
           <td>{{ patient.dateOfBirth | date:'dd-MM-yyyy' }}</td>
           <td>
             <ng-template [ngxPermissionsOnly]="['EDIT.PATIENT']">
-              <button class="btn btn-primary btnEditar" [routerLink]="['edit-patient', patient.id]">
+              <button class="btn btn-primary btnEditar" [routerLink]="['edit-patient', patient.id]" title="Editar el paciente">
                 <i class="pi pi-pencil" style="font-size: 0.8rem"></i>
               </button>
             </ng-template>
             &nbsp;
             <ng-template [ngxPermissionsOnly]="['READ.PATIENT']">
-              <button class="btn btn-success" [routerLink]="['detail-patient', patient.id]">
+              <button class="btn btn-success" [routerLink]="['detail-patient', patient.id]" title="Ver indicadores del paciente">
                 <i class="pi pi-id-card"></i>
               </button>
             </ng-template>
             &nbsp;
             <ng-template [ngxPermissionsOnly]="['READ.PATIENT']">
-              <button class="btn btn-secondary" [routerLink]="['detail-patient', patient.id]">
+              <button class="btn btn-secondary" [routerLink]="['review-patient', patient.id]" title="Ver detalles del paciente">
                 <i class="pi pi-eye"></i>
               </button>
             </ng-template>
             &nbsp;
             <ng-template [ngxPermissionsOnly]="['DELETE.PATIENT']">
-              <button class="btn btn-danger" (click)="DeletePatient(patient, i)">
+              <button class="btn btn-danger" (click)="DeletePatient(patient, i)" title="Eliminar el paciente">
                 <i class="pi pi-trash"></i>
               </button>
             </ng-template>

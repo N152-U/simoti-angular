@@ -4,12 +4,14 @@
     <div class="container">
         <div class="centrar position-relative">
             <div class="row align-items-center mb-4" style="margin-top: -50px;">
+                <p-button [routerLink]="['/patient']" label="Regresar" icon="pi pi-arrow-left"
+            styleClass="p-button-sm p-button-danger" [style]="{ 'margin-right': '.6em' }"> </p-button>
                 <div class="col-sm-8">
                     <h4 class="mb-2 text-primary">{{namePatient}} - {{indicator}}</h4>
                 </div>
                 <div class="col-sm-4 text-end">
-                    <img src="assets/images/temperature.png"
-                        alt="Imagen Paciente" class="img-fluid rounded" style="max-height: 100px;">
+                    <img src="assets/images/temperature.png" alt="Imagen Paciente" class="img-fluid rounded"
+                        style="max-height: 100px;">
                 </div>
             </div>
 

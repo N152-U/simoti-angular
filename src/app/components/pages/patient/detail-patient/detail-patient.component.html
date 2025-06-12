@@ -4,12 +4,24 @@
     <br>
     <h4 class="mb-2 text-primary text-center title">Expediente del paciente - {{patient.firstName}}</h4>
     <br>
-    <h5>&nbsp;&nbsp;&nbsp; Seleccione el indicador a consultar:</h5>
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <h5>&nbsp;&nbsp;&nbsp; Seleccione el indicador a consultar:</h5>
+        </ng-template>
+  
+        <ng-template pTemplate="right">
+            <p-button [routerLink]="['/patient']" label="Regresar" icon="pi pi-arrow-left"
+            styleClass="p-button-sm p-button-danger" [style]="{ 'margin-right': '.6em' }"> </p-button>
+          </ng-template>
+      </p-toolbar>
     <br>
+    <div class="scrollable-tab-content">
+
+    
     <div class="cards-list" style="margin-left: 80px;">
         <div class="wrapper">
         
-            <div class="clash-card barbarian" [routerLink]="['/patient/detail-patient/temperature/12']">
+            <div class="clash-card barbarian" [routerLink]="['/patient/detail-patient/temperature',hash]">
                 <div class="clash-card__image clash-card__image--barbarian">
                     <img src="assets/images/temperature.png"
                         alt="barbarian" />
@@ -185,4 +197,5 @@
             </div>
 
         </div>
-    </div>
+    </div></div>
+</div>

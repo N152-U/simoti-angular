@@ -45,7 +45,8 @@ import { OxygenSaturationPatientComponent } from './oxygen-saturation-patient/ox
 import { LocationPatientComponent } from './location-patient/location-patient.component';
 import { HeartRatePatientComponent } from './heart-rate-patient/heart-rate-patient.component';
 import { FallDetectorPatientComponent } from './fall-detector-patient/fall-detector-patient.component';
-
+import { ReviewPatientComponent } from './review-patient/review-patient.component';
+import { BooleanToYesNoPipe } from '@app/pipes/boolean-to-yes-no.pipe';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,9 @@ import { FallDetectorPatientComponent } from './fall-detector-patient/fall-detec
     OxygenSaturationPatientComponent,
     LocationPatientComponent,
     HeartRatePatientComponent,
-    FallDetectorPatientComponent
+    FallDetectorPatientComponent,
+    ReviewPatientComponent,
+    BooleanToYesNoPipe
   ],
   imports: [
     CommonModule,

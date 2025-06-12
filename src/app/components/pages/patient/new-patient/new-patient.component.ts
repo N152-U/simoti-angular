@@ -75,36 +75,36 @@ export class NewPatientComponent implements OnInit {
       doctor_id: ['', Validators.required],
 
       // Sección 2 - Salud y Síntomas
-      estadoGeneral: ['', Validators.required],
-      energia: ['', Validators.required],
-      fiebre: ['', Validators.required],
-      dolorPecho: ['', Validators.required],
-      mareos: ['', Validators.required],
-      tempAlta: ['', Validators.required],
-      sudores: ['', Validators.required],
-      palpitaciones: ['', Validators.required],
-      taquicardiaReposo: ['', Validators.required],
-      caidas: ['', Validators.required],
-      inestabilidad: ['', Validators.required],
-      cambioLugar: ['', Validators.required],
-      dificultadEjercicio: ['', Validators.required],
-      disneaActividades: ['', Validators.required],
+      estadoGeneral: ['0', Validators.required],
+      energia: ['0', Validators.required],
+      fiebre: ['0', Validators.required],
+      dolorPecho: ['0', Validators.required],
+      mareos: ['0', Validators.required],
+      tempAlta: ['0', Validators.required],
+      sudores: ['0', Validators.required],
+      palpitaciones: ['0', Validators.required],
+      taquicardiaReposo: ['0', Validators.required],
+      caidas: ['0', Validators.required],
+      inestabilidad: ['0', Validators.required],
+      cambioLugar: ['0', Validators.required],
+      dificultadEjercicio: ['0', Validators.required],
+      disneaActividades: ['0', Validators.required],
 
       // Sección 3 - Hábitos y Antecedentes
-      frutasVerduras: ['', Validators.required],
-      agua: ['', Validators.required],
-      actividadFisica: ['', Validators.required],
-      horasSueño: ['', Validators.required],
-      despertarNocturno: ['', Validators.required],
-      historiaMedica: ['', Validators.required],
-      medicamentos: ['', Validators.required],
-      antecedentesCardiacos: ['', Validators.required],
-      antecedentesRespiratorios: ['', Validators.required],
-      obesidad: ['', Validators.required],
-      diabetesFamilia: ['', Validators.required],
-      diabetes: ['', Validators.required],
-      enfermedadCronica: ['', Validators.required],
-      cualEnfermedad: ['']
+      frutasVerduras: ['0', Validators.required],
+      agua: ['0', Validators.required],
+      actividadFisica: ['0', Validators.required],
+      horasSueño: ['0', Validators.required],
+      despertarNocturno: ['0', Validators.required],
+      historiaMedica: ['0', Validators.required],
+      medicamentos: ['0', Validators.required],
+      antecedentesCardiacos: ['0', Validators.required],
+      antecedentesRespiratorios: ['0', Validators.required],
+      obesidad: ['0', Validators.required],
+      diabetesFamilia: ['0', Validators.required],
+      diabetes: ['0', Validators.required],
+      enfermedadCronica: ['0', Validators.required],
+      cualEnfermedad: ['0']
 
     });
 
@@ -197,6 +197,7 @@ export class NewPatientComponent implements OnInit {
 
   limpiarFormulario() {
     this.healthForm.reset();
+    localStorage.removeItem('healthFormData');
   }
   
   get first_name() {

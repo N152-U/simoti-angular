@@ -11,6 +11,7 @@ import { OxygenSaturationPatientComponent } from './oxygen-saturation-patient/ox
 import { LocationPatientComponent } from './location-patient/location-patient.component';
 import { HeartRatePatientComponent } from './heart-rate-patient/heart-rate-patient.component';
 import { FallDetectorPatientComponent } from './fall-detector-patient/fall-detector-patient.component';
+import { ReviewPatientComponent } from './review-patient/review-patient.component';
 
 const routes: Routes = [
   { 
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'new-patient', component: NewPatientComponent, canActivate: [AuthGuard] },
       { path: "edit-patient/:hash", component: EditPatientComponent, canActivate: [AuthGuard] },
       { path: "detail-patient/:hash", component: DetailPatientComponent, canActivate: [AuthGuard] },
+      { path: "review-patient/:hash", component: ReviewPatientComponent, canActivate: [AuthGuard] },
       //Indicadores
       { path: "detail-patient/temperature/:hash", component: TemperaturePatientComponent, canActivate: [AuthGuard] },
       { path: "detail-patient/oxygen-saturation/:hash", component: OxygenSaturationPatientComponent, canActivate: [AuthGuard] },

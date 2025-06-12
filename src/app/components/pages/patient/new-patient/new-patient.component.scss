@@ -110,3 +110,9 @@ h3 {
     gap: 1rem;          
     margin-top: 1rem;
   }
+
+  .scrollable-tab-content {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 1rem;
+  }
