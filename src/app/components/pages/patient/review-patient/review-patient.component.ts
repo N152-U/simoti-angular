@@ -89,7 +89,7 @@ export class ReviewPatientComponent implements OnInit {
   }
 
   volver() {
-    this.router.navigate(['/indicators']);
+    this.router.navigate(['/patient']);
   }
 
 }
