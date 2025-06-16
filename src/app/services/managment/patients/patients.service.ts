@@ -50,4 +50,14 @@ export class PatientsService {
         })
       );
   }
+
+  GetPatientDetailByHash(hash: string) {
+    return this.http
+      .get<{ payload: any }>(`${environment.apiUrl}/patients/detail/${hash}`)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
 }

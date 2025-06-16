@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'yesNo'
 })
 export class BooleanToYesNoPipe implements PipeTransform {
-  transform(value: string | number): string {
-    return value === '1' ? 'Sí' : 'No';
+  transform(value: boolean | number): string {
+    return value == true ? 'Sí' : 'No';
   }
 }

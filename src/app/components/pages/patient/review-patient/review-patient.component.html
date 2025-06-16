@@ -8,10 +8,10 @@
      
             <div class="row align-items-center mb-4">
                 <div class="col-sm-8">
-                    <p class="mb-1"><strong>Nombre:</strong> {{ namePatient }}</p>
-                    <p class="mb-1"><strong>Fecha de Nacimiento:</strong> {{ birthDate }}</p>
-                    <p class="mb-1"><strong>Tutor:</strong> Andrea Martinez</p>
-                    <p class="mb-1"><strong>Médico Asignado:</strong> Esthefania Lozano</p>
+                    <p class="mb-1"><strong>Nombre:</strong> {{ patient.fullNamePatient}} </p>
+                    <p class="mb-1"><strong>Fecha de Nacimiento:</strong> {{ patient.dateOfBirth }}</p>
+                    <p class="mb-1"><strong>Tutor:</strong> {{ patient.fullNameTutor}}</p>
+                    <p class="mb-1"><strong>Médico Asignado:</strong> {{ patient.fullNameDoctor}}</p>
                 </div>
                 <div class="col-sm-4 text-end">
                     <img src="assets/images/user.png" alt="Imagen Paciente" class="img-fluid rounded"
@@ -24,7 +24,7 @@
                         <dl class="row">
                             <ng-container *ngFor="let item of saludSintomas">
                                 <dt class="col-sm-8">{{ item.label }}</dt>
-                                <dd class="col-sm-4">{{ item.value | yesNo }}</dd>
+                                <dd class="col-sm-4">{{ patient?.[item.key] | yesNo }}</dd>
                             </ng-container>
                         </dl>
                     </div>
@@ -37,13 +37,13 @@
                                 <dd class="col-sm-4">
                                     {{ item.key === 'diabetesFamilia' || item.key === 'diabetes' || item.key ===
                                     'cualEnfermedad'
-                                    ? patientData[item.key]
-                                    : (patientData[item.key] | yesNo) }}
+                                    ? patient?.[item.key] 
+                                    : (patient?.[item.key]  | yesNo) }}
                                 </dd>
                             </ng-container>
                             <div *ngIf="patientData.enfermedadCronica === '1'">
                                 <dt class="col-sm-8">¿Cuál?</dt>
-                                <dd class="col-sm-4">{{ patientData.cualEnfermedad }}</dd>
+                                <dd class="col-sm-4">{{ patient.diseaseDetails }}</dd>
                             </div>
                         </dl>
                     </div>
