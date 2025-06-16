@@ -24,6 +24,14 @@ export class PatientsService {
     );
   }
 
+  UpdatePatient(patient:any,id:string){
+    return this.http.post(`${environment.apiUrl}/patients/update/${id}`, patient).pipe(
+      map((resp: any) => {
+        return resp;
+      })
+    );
+  }
+
   GetAllPatient(): Observable<any> {
     return this.http
       .get<{ payload: patientModel }>(`${environment.apiUrl}/patients`)

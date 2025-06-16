@@ -176,7 +176,7 @@ export class EditPatientComponent implements OnInit {
   CreatePatient() {
     
     Swal.fire({
-      title: '¿Desea guardar el nuevo paciente?',
+      title: '¿Desea actualizar el paciente?',
       icon: 'question',
       showDenyButton: true,
       confirmButtonText: `Confirmar`,
@@ -185,10 +185,7 @@ export class EditPatientComponent implements OnInit {
       if (result.isConfirmed) {
         const formData = this.healthForm.value;
 
-        console.log('Formulario enviado:', formData);
-
-
-        this.ps.CreatePatient(formData).subscribe((res: any) => {
+        this.ps.UpdatePatient(formData,this.hash).subscribe((res: any) => {
           Swal.fire({
             position: 'center',
             icon: 'success',

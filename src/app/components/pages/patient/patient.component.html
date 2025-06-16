@@ -64,7 +64,7 @@
           <td>{{ patient.middleName }}</td>
           <td>{{ patient.lastName }}</td>
           <td>{{ patient.tutor }}</td>
-          <td>{{ patient.dateOfBirth | date:'dd-MM-yyyy' }}</td>
+          <td>{{ patient.dateOfBirth}}</td>
           <td>
             <ng-template [ngxPermissionsOnly]="['EDIT.PATIENT']">
               <button class="btn btn-primary btnEditar" [routerLink]="['edit-patient', patient.id]" title="Editar el paciente">
