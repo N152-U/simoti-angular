@@ -60,4 +60,14 @@ export class PatientsService {
         })
       );
   }
+
+  GetPatientEditByHash(hash: string) {
+    return this.http
+      .get<{ payload: any }>(`${environment.apiUrl}/patients/edit/${hash}`)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
 }
