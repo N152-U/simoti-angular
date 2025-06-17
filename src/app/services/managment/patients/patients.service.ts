@@ -78,4 +78,14 @@ export class PatientsService {
         })
       );
   }
+
+  GetPatientTemperatureByHash(hash: string,startDate:string,endDate:string) {
+    return this.http
+      .get<{ payload: any }>(`${environment.apiUrl}/measurements/temperature/patient/${hash}/${startDate}/${endDate}`)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
 }
