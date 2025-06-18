@@ -4,6 +4,8 @@
     <div class="container">
         <div class="centrar position-relative">
             <div class="row align-items-center mb-4" style="margin-top: -50px;">
+                <p-button [routerLink]="['/patient/detail-patient',hash]" label="Regresar" icon="pi pi-arrow-left"
+                    styleClass="p-button-sm p-button-danger" [style]="{ 'margin-right': '.6em' }"> </p-button>
                 <div class="col-sm-8">
                     <h4 class="mb-2 text-primary" style="color: #EE5487!important;">{{patient.fullNamePatient}} - {{indicator}}</h4>
                 </div>

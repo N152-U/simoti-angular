@@ -81,8 +81,8 @@ export class TemperaturePatientComponent implements OnInit {
             {
               label: 'Temperatura (°C)',
               data,
-              borderColor: '#ff5733',
-              backgroundColor: 'rgba(255, 87, 51, 0.2)',
+              borderColor: '#044599',
+              backgroundColor: 'rgba(4, 69, 153, 0.2)',
               fill: true,
               tension: 0.3,
               pointRadius: 5,

@@ -100,7 +100,7 @@ export class HeartRatePatientComponent implements OnInit {
               suggestedMax: 42,
               title: {
                 display: true,
-                text: '°C'
+                text: 'LPM'
               }
             },
             x: {

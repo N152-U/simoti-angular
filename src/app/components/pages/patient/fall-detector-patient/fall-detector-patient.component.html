@@ -4,8 +4,11 @@
     <div class="container">
         <div class="centrar position-relative">
             <div class="row align-items-center mb-4" style="margin-top: -50px;">
+                <p-button [routerLink]="['/patient/detail-patient',hash]" label="Regresar" icon="pi pi-arrow-left"
+                    styleClass="p-button-sm p-button-danger" [style]="{ 'margin-right': '.6em' }"> </p-button>
                 <div class="col-sm-8">
-                    <h4 class="mb-2 text-primary" style="color: #F6901A!important;">{{namePatient}} - {{indicator}}</h4>
+                    <h4 class="mb-2 text-primary">{{patient.fullNamePatient}} - {{indicator}}</h4>
+                    <h4 class="mb-2 text-primary">{{ indicador }}</h4>
                 </div>
                 <div class="col-sm-4 text-end">
                     <img src="assets/images/fall-detector.png"
@@ -46,17 +49,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>2022-05-10</td>
-                                <td>120/80</td>
+                            <tr *ngIf="fallDetector.length === 0">
+                                <td colspan="2" class="text-center text-muted">No hay registros disponibles.</td>
                             </tr>
-                            <tr>
-                                <td>2022-05-11</td>
-                                <td>72 bpm</td>
-                            </tr>
-                            <tr>
-                                <td>2022-05-12</td>
-                                <td>90 mg/dL</td>
+                            <tr *ngFor="let item of fallDetector">
+                                <td>{{ item.fecha }}</td>
+                                <td>{{ item.description }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -64,7 +62,8 @@
                 <div class="col-md-8">
                     <h5 class="text-secondary">Historial de Resultados</h5>
                     <div class="chart-container">
-                        <canvas id="MyChart">{{ chart }}</canvas>
+                        <canvas *ngIf="fallDetector.length > 0" #myChartCanvas></canvas>
+
                     </div>
                 </div>
             </div>
