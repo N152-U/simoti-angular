@@ -21,25 +21,6 @@
       </div>
     </form>
     <br>
-    <form [formGroup]="shapesGroup" (ngSubmit)="AddShapes()" class="needs-validation center" novalidate="novalidate">
-      <div class="row">
-        <div class="flex-container">
-          <div class="flex-item">
-            <div style="font-weight: bold;color:grey;">&nbsp;&nbsp;Capas</div>
-            <select2 [data]="shapes" styleMode='default' [templates]="template" id="shape_id" formControlName="shape_id"
-              displaySearchStatus="always" placeholder="Selecciona las capas para añadir" [class]="{
-          'is-invalid': shape_id.invalid && (shape_id.dirty || shape_id.touched),
-          'is-valid': shape_id.valid}">
-              <ng-template #template let-data="data">{{data?.name}}</ng-template>
-            </select2>
-          </div>
-          <div class="flex-item">
-            <br>
-            <p-button icon="pi pi-plus" [loading]="loadingShapes" (onClick)="AddShapes()" label="Añadir Capa" size="small"></p-button>
-          </div>
-        </div>
-      </div>
-    </form>
     <div class="col-md-12">
       <div class="row">
         <section id="loading">

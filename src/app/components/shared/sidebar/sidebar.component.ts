@@ -69,13 +69,6 @@ export class SidebarComponent {
       ngxPermission: 'READ.PATIENT',
       sub_menu: [],
     },
-    {
-      link_name: 'Mapa',
-      link: '/map',
-      icon: 'pi pi-map',
-      ngxPermission: 'READ.MAP',
-      sub_menu: [],
-    },
   ];
   showSubmenu(itemEl: HTMLElement, indexEl: number) {
     itemEl.classList.toggle('showMenu');

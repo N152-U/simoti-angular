@@ -4,12 +4,15 @@
     <div class="container">
         <div class="centrar position-relative">
             <div class="row align-items-center mb-4" style="margin-top: -50px;">
+                <p-button [routerLink]="['/patient/detail-patient',hash]" label="Regresar" icon="pi pi-arrow-left"
+                    styleClass="p-button-sm p-button-danger" [style]="{ 'margin-right': '.6em' }"> </p-button>
                 <div class="col-sm-8">
-                    <h4 class="mb-2 text-primary" style="color: #8634d7!important;">{{namePatient}} - {{indicator}}</h4>
+                    <h4 class="mb-2 text-primary" style="color: #8634d7!important;">{{patient.fullNamePatient}} -
+                        {{indicator}}</h4>
                 </div>
                 <div class="col-sm-4 text-end">
-                    <img src="assets/images/oxygen-saturation.png"
-                        alt="Imagen Paciente" class="img-fluid rounded" style="max-height: 100px;">
+                    <img src="assets/images/oxygen-saturation.png" alt="Imagen Paciente" class="img-fluid rounded"
+                        style="max-height: 100px;">
                 </div>
             </div>
 
@@ -25,7 +28,8 @@
                 </div>
                 <div class="col-md-2 text-end">
                     <button class="btn btn-outline-primary w-100 mt-3" (click)="filtrar()"
-                        [disabled]="!fechaInicio || !fechaFin || (fechaInicio > fechaFin)" style="color:#8634d7; border-color: #8634d7;" >Filtrar</button>
+                        [disabled]="!fechaInicio || !fechaFin || (fechaInicio > fechaFin)"
+                        style="color:#8634d7; border-color: #8634d7;">Filtrar</button>
                 </div>
                 <div *ngIf="fechaInicio && fechaFin && fechaInicio > fechaFin" class="text-danger mt-2">
                     La fecha de inicio debe ser menor o igual a la fecha de fin.
@@ -38,33 +42,32 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5 class="text-secondary">Resumen de Indicadores</h5>
-                    <table class="table table-bordered table-hover text-center">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Valor</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2022-05-10</td>
-                                <td>120/80</td>
-                            </tr>
-                            <tr>
-                                <td>2022-05-11</td>
-                                <td>72 bpm</td>
-                            </tr>
-                            <tr>
-                                <td>2022-05-12</td>
-                                <td>90 mg/dL</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div style="max-height: 300px; overflow-y: auto;">
+                        <table class="table table-bordered table-hover text-center"
+                            style="border-collapse: separate; border-spacing: 0;">
+                            <thead class="table-light">
+                                <tr>
+                                    <th style="position: sticky; top: 0; z-index: 1;">Fecha</th>
+                                    <th style="position: sticky; top: 0; z-index: 1;">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="oxygen.length === 0">
+                                    <td colspan="2" class="text-center text-muted">No hay registros disponibles.</td>
+                                </tr>
+                                <tr *ngFor="let item of oxygen">
+                                    <td>{{ item.fecha }}</td>
+                                    <td>{{ item.valor }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="col-md-8">
                     <h5 class="text-secondary">Historial de Resultados</h5>
                     <div class="chart-container">
-                        <canvas id="MyChart">{{ chart }}</canvas>
+                        <canvas *ngIf="oxygen.length > 0" #myChartCanvas></canvas>
+
                     </div>
                 </div>
             </div>

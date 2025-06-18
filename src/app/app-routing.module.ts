@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'managment', loadChildren: managmentModule, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'map', component: MapComponent, canActivate: [AuthGuard] },
+  
   { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'mantainance', component: MantainanceComponent },
   { path: 'patient', loadChildren: () => import('./components/pages/patient/patient.module').then(m => m.PatientModule), canActivate: [AuthGuard] },
