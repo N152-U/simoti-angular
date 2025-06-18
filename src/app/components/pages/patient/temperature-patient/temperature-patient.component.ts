@@ -16,7 +16,6 @@ export class TemperaturePatientComponent implements OnInit {
   @ViewChild('myChartCanvas') myChartCanvas!: ElementRef;
 
   public chart: any;
-  public namePatient: any = 'Andrea Naraly Solis Martinez';
   public indicator: any = 'Indicador de Temperatura';
   public age: any = 25;
 

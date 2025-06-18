@@ -1,5 +1,11 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
+import { ViewChild, ElementRef } from '@angular/core';
+import 'chartjs-adapter-moment';
+
+import { PatientsService } from '@app/services/managment/patients/patients.service';
 
 @Component({
   selector: 'app-heart-rate-patient',
@@ -7,47 +13,122 @@ import Chart from 'chart.js/auto';
   styleUrls: ['./heart-rate-patient.component.scss']
 })
 export class HeartRatePatientComponent implements OnInit {
+  @ViewChild('myChartCanvas') myChartCanvas!: ElementRef;
 
   public chart: any;
-  public namePatient: any = 'Andrea Naraly Solis Martinez';
-  public tutorPatient: any = 'Tutora';
   public indicator: any = 'Indicador de Frecuencia Cardiaca';
   public age: any = 25;
 
   fechaInicio: string = '';
   fechaFin: string = '';
+  public hash: string = '';
+  public heartRate: { fecha: string, valor: number }[] = [];
+  public patient: any = {}
 
-  constructor() { }
+  constructor(private ps: PatientsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.createChart();
+
+    this.hash = this.route.snapshot.params["hash"];
+
+    this.ps.GetPatientDetailByHash(this.hash).subscribe((res) => {
+      this.patient = res;
+    });
+
+    const today = moment().format('YYYY-MM-DD');
+
+    this.fechaInicio = today;
+    this.fechaFin = today;
+
+    this.getHeartRateData(today, today)
   }
 
+  getHeartRateData(startDate: string, endDate: string): void {
+    this.ps.GetPatientHeartRateByHash(this.hash, startDate, endDate).subscribe((res: any) => {
+
+      const dataArray = Array.isArray(res) ? res : [];
+
+      this.heartRate = dataArray.map((item: any) => ({
+        fecha: moment(item.created_at).format('YYYY-MM-DD HH:mm'),
+        valor: parseFloat(item.value)
+      }));
+
+      this.createChart();
+    });
+  }
 
 
   createChart() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
 
-    this.chart = new Chart("MyChart", {
-      type: 'line',
-
-      data: {
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
-          '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',],
-        datasets: [
-          {
-            label: "Frecuencia Cardiaca",
-            data: ['467', '576', '572', '79', '92',
-              '574', '573', '576'],
-            backgroundColor: '#EE5487'
-          }
-        ]
-      },
-      options: {
-        aspectRatio: 2.5
+    setTimeout(() => {
+      const ctx = this.myChartCanvas?.nativeElement?.getContext('2d');
+      if (!ctx) {
+        console.error('No se pudo obtener el contexto del canvas.');
+        return;
       }
 
-    });
+      const labels = this.heartRate.map((item) => item.fecha);
+      const data = this.heartRate.map((item) => item.valor);
+
+      this.chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: 'Fecuencia Cardiaca (LPM)',
+              data,
+              borderColor: '#EE5487',
+              backgroundColor: 'rgba(238, 84, 135, 0.2)',
+              fill: true,
+              tension: 0.3,
+              pointRadius: 5,
+              pointHoverRadius: 7
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          aspectRatio: 2.5,
+          scales: {
+            y: {
+              beginAtZero: false,
+              suggestedMin: 35,
+              suggestedMax: 42,
+              title: {
+                display: true,
+                text: '°C'
+              }
+            },
+            x: {
+              type: 'time',
+              time: {
+                unit: 'minute',
+                displayFormats: {
+                  minute: 'MMM D HH:mm',
+                  hour: 'MMM D HH:mm'
+                },
+                tooltipFormat: 'YYYY-MM-DD HH:mm'
+              },
+              title: {
+                display: true,
+                text: 'Fecha y hora'
+              },
+            }
+          },
+          plugins: {
+            legend: {
+              display: true
+            }
+          }
+        }
+      });
+    }, 0);
   }
+
 
   filtrar() {
     if (!this.fechaInicio || !this.fechaFin) {
@@ -60,7 +141,6 @@ export class HeartRatePatientComponent implements OnInit {
       return;
     }
 
-    // Aquí tu lógica para filtrar
-    console.log('Filtrando desde', this.fechaInicio, 'hasta', this.fechaFin);
+    this.getHeartRateData(this.fechaInicio, this.fechaFin);
   }
 }

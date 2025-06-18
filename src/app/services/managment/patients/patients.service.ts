@@ -88,4 +88,44 @@ export class PatientsService {
         })
       );
   }
+
+  GetPatientHeartRateByHash(hash: string,startDate:string,endDate:string) {
+    return this.http
+      .get<{ payload: any }>(`${environment.apiUrl}/measurements/heartRate/patient/${hash}/${startDate}/${endDate}`)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
+
+  GetPatientOxygenSaturationByHash(hash: string,startDate:string,endDate:string) {
+    return this.http
+      .get<{ payload: any }>(`${environment.apiUrl}/measurements/oxygenSaturation/patient/${hash}/${startDate}/${endDate}`)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
+
+  GetPatientFallDetectorByHash(hash: string,startDate:string,endDate:string) {
+    return this.http
+      .get<{ payload: any }>(`${environment.apiUrl}/measurements/fallDetector/patient/${hash}/${startDate}/${endDate}`)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
+
+  GetPatientLocationByHash(hash: string,startDate:string,endDate:string) {
+    return this.http
+      .get<{ payload: any }>(`${environment.apiUrl}/measurements/location/patient/${hash}/${startDate}/${endDate}`)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
+  }
 }
