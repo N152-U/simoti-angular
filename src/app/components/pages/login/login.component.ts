@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     });
 
     if (this.auth.isAuth()) {
-      this.router.navigateByUrl("/home");
+      this.router.navigateByUrl("/patient");
     }
   }
   onSubmit() {
