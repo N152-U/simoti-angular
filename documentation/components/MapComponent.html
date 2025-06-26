@@ -1,0 +1,2218 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>simoti-angular documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">simoti-angular documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MapComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/pages/map/map.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-map</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./map.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./map.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#datesGroup" >datesGroup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#el" >el</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#formBuilder" >formBuilder</a>
+                            </li>
+                            <li>
+                                <a href="#layer" >layer</a>
+                            </li>
+                            <li>
+                                <a href="#layerView" >layerView</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#loadingShapes" >loadingShapes</a>
+                            </li>
+                            <li>
+                                <a href="#map" >map</a>
+                            </li>
+                            <li>
+                                <a href="#optionsSelect" >optionsSelect</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#router" >router</a>
+                            </li>
+                            <li>
+                                <a href="#sbDateAxis" >sbDateAxis</a>
+                            </li>
+                            <li>
+                                <a href="#shapes" >shapes</a>
+                            </li>
+                            <li>
+                                <a href="#shapesGroup" >shapesGroup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
+                                <a href="#statsDiv" >statsDiv</a>
+                            </li>
+                            <li>
+                                <a href="#timeSlider" >timeSlider</a>
+                            </li>
+                            <li>
+                                <a href="#viewer" >viewer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#views" >views</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#AddShapes" >AddShapes</a>
+                            </li>
+                            <li>
+                                <a href="#initializeMap" >initializeMap</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#search" >search</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#shape_id" >shape_id</a>
+                                </li>
+                                <li>
+                                    <a href="#initialDate" >initialDate</a>
+                                </li>
+                                <li>
+                                    <a href="#endDate" >endDate</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(mcs: <a href="../injectables/CatalogsService.html" target="_self">CatalogsService</a>, router: Router, formBuilder: FormBuilder)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/components/pages/map/map.component.ts:62</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>mcs</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CatalogsService.html" target="_self" >CatalogsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AddShapes"></a>
+                    <span class="name">
+                        <span ><b>AddShapes</b></span>
+                        <a href="#AddShapes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>AddShapes()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="447"
+                                    class="link-to-prism">src/app/components/pages/map/map.component.ts:447</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initializeMap"></a>
+                    <span class="name">
+                        <span ><b>initializeMap</b></span>
+                        <a href="#initializeMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initializeMap()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/components/pages/map/map.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="650"
+                                    class="link-to-prism">src/app/components/pages/map/map.component.ts:650</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="414"
+                                    class="link-to-prism">src/app/components/pages/map/map.component.ts:414</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="search"></a>
+                    <span class="name">
+                        <span ><b>search</b></span>
+                        <a href="#search"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>search()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="538"
+                                    class="link-to-prism">src/app/components/pages/map/map.component.ts:538</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datesGroup"></a>
+                    <span class="name">
+                        <span ><b>datesGroup</b></span>
+                        <a href="#datesGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup | any</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/components/pages/map/map.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="el"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>el</b></span>
+                        <a href="#el"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef | any</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;search&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/pages/map/map.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formBuilder"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>formBuilder</b></span>
+                        <a href="#formBuilder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormBuilder</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/components/pages/map/map.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="layer"></a>
+                    <span class="name">
+                        <span ><b>layer</b></span>
+                        <a href="#layer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/components/pages/map/map.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="layerView"></a>
+                    <span class="name">
+                        <span ><b>layerView</b></span>
+                        <a href="#layerView"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/components/pages/map/map.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/pages/map/map.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingShapes"></a>
+                    <span class="name">
+                        <span ><b>loadingShapes</b></span>
+                        <a href="#loadingShapes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/pages/map/map.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="map"></a>
+                    <span class="name">
+                        <span ><b>map</b></span>
+                        <a href="#map"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/pages/map/map.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="optionsSelect"></a>
+                    <span class="name">
+                        <span ><b>optionsSelect</b></span>
+                        <a href="#optionsSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Select2Option | any</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/components/pages/map/map.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Router</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/components/pages/map/map.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sbDateAxis"></a>
+                    <span class="name">
+                        <span ><b>sbDateAxis</b></span>
+                        <a href="#sbDateAxis"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/components/pages/map/map.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="shapes"></a>
+                    <span class="name">
+                        <span ><b>shapes</b></span>
+                        <a href="#shapes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Select2Data</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[{
+    value: &quot;municipalities_edomex&quot;,
+    label: &quot;Municipios EDOMEX&quot;,
+    data: {
+      id: &quot;municipalities_edomex&quot;,
+      name: &quot;Municipios EDOMEX&quot;
+    }
+  }]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/pages/map/map.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="shapesGroup"></a>
+                    <span class="name">
+                        <span ><b>shapesGroup</b></span>
+                        <a href="#shapesGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup | any</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/components/pages/map/map.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="statsDiv"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
+                        <span ><b>statsDiv</b></span>
+                        <a href="#statsDiv"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;statsDiv&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/components/pages/map/map.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="timeSlider"></a>
+                    <span class="name">
+                        <span ><b>timeSlider</b></span>
+                        <a href="#timeSlider"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/components/pages/map/map.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewer"></a>
+                    <span class="name">
+                        <span ><b>viewer</b></span>
+                        <a href="#viewer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/components/pages/map/map.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="views"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>views</b></span>
+                        <a href="#views"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/components/pages/map/map.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="shape_id"></a>
+                        <span class="name"><b>shape_id</b><a href="#shape_id"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>shape_id()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="656" class="link-to-prism">src/app/components/pages/map/map.component.ts:656</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="initialDate"></a>
+                        <span class="name"><b>initialDate</b><a href="#initialDate"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>initialDate()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="659" class="link-to-prism">src/app/components/pages/map/map.component.ts:659</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="endDate"></a>
+                        <span class="name"><b>endDate</b><a href="#endDate"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>endDate()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="662" class="link-to-prism">src/app/components/pages/map/map.component.ts:662</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { Router } from &quot;@angular/router&quot;;
+import { Select2Data, Select2Option } from &#x27;ng-select2-component&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import * as moment from &#x27;moment&#x27;;
+import * as $ from &#x27;jquery&#x27;;
+import Map from &#x27;@arcgis/core/Map&#x27;;
+import MapView from &#x27;@arcgis/core/views/MapView&#x27;;
+import Graphic from &quot;@arcgis/core/Graphic.js&quot;;
+import * as reactiveUtils from &quot;@arcgis/core/core/reactiveUtils.js&quot;;
+import GraphicsLayer from &#x27;@arcgis/core/layers/GraphicsLayer&#x27;
+import GeoJSONLayer from &quot;@arcgis/core/layers/GeoJSONLayer.js&quot;;
+import FeatureLayer from &quot;@arcgis/core/layers/FeatureLayer&quot;;
+import SimpleFillSymbol from &quot;@arcgis/core/symbols/SimpleFillSymbol.js&quot;;
+import Polygon from &quot;@arcgis/core/geometry/Polygon.js&quot;;
+import LayerList from &quot;@arcgis/core/widgets/LayerList.js&quot;;
+import Expand from &quot;@arcgis/core/widgets/Expand.js&quot;;
+import Fullscreen from &quot;@arcgis/core/widgets/Fullscreen.js&quot;;
+import Sketch from &quot;@arcgis/core/widgets/Sketch.js&quot;;
+import TimeSlider from &quot;@arcgis/core/widgets/TimeSlider&quot;;
+import Legend from &quot;@arcgis/core/widgets/Legend&quot;;
+import DistanceMeasurement2D from &quot;@arcgis/core/widgets/DistanceMeasurement2D.js&quot;;
+import Basemap from &#x27;@arcgis/core/Basemap&#x27;;
+
+import { CatalogsService } from &#x27;@app/services/managment/catalogs/catalogs.service&#x27;;
+import { Municipality, MunicipalityEdomex } from &#x27;@app/interfaces/municipalities&#x27;;
+import { environment } from &quot;@environments/environment&quot;;
+
+function addHours(date: any, hours: any) {
+  date.setHours(date.getHours() + hours);
+  return date;
+}
+@Component({
+  selector: &#x27;app-map&#x27;,
+  templateUrl: &#x27;./map.component.html&#x27;,
+  styleUrls: [&#x27;./map.component.scss&#x27;]
+})
+export class MapComponent implements OnInit, OnDestroy {
+  @ViewChild(&#x27;search&#x27;) el: ElementRef | any;
+  loading: boolean &#x3D; false;
+  loadingShapes: boolean &#x3D; false;
+
+  shapes: Select2Data &#x3D; [{
+    value: &quot;municipalities_edomex&quot;,
+    label: &quot;Municipios EDOMEX&quot;,
+    data: {
+      id: &quot;municipalities_edomex&quot;,
+      name: &quot;Municipios EDOMEX&quot;
+    }
+  }];
+
+  shapesGroup: FormGroup | any;
+  datesGroup: FormGroup | any;
+  optionsSelect: Select2Option | any;
+  layer: any &#x3D; null;
+  viewer: any &#x3D; null;
+  map: any &#x3D; null;
+  layerView: any &#x3D; null;
+  timeSlider: any &#x3D; null;
+  sbDateAxis: any &#x3D; null;
+
+
+  constructor(
+    private mcs: CatalogsService,
+    public router: Router,
+    public formBuilder: FormBuilder,
+  ) {
+  }
+
+  @ViewChild(&#x27;statsDiv&#x27;) private statsDiv!: ElementRef;
+  public views: any &#x3D; null;
+
+  initializeMap(): Promise&lt;any&gt; {
+    const INIT_ZOOM &#x3D; 9;
+    const INIT_CENTER_LNG &#x3D; -99.1425698;
+    const INIT_CENTER_LAT &#x3D; 19.2511604;
+
+    let ct &#x3D; this;
+
+    /*--------CREACION DE CAPAS Y GRUPOS---- */
+    const MunicipalitiesLayer &#x3D; new GraphicsLayer({
+      id: &quot;1000&quot;,
+      title: &quot;Alcaldías&quot;,
+    });
+
+
+
+    const graphicsLayer &#x3D; new GraphicsLayer();
+
+    graphicsLayer.title &#x3D; &quot;Poligono Trazado&quot;;
+
+    /*----------INICIAR MAPA-------- */
+
+    this.map &#x3D; new Map({
+      basemap: &quot;gray-vector&quot; as any,
+      layers: [graphicsLayer, MunicipalitiesLayer]
+    });
+    /*----------------------------------------------------------------------------------------------------------------------------------------------------- */
+    this.viewer &#x3D; new MapView({
+      map: this.map,
+      container: &quot;viewDiv&quot;,
+      zoom: INIT_ZOOM,
+      center: [INIT_CENTER_LNG, INIT_CENTER_LAT]
+    });
+
+    this.viewer.watch(&quot;zoom&quot;, function (newZoom: any) {
+      if (newZoom &lt; 17 &amp;&amp; newZoom !&#x3D;&#x3D; -1) {
+        ct.map.basemap &#x3D; &#x27;gray-vector&#x27; as any as Basemap;
+      } else {
+        ct.map.basemap &#x3D; &#x27;hybrid&#x27; as any as Basemap;
+      }
+    });
+
+    const capas &#x3D; new LayerList({
+      view: this.viewer,
+      listItemCreatedFunction: async function (event) {
+        let trigger &#x3D; event.item;
+
+        ct.map.layers.remove(ct.map.layers.getItemAt(3));
+
+        await trigger.layer.when(); //carga de las capas al menu
+      }
+    });
+    /*************Para expander o minimizar el cuadro de capas**************/
+    const shapesExpand &#x3D; new Expand({
+      expandIconClass: &quot;esri-icon-expand&quot;,
+      view: this.viewer,
+      content: capas,
+      expanded: true,
+    });
+
+    this.viewer.ui.add(shapesExpand, {
+      position: &quot;top-left&quot;
+    });
+
+
+    /***********************Mediciones **********************/
+    this.viewer.ui.add(&quot;topbar&quot;, &quot;top-right&quot;);
+
+    function setActiveButton(selectedButton: any) {
+      ct.viewer.focus();
+      let elements &#x3D; document.getElementsByClassName(&quot;active&quot;);
+      for (let i &#x3D; 0; i &lt; elements.length; i++) {
+        elements[i].classList.remove(&quot;active&quot;);
+      }
+      if (selectedButton) {
+        selectedButton.classList.add(&quot;active&quot;);
+      }
+    }
+    let activeWidget: DistanceMeasurement2D | null &#x3D; null;
+
+    function setActiveWidget(type: any) {
+      switch (type) {
+        case &quot;distance&quot;:
+          activeWidget &#x3D; new DistanceMeasurement2D({
+            view: ct.viewer
+          });
+
+          activeWidget.viewModel.start();
+
+          ct.viewer.ui.add(activeWidget, &quot;top-right&quot;);
+          setActiveButton(document.getElementById(&quot;distanceButton&quot;));
+          break;
+        case null:
+          if (activeWidget) {
+            ct.viewer.ui.remove(activeWidget);
+            activeWidget.destroy();
+            activeWidget &#x3D; null;
+          }
+          break;
+      }
+    }
+
+    document.getElementById(&quot;distanceButton&quot;)?.addEventListener(&quot;click&quot;, function () {
+      setActiveWidget(null);
+      if (!this.classList.contains(&quot;active&quot;)) {
+        setActiveWidget(&quot;distance&quot;);
+      } else {
+        setActiveButton(null);
+      }
+    });
+
+    /***************Trazado de poligonos personalizados***************/
+    const sketch &#x3D; new Sketch({
+      layer: graphicsLayer,
+      view: this.viewer,
+      availableCreateTools: [&quot;polygon&quot;, &quot;rectangle&quot;, &quot;circle&quot;],
+      creationMode: &quot;update&quot;,
+    });
+
+    const sketchExpand &#x3D; new Expand({
+      expandIconClass: &quot;esri-icon-expand&quot;,
+      view: this.viewer,
+      content: sketch,
+      expanded: true,
+    });
+
+    this.viewer.ui.add(sketchExpand, &quot;top-right&quot;);
+
+
+    async function getInformationPopup(target: any) {
+      const attributes &#x3D; target.graphic.attributes;
+      const geometry &#x3D; target.graphic.geometry;
+
+      let total &#x3D; 0;
+
+      return (
+        &quot;&lt;b&gt;&quot; +
+        &quot;&lt;ul&gt;&quot; +
+        &quot;&lt;li&gt; Total: &quot; +
+        total +
+        &quot;&lt;/li&gt;&quot; +
+        &quot;&lt;/ul&gt;&quot;
+      );
+
+    }
+
+    sketch.on(&quot;create&quot;, function (event) {
+      if (event.state &#x3D;&#x3D;&#x3D; &quot;complete&quot;) {
+
+        event.graphic.popupTemplate &#x3D; {
+          title: &quot;Poligono Trazado&quot;,
+          content: getInformationPopup
+        } as any;
+
+
+        ct.viewer.popup.features &#x3D; [event.graphic]
+        ct.viewer.popup.visible &#x3D; true;
+      }
+    });
+
+    async function getInformationPopupMunicipalities(target: any) {
+      const geometry &#x3D; target.graphic.geometry;
+
+      let total &#x3D; 0;
+
+      if (ct.layerView) {
+        const queryLayerView &#x3D; ct.layerView.featureEffect.filter
+          .createQuery()
+        queryLayerView.geometry &#x3D; geometry;
+        queryLayerView.outStatistics &#x3D; [
+          locationCount
+        ]
+        total +&#x3D; await ct.layer.queryFeatures(queryLayerView)
+          .then(function (
+            Qresults: any) {
+            return Qresults.features[0].attributes[
+              &quot;locations_count&quot;]
+          });
+      }
+
+      return (
+        &quot;&lt;b&gt;&quot; +
+        &quot;&lt;ul&gt;&quot; +
+        &quot;&lt;li&gt; Total: &quot; +
+        total +
+        &quot;&lt;/li&gt;&quot; +
+        &quot;&lt;/ul&gt;&quot;
+      );
+
+    }
+
+    this.mcs.GetAllMunicipalitiesShapes().subscribe(
+      (res: Municipality[]) &#x3D;&gt; {
+        res.forEach(shape &#x3D;&gt; {
+
+          const element &#x3D; shape.geo_shape.coordinates[0];
+
+          let rings &#x3D; element;
+
+          const polygon &#x3D; new Polygon({
+            hasM: false,
+            hasZ: false,
+            rings: rings
+          });
+
+          const simpleFillSymbol &#x3D; {
+            type: &quot;simple-fill&quot;,
+            color: [0, 0, 0, 0.07],
+            outline: {
+              color: [0, 0, 0, 0.5],
+              width: 1
+            }
+          };
+
+          const polygonGraphic &#x3D; new Graphic({
+            geometry: polygon,
+            symbol: simpleFillSymbol,
+            popupTemplate: {
+              title: shape.municipality,
+              content: getInformationPopupMunicipalities,
+            }
+
+          });
+          MunicipalitiesLayer.add(polygonGraphic);
+        });
+      }
+    );
+
+    /**************** Linea de tiempo ***************/
+
+    this.timeSlider &#x3D; new TimeSlider({
+      container: &quot;timeSlider&quot;,
+      playRate: 250,
+      stops: {
+        interval: {
+          value: 1,
+          unit: &quot;days&quot;
+        } as any
+      }
+    });
+
+    const timeExpand &#x3D; new Expand({
+      expandIconClass: &quot;esri-icon-expand&quot;,
+      view: this.viewer,
+      content: this.timeSlider,
+      expanded: true,
+    });
+
+    this.viewer.ui.add(timeExpand, &quot;bottom-left&quot;);
+
+    const locationCount &#x3D; {
+      onStatisticField: &quot;patient_id&quot;,
+      outStatisticFieldName: &quot;locations_count&quot;,
+      statisticType: &quot;count&quot;
+    };
+
+
+    const statsDiv &#x3D; document.getElementById(&quot;statsDiv&quot;) as HTMLInputElement | null | any;
+    $(statsDiv).empty();
+
+    this.timeSlider.watch(&quot;timeExtent&quot;, () &#x3D;&gt; {
+      if (this.layerView) {
+        this.layerView.featureEffect &#x3D; {
+          filter: {
+            timeExtent: this.timeSlider.timeExtent,
+          },
+          excludedEffect: &quot;grayscale(0%) opacity(0%)&quot;
+        };
+      }
+
+      this.sbDateAxis?.zoomToDates(
+        new Date(this.timeSlider.timeExtent.start.getTime()),
+        new Date(this.timeSlider.timeExtent.end.getTime())
+      );
+
+      if (this.layerView) {
+        const statQuery &#x3D; this.layerView.featureEffect.filter.createQuery();
+        statQuery.outStatistics &#x3D; [
+          locationCount
+        ];
+
+        this.layer.queryFeatures(statQuery).then((result: any) &#x3D;&gt; {
+          let htmls: any[] &#x3D; [];
+          statsDiv.innerHTML &#x3D; &quot;&quot;;
+          if (result.error) {
+            return result.error;
+          } else {
+            if (result.features.length &gt;&#x3D; 1) {
+              const attributes &#x3D; result.features[0].attributes;
+              const yearHtml &#x3D;
+                &quot;&lt;b&gt;&quot; +
+                &quot; &lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Localizaciones SIMOTI&lt;/b&gt;&lt;br&gt;&lt;span&gt;&quot; +
+                result.features[0].attributes[&quot;locations_count&quot;] +
+                &quot;&lt;/span&gt; localizaciones registradas en esta zona entre el &quot; +
+                this.timeSlider.timeExtent.start.toLocaleDateString() +
+                &quot; - &quot; +
+                this.timeSlider.timeExtent.end.toLocaleDateString() +
+                &quot;.&lt;br/&gt;&quot;;
+
+              if (htmls[0] &#x3D;&#x3D; undefined) {
+                statsDiv.innerHTML &#x3D; yearHtml;
+              } else {
+                statsDiv.innerHTML &#x3D;
+                  yearHtml + htmls[0];
+              }
+            }
+          }
+        })
+          .catch((error: any) &#x3D;&gt; {
+            console.log(error);
+          });
+      }
+    });
+
+    /**************Se habilita la pantalla completa**************/
+    const fullscreen &#x3D; new Fullscreen({
+      view: this.viewer
+    });
+
+    this.viewer.ui.add(fullscreen, &quot;top-right&quot;);
+
+    const infoDiv &#x3D; document.getElementById(&quot;infoDiv&quot;) as HTMLInputElement | null | any;
+
+    const infoDivExpand &#x3D; new Expand({
+      expandIconClass: &quot;esri-icon-expand&quot;,
+      expandTooltip: &quot;Expand locations info&quot;,
+      view: this.viewer,
+      content: infoDiv,
+      expanded: false
+    });
+    this.viewer.ui.add(infoDivExpand, &quot;top-right&quot;);
+
+    this.views &#x3D; this.viewer;
+
+    return this.views.when();
+
+  }
+
+
+
+  ngOnInit(): void {
+    this.shapesGroup &#x3D; this.formBuilder.group(
+      {
+        shape_id: [&quot;&quot;, Validators.required]
+      }
+    );
+
+    this.datesGroup &#x3D; this.formBuilder.group({
+      initialDate: [&quot;&quot;, Validators.required],
+      endDate: [&quot;&quot;, Validators.required]
+
+    });
+
+    this.optionsSelect &#x3D; {
+      placeholder: &quot;Select option...&quot;,
+      allowClear: true,
+      width: &quot;100%&quot;
+    }
+
+    this.initializeMap().then(() &#x3D;&gt; {
+      const statsDiv &#x3D; this.statsDiv.nativeElement;
+      $(statsDiv).empty();
+
+      let initialDate &#x3D; document.getElementById(&quot;initialDate&quot;) as HTMLInputElement | null;
+      initialDate ? initialDate.value &#x3D; moment().format(&#x27;YYYY-MM-DD&#x27;) : &#x27;&#x27;;
+      let endDate &#x3D; document.getElementById(&quot;endDate&quot;) as HTMLInputElement | null;
+      endDate ? endDate.value &#x3D; moment().format(&#x27;YYYY-MM-DD&#x27;) : &#x27;&#x27;;
+
+    });
+
+  }
+
+
+  AddShapes() {
+    let ct &#x3D; this;
+    this.loadingShapes &#x3D; true;
+
+    const selectLayer &#x3D; this.shapesGroup.get(&#x27;shape_id&#x27;);
+
+    let option &#x3D; $(&#x27;&lt;option&gt;&#x27;, {
+      value: selectLayer + &quot;_remove&quot;,
+      id: selectLayer + &quot;_remove&quot;,
+
+    });
+
+    //switch dependiendo el value
+    switch (selectLayer?.value) {
+      case &#x27;municipalities_edomex&#x27;:
+
+        const municipalityFields &#x3D; [{
+          name: &quot;ObjectID&quot;,
+          alias: &quot;ObjectID&quot;,
+          type: &quot;oid&quot;
+        }, {
+          name: &quot;name&quot;,
+          alias: &quot;name&quot;,
+          type: &quot;string&quot;
+        }
+        ];
+
+        this.mcs.GetAllMunicipalitiesEdomexShapes().subscribe(
+          (res: MunicipalityEdomex[]) &#x3D;&gt; {
+            let municipalitiesPolygons &#x3D; res.map(municipality &#x3D;&gt; {
+              return {
+                &quot;geometry&quot;: new Polygon({
+
+                  &quot;rings&quot;: municipality.geometry.coordinates
+                }),
+                &quot;attributes&quot;: municipality.properties
+              }
+            });
+
+            let municipalitiesEdomexLayer &#x3D; new FeatureLayer({
+              outFields: [&quot;*&quot;],
+              fields: municipalityFields as any,
+              objectIdField: &quot;ObjectID&quot;,
+              geometryType: &quot;polygon&quot;,
+              spatialReference: {
+                wkid: 4326
+              },
+              source: municipalitiesPolygons,
+              renderer: {
+                type: &quot;simple&quot;,
+                symbol: new SimpleFillSymbol({
+                  color: [137, 191, 63, 0.05],
+                  outline: {
+                    color: [137, 191, 63],
+                    width: 1
+                  }
+                })
+              } as any,
+              popupTemplate: {
+                title: &quot;{title}&quot;,
+                content: [{
+                  type: &quot;fields&quot;,
+                  fieldInfos: [{
+                    fieldName: &quot;name&quot;,
+                    label: &quot;Municipio&quot;,
+                    visible: true
+                  },]
+                }]
+              },
+            });
+
+            this.map.add(municipalitiesEdomexLayer, 4);
+            municipalitiesEdomexLayer.title &#x3D; &quot;Municipios EDOMEX&quot;;
+          }
+        );
+
+        setTimeout(() &#x3D;&gt; {
+          this.loadingShapes &#x3D; false
+        }, 5000);
+        //lo remueve del select
+        option.text(&quot;Municipios EDOMEX&quot;);
+        $(&quot;#municipalities_edomex&quot;).remove();
+        break;
+      default:
+        option &#x3D; &quot;&quot; as any;
+        break;
+    }
+  }
+
+
+
+  search() {
+
+    let ct &#x3D; this;
+
+    this.loading &#x3D; true;
+
+    let initialDate &#x3D; document.getElementById(&quot;initialDate&quot;) as HTMLInputElement | null;
+    let endDate &#x3D; document.getElementById(&quot;endDate&quot;) as HTMLInputElement | null;
+
+    /*****************streetview*****************/
+    const streetviewThisAction &#x3D; {
+      title: &quot;Google Streetview.&quot;,
+      id: &quot;map-this&quot;,
+      className: &quot;esri-icon-map-pin&quot;
+    }
+
+    const updateTimeSlider &#x3D; (initialDate: any, endDate: any) &#x3D;&gt; {
+      let start &#x3D; new Date(initialDate)
+      start &#x3D; addHours(start, 6); //Horario GMT-6
+      let endTimeExtent &#x3D; new Date(start);
+      endTimeExtent.setDate(endTimeExtent.getDate() + 1);
+      let end &#x3D; new Date(endDate)
+      end &#x3D; addHours(end, 30);
+      this.timeSlider.fullTimeExtent &#x3D; {
+        start: start,
+        end: end,
+      } as any;
+      this.timeSlider.timeExtent &#x3D; {
+        start,
+        end: endTimeExtent,
+      } as any;
+    }
+
+    function openStreetview() {
+      const latitude &#x3D; ct.viewer.popup.selectedFeature.geometry.latitude
+      const longitude &#x3D; ct.viewer.popup.selectedFeature.geometry.longitude
+      let url &#x3D; &quot;http://maps.google.com/maps?q&#x3D;Your+Sign+Location+in+Street+View@&quot; +
+        longitude + &quot;,&quot; + latitude + &quot;&amp;cbll&#x3D;&quot; + latitude + &quot;,&quot; +
+        longitude + &quot;&amp;layer&#x3D;c&quot;;
+      window.open(url, &#x27;Streetview&#x27;, &quot;height&#x3D;500,width&#x3D;800,resizable&#x3D;yes,scrollbars&#x3D;yes&quot;);
+    }
+
+    reactiveUtils.on(
+      () &#x3D;&gt; this.viewer.popup,
+      &quot;trigger-action&quot;,
+      (event) &#x3D;&gt; {
+        if (event.action.id &#x3D;&#x3D;&#x3D; &quot;map-this&quot;) {
+          openStreetview();
+        }
+      }
+    );
+    if (this.layer !&#x3D; null) {
+      this.map.layers.remove(this.layer);
+      this.layer.refresh();
+    }
+    this.layer &#x3D; new GeoJSONLayer({
+      url: &#x60;${environment.apiUrl}/measurements/location/${initialDate?.value}/${endDate?.value}&#x60;,
+      copyright: &#x60;Localizaciones&#x60;,
+      title: &#x60;Localizaciones &#x60;,
+      timeInfo: {
+        startField: &quot;time&quot;,
+        interval: {
+          unit: &quot;days&quot;,
+          value: 1
+        }
+      },
+      renderer: {
+        type: &quot;simple&quot;,
+        symbol: {
+          type: &quot;picture-marker&quot;,
+          url: &quot;assets/images/location.png&quot;,
+          width: &quot;15&quot;,
+          height: &quot;17&quot;,
+          background: &quot;#00F&quot;,
+          color: &quot;blue&quot;,
+          position: &quot;absolute&quot;,
+        },
+      } as any,
+      popupTemplate: {
+        title: &quot;Ubicación de {patient_name}&quot;,
+        content: [{
+          type: &quot;fields&quot;,
+          fieldInfos: [{
+            fieldName: &quot;place&quot;,
+            label: &quot;Dirección&quot;,
+            visible: true
+          }, {
+            fieldName: &quot;created_at&quot;,
+            label: &quot;Fecha de registro&quot;,
+            visible: true
+          }
+          ]
+        }],
+        actions: [streetviewThisAction] as any
+      }
+    });
+
+    this.map.add(this.layer, 3);
+    this.layer.title &#x3D; &#x60;Localizaciones&#x60;;
+
+    // wait till the layer view is loaded
+    this.viewer.whenLayerView(this.layer).then((lv: any) &#x3D;&gt; {
+      this.layerView &#x3D; lv;
+      updateTimeSlider(initialDate?.value, endDate?.value);
+    });
+
+    setTimeout(() &#x3D;&gt; {
+      this.loading &#x3D; false
+    }, 2000);
+
+  }
+
+  ngOnDestroy(): void {
+    if (this.views) {
+      this.views.destroy();
+    }
+  }
+
+  get shape_id() {
+    return this.shapesGroup.get(&quot;shape_id&quot;);
+  }
+  get initialDate() {
+    return this.shapesGroup.get(&quot;initialDate&quot;);
+  }
+  get endDate() {
+    return this.shapesGroup.get(&quot;endDate&quot;);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;card centrar&quot;&gt;
+  &lt;h5 class&#x3D;&quot;card-header text-center&quot;&gt;Geolocalizaci&amp;oacute;n&lt;/h5&gt;
+  &lt;div class&#x3D;&quot;card-body&quot;&gt;
+    &lt;form [formGroup]&#x3D;&quot;datesGroup&quot; (ngSubmit)&#x3D;&quot;AddShapes()&quot; class&#x3D;&quot;needs-validation center&quot; novalidate&#x3D;&quot;novalidate&quot;&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;flex-container&quot;&gt;
+          &lt;div class&#x3D;&quot;col-sm-2&quot;&gt;
+            &lt;label for&#x3D;&quot;initialDate&quot;&gt;Fecha de inicio&lt;span style&#x3D;&quot;color: red&quot;&gt;*&lt;/span&gt;&lt;/label&gt;&lt;input type&#x3D;&quot;date&quot;
+              class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;initialDate&quot; id&#x3D;&quot;initialDate&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-sm-1&quot;&gt;&lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-sm-2&quot;&gt;
+            &lt;label for&#x3D;&quot;endDate&quot;&gt;Fecha de fin&lt;span style&#x3D;&quot;color: red&quot;&gt;*&lt;/span&gt;&lt;/label&gt;&lt;input type&#x3D;&quot;date&quot;
+              class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;endDate&quot; id&#x3D;&quot;endDate&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;flex-item-search&quot;&gt;
+            &lt;br&gt;
+            &lt;p-button icon&#x3D;&quot;pi pi-search&quot; [loading]&#x3D;&quot;loading&quot; (onClick)&#x3D;&quot;search()&quot; label&#x3D;&quot;Buscar datos&quot;&gt;&lt;/p-button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+    &lt;br&gt;
+    &lt;div class&#x3D;&quot;col-md-12&quot;&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;section id&#x3D;&quot;loading&quot;&gt;
+          &lt;div id&#x3D;&quot;loading-content&quot;&gt;&lt;/div&gt;
+          &lt;div id&#x3D;&quot;loading-message&quot; hidden&gt;PROCESANDO RESULTADOS&lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section id&#x3D;&quot;error&quot;&gt;
+          &lt;div id&#x3D;&quot;error-content&quot;&gt;&lt;/div&gt;
+          &lt;div id&#x3D;&quot;error-message&quot; hidden&gt;HA OCURRIDO UN ERROR&lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;div class&#x3D;&quot;col-md-12&quot;&gt;
+          &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col-md-12&quot;&gt;
+              &lt;div id&#x3D;&quot;viewDiv&quot;&gt;
+              &lt;/div&gt;
+              &lt;div id&#x3D;&quot;timeSlider&quot;&gt;&lt;/div&gt;
+              &lt;div #infoDiv id&#x3D;&quot;infoDiv&quot; class&#x3D;&quot;esri-widget&quot;&gt;
+                &lt;div #statsDiv id&#x3D;&quot;statsDiv&quot; class&#x3D;&quot;esri-widget&quot;&gt;&lt;/div&gt;&lt;br /&gt;
+              &lt;/div&gt;
+              &lt;div id&#x3D;&quot;topbar&quot;&gt;
+                &lt;button class&#x3D;&quot;action-button esri-icon-measure-line&quot; id&#x3D;&quot;distanceButton&quot; type&#x3D;&quot;button&quot;
+                  title&#x3D;&quot;Medir distancia entre dos o más puntos&quot;&gt;&lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./map.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &#x27;https://js.arcgis.com/4.23/esri/themes/light/main.css&#x27;;
+
+#timeSlider {
+  position: absolute;
+  left    : 5%;
+  right   : 5%;
+  width   : 0px;
+  bottom  : 280%;
+}
+
+#infoDiv {
+  height : 200px;
+  padding: 10px;
+  width  : 280px;
+}
+
+#infoDiv span {
+  color      : #F9C653;
+  font-size  : 12pt;
+  font-weight: bolder;
+}
+
+.row:after {
+  content: &quot;&quot;;
+  display: table;
+  clear  : both;
+}
+
+#viewDiv {
+  margin-top: 20px !important;
+  height    : 100%;
+  background: rgba(50, 50, 50);
+  padding   : 0;
+  margin    : 0;
+  height    : 600px;
+  max-height: 600px;
+  width     : 100%;
+}
+
+.esri-view {
+  padding: 0;
+  margin : 0;
+  height : 700px;
+  width  : 100%;
+}
+
+.centrar {
+  width        : 95%;
+  margin-left  : auto;
+  margin-right : auto;
+  margin-top   : 100px;
+  margin-bottom: 100px;
+}
+
+.flex-container {
+  display       : flex;
+  flex-direction: row;
+}
+
+.flex-item {
+  flex        : 20px;
+  margin-right: 15px;
+}
+
+.flex-item-search {
+  flex       : 20px;
+  margin-left: 25px;
+}
+
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 912px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
+.select2-container--default {
+  width: 100% !important;
+}
+
+#topbar {
+  background: #fff;
+  padding   : 7px;
+}
+
+
+.error-content {
+  position     : absolute;
+  border       : 8px solid #f3f3f3;
+  border-top   : 8px solid #bb1f1f;
+  border-radius: 50%;
+  width        : 50px;
+  height       : 50px;
+  top          : 40%;
+  left         : 45%;
+  animation    : spin 2s linear infinite;
+}
+
+
+.error-message {
+  display      : block;
+  color        : white;
+  position     : absolute;
+  border-radius: 50%;
+  width        : 200px;
+  height       : 50px;
+  top          : 45%;
+  left         : 50%;
+}
+
+.loading {
+  z-index         : 20;
+  position        : absolute;
+  top             : 0;
+  left            : -5px;
+  width           : 100%;
+  height          : 100%;
+  background-color: rgba(0, 0, 0, 0.767);
+}
+
+.loading-content {
+  position     : absolute;
+  border       : 8px solid #f3f3f3;
+  border-top   : 8px solid #1fbb23;
+  border-radius: 50%;
+  width        : 50px;
+  height       : 50px;
+  top          : 40%;
+  left         : 45%;
+  animation    : spin 2s linear infinite;
+}
+
+
+.loading-message {
+  display      : block;
+  color        : white;
+  position     : absolute;
+  border-radius: 50%;
+  width        : 200px;
+  height       : 50px;
+  top          : 45%;
+  left         : 50%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.esri-expand__container--expanded {
+  max-height: 500px;
+  max-width : 500px;
+  position  : relative !important;
+
+}
+
+.esri-expand__mask--expanded {
+  background-color: rgba(0, 0, 0, 0) !important;
+  width           : 500px !important;
+  height          : 500px !important;
+}
+
+.select2-container--default {
+  width: 100% !important;
+}
+
+.error {
+  z-index         : 20;
+  position        : absolute;
+  top             : 0;
+  left            : -5px;
+  width           : 100%;
+  height          : 100%;
+  background-color: rgba(0, 0, 0, 0.767);
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="card centrar">  <h5 class="card-header text-center">Geolocalizaci&oacute;n</h5>  <div class="card-body">    <form [formGroup]="datesGroup" (ngSubmit)="AddShapes()" class="needs-validation center" novalidate="novalidate">      <div class="row">        <div class="flex-container">          <div class="col-sm-2">            <label for="initialDate">Fecha de inicio<span style="color: red">*</span></label><input type="date"              class="form-control" formControlName="initialDate" id="initialDate">          </div>          <div class="col-sm-1"></div>          <div class="col-sm-2">            <label for="endDate">Fecha de fin<span style="color: red">*</span></label><input type="date"              class="form-control" formControlName="endDate" id="endDate">          </div>          <div class="flex-item-search">            <br>            <p-button icon="pi pi-search" [loading]="loading" (onClick)="search()" label="Buscar datos"></p-button>          </div>        </div>      </div>    </form>    <br>    <div class="col-md-12">      <div class="row">        <section id="loading">          <div id="loading-content"></div>          <div id="loading-message" hidden>PROCESANDO RESULTADOS</div>        </section>        <section id="error">          <div id="error-content"></div>          <div id="error-message" hidden>HA OCURRIDO UN ERROR</div>        </section>        <div class="col-md-12">          <div class="row">            <div class="col-md-12">              <div id="viewDiv">              </div>              <div id="timeSlider"></div>              <div #infoDiv id="infoDiv" class="esri-widget">                <div #statsDiv id="statsDiv" class="esri-widget"></div><br />              </div>              <div id="topbar">                <button class="action-button esri-icon-measure-line" id="distanceButton" type="button"                  title="Medir distancia entre dos o más puntos"></button>              </div>            </div>          </div>        </div>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DetailPatientComponent', 'selector': 'app-detail-patient'},{'name': 'DetailPermissionComponent', 'selector': 'app-detail-permission'},{'name': 'DetailRoleComponent', 'selector': 'app-detail-role'},{'name': 'DetailUserComponent', 'selector': 'app-detail-user'},{'name': 'EditPatientComponent', 'selector': 'app-edit-patient'},{'name': 'EditPermissionComponent', 'selector': 'app-edit-permission'},{'name': 'EditRoleComponent', 'selector': 'app-edit-role'},{'name': 'EditUserComponent', 'selector': 'app-edit-user'},{'name': 'FallDetectorPatientComponent', 'selector': 'app-fall-detector-patient'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeartRatePatientComponent', 'selector': 'app-heart-rate-patient'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LocationPatientComponent', 'selector': 'app-location-patient'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ManagePermissionsComponent', 'selector': 'app-manage-permissions'},{'name': 'ManageRolesComponent', 'selector': 'app-manage-roles'},{'name': 'ManageUsersComponent', 'selector': 'app-manage-users'},{'name': 'ManagmentComponent', 'selector': 'app-managment'},{'name': 'MantainanceComponent', 'selector': 'app-mantainance'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'NewPatientComponent', 'selector': 'app-new-patient'},{'name': 'NewPermissionComponent', 'selector': 'app-new-permission'},{'name': 'NewRoleComponent', 'selector': 'app-new-role'},{'name': 'NewUserComponent', 'selector': 'app-new-user'},{'name': 'OxygenSaturationPatientComponent', 'selector': 'app-oxygen-saturation-patient'},{'name': 'PatientComponent', 'selector': 'app-patient'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'ReviewPatientComponent', 'selector': 'app-review-patient'},{'name': 'ScrollToTopComponent', 'selector': 'app-scroll-to-top'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TemperaturePatientComponent', 'selector': 'app-temperature-patient'},{'name': 'UserDetailComponent', 'selector': 'app-user-detail'},{'name': 'UserUpdatePasswordComponent', 'selector': 'app-user-update-password'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'MapComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MapComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

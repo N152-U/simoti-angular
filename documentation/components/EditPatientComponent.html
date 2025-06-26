@@ -1,0 +1,3073 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>simoti-angular documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">simoti-angular documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  EditPatientComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/pages/patient/edit-patient/edit-patient.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-edit-patient</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./edit-patient.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./edit-patient.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentStep" >currentStep</a>
+                            </li>
+                            <li>
+                                <a href="#dataDoctor" >dataDoctor</a>
+                            </li>
+                            <li>
+                                <a href="#dataTutor" >dataTutor</a>
+                            </li>
+                            <li>
+                                <a href="#doctors" >doctors</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hash" >hash</a>
+                            </li>
+                            <li>
+                                <a href="#healthForm" >healthForm</a>
+                            </li>
+                            <li>
+                                <a href="#pattern" >pattern</a>
+                            </li>
+                            <li>
+                                <a href="#steps" >steps</a>
+                            </li>
+                            <li>
+                                <a href="#tutors" >tutors</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cargarAvance" >cargarAvance</a>
+                            </li>
+                            <li>
+                                <a href="#CreatePatient" >CreatePatient</a>
+                            </li>
+                            <li>
+                                <a href="#guardarAvance" >guardarAvance</a>
+                            </li>
+                            <li>
+                                <a href="#limpiarFormulario" >limpiarFormulario</a>
+                            </li>
+                            <li>
+                                <a href="#nextStep" >nextStep</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#prevStep" >prevStep</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#first_name" >first_name</a>
+                                </li>
+                                <li>
+                                    <a href="#middle_name" >middle_name</a>
+                                </li>
+                                <li>
+                                    <a href="#last_name" >last_name</a>
+                                </li>
+                                <li>
+                                    <a href="#tutor_id" >tutor_id</a>
+                                </li>
+                                <li>
+                                    <a href="#doctor_id" >doctor_id</a>
+                                </li>
+                                <li>
+                                    <a href="#date_of_birth" >date_of_birth</a>
+                                </li>
+                                <li>
+                                    <a href="#estadoGeneral" >estadoGeneral</a>
+                                </li>
+                                <li>
+                                    <a href="#energia" >energia</a>
+                                </li>
+                                <li>
+                                    <a href="#fiebre" >fiebre</a>
+                                </li>
+                                <li>
+                                    <a href="#dolorPecho" >dolorPecho</a>
+                                </li>
+                                <li>
+                                    <a href="#mareos" >mareos</a>
+                                </li>
+                                <li>
+                                    <a href="#tempAlta" >tempAlta</a>
+                                </li>
+                                <li>
+                                    <a href="#sudores" >sudores</a>
+                                </li>
+                                <li>
+                                    <a href="#palpitaciones" >palpitaciones</a>
+                                </li>
+                                <li>
+                                    <a href="#taquicardiaReposo" >taquicardiaReposo</a>
+                                </li>
+                                <li>
+                                    <a href="#caidas" >caidas</a>
+                                </li>
+                                <li>
+                                    <a href="#inestabilidad" >inestabilidad</a>
+                                </li>
+                                <li>
+                                    <a href="#cambioLugar" >cambioLugar</a>
+                                </li>
+                                <li>
+                                    <a href="#dificultadEjercicio" >dificultadEjercicio</a>
+                                </li>
+                                <li>
+                                    <a href="#disneaActividades" >disneaActividades</a>
+                                </li>
+                                <li>
+                                    <a href="#frutasVerduras" >frutasVerduras</a>
+                                </li>
+                                <li>
+                                    <a href="#agua" >agua</a>
+                                </li>
+                                <li>
+                                    <a href="#actividadFisica" >actividadFisica</a>
+                                </li>
+                                <li>
+                                    <a href="#horasSueño" >horasSueño</a>
+                                </li>
+                                <li>
+                                    <a href="#despertarNocturno" >despertarNocturno</a>
+                                </li>
+                                <li>
+                                    <a href="#historiaMedica" >historiaMedica</a>
+                                </li>
+                                <li>
+                                    <a href="#medicamentos" >medicamentos</a>
+                                </li>
+                                <li>
+                                    <a href="#antecedentesCardiacos" >antecedentesCardiacos</a>
+                                </li>
+                                <li>
+                                    <a href="#antecedentesRespiratorios" >antecedentesRespiratorios</a>
+                                </li>
+                                <li>
+                                    <a href="#obesidad" >obesidad</a>
+                                </li>
+                                <li>
+                                    <a href="#diabetesFamilia" >diabetesFamilia</a>
+                                </li>
+                                <li>
+                                    <a href="#diabetesPropia" >diabetesPropia</a>
+                                </li>
+                                <li>
+                                    <a href="#enfermedadCronica" >enfermedadCronica</a>
+                                </li>
+                                <li>
+                                    <a href="#cualEnfermedad" >cualEnfermedad</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder, mus: <a href="../injectables/ManageUsersService.html" target="_self">ManageUsersService</a>, ps: <a href="../injectables/PatientsService.html" target="_self">PatientsService</a>, router: Router, route: ActivatedRoute)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>mus</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ManageUsersService.html" target="_self" >ManageUsersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ps</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PatientsService.html" target="_self" >PatientsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarAvance"></a>
+                    <span class="name">
+                        <span ><b>cargarAvance</b></span>
+                        <a href="#cargarAvance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarAvance()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:169</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CreatePatient"></a>
+                    <span class="name">
+                        <span ><b>CreatePatient</b></span>
+                        <a href="#CreatePatient"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>CreatePatient()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="176"
+                                    class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:176</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarAvance"></a>
+                    <span class="name">
+                        <span ><b>guardarAvance</b></span>
+                        <a href="#guardarAvance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardarAvance()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="164"
+                                    class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:164</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="limpiarFormulario"></a>
+                    <span class="name">
+                        <span ><b>limpiarFormulario</b></span>
+                        <a href="#limpiarFormulario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>limpiarFormulario()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="207"
+                                    class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:207</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nextStep"></a>
+                    <span class="name">
+                        <span ><b>nextStep</b></span>
+                        <a href="#nextStep"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>nextStep()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="156"
+                                    class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:156</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prevStep"></a>
+                    <span class="name">
+                        <span ><b>prevStep</b></span>
+                        <a href="#prevStep"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>prevStep()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="160"
+                                    class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:160</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentStep"></a>
+                    <span class="name">
+                        <span ><b>currentStep</b></span>
+                        <a href="#currentStep"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataDoctor"></a>
+                    <span class="name">
+                        <span ><b>dataDoctor</b></span>
+                        <a href="#dataDoctor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Select2Data</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataTutor"></a>
+                    <span class="name">
+                        <span ><b>dataTutor</b></span>
+                        <a href="#dataTutor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Select2Data</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doctors"></a>
+                    <span class="name">
+                        <span ><b>doctors</b></span>
+                        <a href="#doctors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Doctor.html" target="_self" >Doctor[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hash"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>hash</b></span>
+                        <a href="#hash"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="healthForm"></a>
+                    <span class="name">
+                        <span ><b>healthForm</b></span>
+                        <a href="#healthForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup | any</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pattern"></a>
+                    <span class="name">
+                        <span ><b>pattern</b></span>
+                        <a href="#pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*[-._]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="steps"></a>
+                    <span class="name">
+                        <span ><b>steps</b></span>
+                        <a href="#steps"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { label: &#x27;Datos Personales&#x27; },
+    { label: &#x27;Salud y Síntomas&#x27; },
+    { label: &#x27;Hábitos y Antecedentes&#x27; }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tutors"></a>
+                    <span class="name">
+                        <span ><b>tutors</b></span>
+                        <a href="#tutors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Tutor.html" target="_self" >Tutor[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="first_name"></a>
+                        <span class="name"><b>first_name</b><a href="#first_name"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>first_name()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="212" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:212</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="middle_name"></a>
+                        <span class="name"><b>middle_name</b><a href="#middle_name"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>middle_name()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:215</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="last_name"></a>
+                        <span class="name"><b>last_name</b><a href="#last_name"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>last_name()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="218" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:218</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tutor_id"></a>
+                        <span class="name"><b>tutor_id</b><a href="#tutor_id"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>tutor_id()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:222</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="doctor_id"></a>
+                        <span class="name"><b>doctor_id</b><a href="#doctor_id"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>doctor_id()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="226" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:226</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="date_of_birth"></a>
+                        <span class="name"><b>date_of_birth</b><a href="#date_of_birth"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>date_of_birth()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="230" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:230</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="estadoGeneral"></a>
+                        <span class="name"><b>estadoGeneral</b><a href="#estadoGeneral"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>estadoGeneral()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:235</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="energia"></a>
+                        <span class="name"><b>energia</b><a href="#energia"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>energia()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="239" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:239</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fiebre"></a>
+                        <span class="name"><b>fiebre</b><a href="#fiebre"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>fiebre()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="243" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:243</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dolorPecho"></a>
+                        <span class="name"><b>dolorPecho</b><a href="#dolorPecho"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>dolorPecho()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="247" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:247</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mareos"></a>
+                        <span class="name"><b>mareos</b><a href="#mareos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>mareos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="251" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:251</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tempAlta"></a>
+                        <span class="name"><b>tempAlta</b><a href="#tempAlta"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>tempAlta()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="255" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:255</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sudores"></a>
+                        <span class="name"><b>sudores</b><a href="#sudores"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>sudores()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="259" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:259</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="palpitaciones"></a>
+                        <span class="name"><b>palpitaciones</b><a href="#palpitaciones"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>palpitaciones()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="263" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:263</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="taquicardiaReposo"></a>
+                        <span class="name"><b>taquicardiaReposo</b><a href="#taquicardiaReposo"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>taquicardiaReposo()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="267" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:267</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="caidas"></a>
+                        <span class="name"><b>caidas</b><a href="#caidas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>caidas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:271</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="inestabilidad"></a>
+                        <span class="name"><b>inestabilidad</b><a href="#inestabilidad"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>inestabilidad()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="275" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:275</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cambioLugar"></a>
+                        <span class="name"><b>cambioLugar</b><a href="#cambioLugar"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>cambioLugar()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="279" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:279</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dificultadEjercicio"></a>
+                        <span class="name"><b>dificultadEjercicio</b><a href="#dificultadEjercicio"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>dificultadEjercicio()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="283" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:283</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disneaActividades"></a>
+                        <span class="name"><b>disneaActividades</b><a href="#disneaActividades"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>disneaActividades()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="287" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:287</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="frutasVerduras"></a>
+                        <span class="name"><b>frutasVerduras</b><a href="#frutasVerduras"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>frutasVerduras()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="292" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:292</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="agua"></a>
+                        <span class="name"><b>agua</b><a href="#agua"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>agua()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="296" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:296</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="actividadFisica"></a>
+                        <span class="name"><b>actividadFisica</b><a href="#actividadFisica"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>actividadFisica()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="300" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:300</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="horasSueño"></a>
+                        <span class="name"><b>horasSueño</b><a href="#horasSueño"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>horasSueño()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="304" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:304</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="despertarNocturno"></a>
+                        <span class="name"><b>despertarNocturno</b><a href="#despertarNocturno"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>despertarNocturno()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="308" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:308</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="historiaMedica"></a>
+                        <span class="name"><b>historiaMedica</b><a href="#historiaMedica"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>historiaMedica()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="312" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:312</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="medicamentos"></a>
+                        <span class="name"><b>medicamentos</b><a href="#medicamentos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>medicamentos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="316" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:316</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="antecedentesCardiacos"></a>
+                        <span class="name"><b>antecedentesCardiacos</b><a href="#antecedentesCardiacos"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>antecedentesCardiacos()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="320" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:320</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="antecedentesRespiratorios"></a>
+                        <span class="name"><b>antecedentesRespiratorios</b><a href="#antecedentesRespiratorios"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>antecedentesRespiratorios()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="324" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:324</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="obesidad"></a>
+                        <span class="name"><b>obesidad</b><a href="#obesidad"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>obesidad()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="328" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:328</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="diabetesFamilia"></a>
+                        <span class="name"><b>diabetesFamilia</b><a href="#diabetesFamilia"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>diabetesFamilia()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="332" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:332</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="diabetesPropia"></a>
+                        <span class="name"><b>diabetesPropia</b><a href="#diabetesPropia"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>diabetesPropia()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="336" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:336</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="enfermedadCronica"></a>
+                        <span class="name"><b>enfermedadCronica</b><a href="#enfermedadCronica"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>enfermedadCronica()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="340" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:340</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cualEnfermedad"></a>
+                        <span class="name"><b>cualEnfermedad</b><a href="#cualEnfermedad"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>cualEnfermedad()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="344" class="link-to-prism">src/app/components/pages/patient/edit-patient/edit-patient.component.ts:344</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { Select2Data } from &#x27;ng-select2-component&#x27;;
+import Swal from &#x27;sweetalert2&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+
+import { Tutor } from &#x27;@app/interfaces/tutors&#x27;;
+import { Doctor } from &#x27;@app/interfaces/doctors&#x27;;
+
+import { ManageUsersService } from &#x27;@app/services/managment/manage-users/manage-users.service&#x27;;
+import { PatientsService } from &#x27;@app/services/managment/patients/patients.service&#x27;;
+
+@Component({
+  selector: &#x27;app-edit-patient&#x27;,
+  templateUrl: &#x27;./edit-patient.component.html&#x27;,
+  styleUrls: [&#x27;./edit-patient.component.scss&#x27;]
+})
+export class EditPatientComponent implements OnInit {
+  currentStep &#x3D; 0;
+  steps &#x3D; [
+    { label: &#x27;Datos Personales&#x27; },
+    { label: &#x27;Salud y Síntomas&#x27; },
+    { label: &#x27;Hábitos y Antecedentes&#x27; }
+  ];
+
+  dataTutor: Select2Data &#x3D; [];
+  dataDoctor: Select2Data &#x3D; [];
+
+  tutors: Tutor[] &#x3D; [];
+  doctors: Doctor[] &#x3D; [];
+
+  public hash: string &#x3D; &#x27;&#x27;;
+
+  pattern &#x3D;
+    &#x27;^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*[-._]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 ]*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$&#x27;;
+
+
+  healthForm: FormGroup | any;
+
+  constructor(private fb: FormBuilder, private mus: ManageUsersService, private ps: PatientsService,private router: Router,
+    private route: ActivatedRoute,
+  ) {
+
+
+  }
+
+  ngOnInit(): void {
+    this.hash &#x3D; this.route.snapshot.params[&quot;hash&quot;];
+
+    this.healthForm &#x3D; this.fb.group({
+      // Sección 1 - Datos Personales
+      first_name: [
+        &#x27;&#x27;,
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(40),
+          Validators.pattern(this.pattern),
+        ],
+      ],
+      middle_name: [
+        &#x27;&#x27;,
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(40),
+          Validators.pattern(this.pattern),
+        ],
+      ],
+      last_name: [
+        &#x27;&#x27;,
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(40),
+          Validators.pattern(this.pattern),
+        ],
+      ],
+      date_of_birth: [&#x27;&#x27;, Validators.required],
+      tutor_id: [&#x27;&#x27;, Validators.required],
+      doctor_id: [&#x27;&#x27;, Validators.required],
+
+      // Sección 2 - Salud y Síntomas
+      estadoGeneral: [&#x27;0&#x27;, Validators.required],
+      energia: [&#x27;0&#x27;, Validators.required],
+      fiebre: [&#x27;0&#x27;, Validators.required],
+      dolorPecho: [&#x27;0&#x27;, Validators.required],
+      mareos: [&#x27;0&#x27;, Validators.required],
+      tempAlta: [&#x27;0&#x27;, Validators.required],
+      sudores: [&#x27;0&#x27;, Validators.required],
+      palpitaciones: [&#x27;0&#x27;, Validators.required],
+      taquicardiaReposo: [&#x27;0&#x27;, Validators.required],
+      caidas: [&#x27;0&#x27;, Validators.required],
+      inestabilidad: [&#x27;0&#x27;, Validators.required],
+      cambioLugar: [&#x27;0&#x27;, Validators.required],
+      dificultadEjercicio: [&#x27;0&#x27;, Validators.required],
+      disneaActividades: [&#x27;0&#x27;, Validators.required],
+
+      // Sección 3 - Hábitos y Antecedentes
+      frutasVerduras: [&#x27;0&#x27;, Validators.required],
+      agua: [&#x27;0&#x27;, Validators.required],
+      actividadFisica: [&#x27;0&#x27;, Validators.required],
+      horasSueño: [&#x27;0&#x27;, Validators.required],
+      despertarNocturno: [&#x27;0&#x27;, Validators.required],
+      historiaMedica: [&#x27;0&#x27;, Validators.required],
+      medicamentos: [&#x27;0&#x27;, Validators.required],
+      antecedentesCardiacos: [&#x27;0&#x27;, Validators.required],
+      antecedentesRespiratorios: [&#x27;0&#x27;, Validators.required],
+      obesidad: [&#x27;0&#x27;, Validators.required],
+      diabetesFamilia: [&#x27;0&#x27;, Validators.required],
+      diabetes: [&#x27;0&#x27;, Validators.required],
+      enfermedadCronica: [&#x27;0&#x27;, Validators.required],
+      cualEnfermedad: [&#x27;0&#x27;]
+    });
+
+    this.cargarAvance();
+
+    this.mus.GetByUsersType(&quot;d88d9411-c944-463a-985c-8d938875d3e3&quot;).subscribe((res: any) &#x3D;&gt; {
+      this.tutors &#x3D; res;
+
+      this.tutors.forEach((value: any) &#x3D;&gt; {
+
+        this.dataTutor.push({
+          value: value.id,
+          label: value.full_name,
+          data: {
+            id: value.id,
+            name: value.full_name,
+          },
+        });
+      });
+    });
+
+    this.mus.GetByUsersType(&quot;f1eda9e1-49f2-473b-8099-126ea5d2c755&quot;).subscribe((res: any) &#x3D;&gt; {
+      this.doctors &#x3D; res;
+      this.doctors.forEach((value: any) &#x3D;&gt; {
+        this.dataDoctor.push({
+          value: value.id,
+          label: value.full_name,
+          data: {
+            id: value.id,
+            name: value.full_name,
+          },
+        });
+      });
+    });
+
+    setTimeout(()&#x3D;&gt;{
+      this.ps.GetPatientEditByHash(this.hash).subscribe((res) &#x3D;&gt; {
+        this.healthForm.patchValue(res);
+      });
+    }, 500);
+  }
+
+  nextStep() {
+    if (this.currentStep &lt; this.steps.length - 1) this.currentStep++;
+  }
+
+  prevStep() {
+    if (this.currentStep &gt; 0) this.currentStep--;
+  }
+
+  guardarAvance() {
+    localStorage.setItem(&#x27;healthFormData&#x27;, JSON.stringify(this.healthForm.value));
+    alert(&#x27;Avance guardado exitosamente.&#x27;);
+  }
+
+  cargarAvance() {
+    const savedData &#x3D; localStorage.getItem(&#x27;healthFormData&#x27;);
+    if (savedData) {
+      this.healthForm.patchValue(JSON.parse(savedData));
+    }
+  }
+
+  CreatePatient() {
+    
+    Swal.fire({
+      title: &#x27;¿Desea actualizar el paciente?&#x27;,
+      icon: &#x27;question&#x27;,
+      showDenyButton: true,
+      confirmButtonText: &#x60;Confirmar&#x60;,
+      denyButtonText: &#x60;Cancelar&#x60;,
+    }).then((result) &#x3D;&gt; {
+      if (result.isConfirmed) {
+        const formData &#x3D; this.healthForm.value;
+
+        this.ps.UpdatePatient(formData,this.hash).subscribe((res: any) &#x3D;&gt; {
+          Swal.fire({
+            position: &#x27;center&#x27;,
+            icon: &#x27;success&#x27;,
+            title: &#x27;Paciente guardado exitosamente&#x27;,
+            showConfirmButton: false,
+          });
+          this.router.navigate([&quot;/patient&quot;]);
+          setTimeout(() &#x3D;&gt; {
+            window.location.reload();
+          }, 1300);
+        });
+
+      } else if (result.isDenied) {
+        Swal.fire(&#x27;Paciente no guardado&#x27;, &#x27;&#x27;, &#x27;info&#x27;);
+      }
+    });
+  }
+
+  limpiarFormulario() {
+    this.healthForm.reset();
+    localStorage.removeItem(&#x27;healthFormData&#x27;);
+  }
+  
+  get first_name() {
+    return this.healthForm.get(&#x27;first_name&#x27;);
+  }
+  get middle_name() {
+    return this.healthForm.get(&#x27;middle_name&#x27;);
+  }
+  get last_name() {
+    return this.healthForm.get(&#x27;last_name&#x27;);
+  }
+
+  get tutor_id() {
+    return this.healthForm.get(&#x27;tutor_id&#x27;);
+  }
+
+  get doctor_id() {
+    return this.healthForm.get(&#x27;doctor_id&#x27;);
+  }
+
+  get date_of_birth() {
+    return this.healthForm.get(&#x27;date_of_birth&#x27;);
+  }
+
+
+  get estadoGeneral() {
+    return this.healthForm.get(&#x27;estadoGeneral&#x27;);
+  }
+
+  get energia() {
+    return this.healthForm.get(&#x27;energia&#x27;);
+  }
+
+  get fiebre() {
+    return this.healthForm.get(&#x27;fiebre&#x27;);
+  }
+
+  get dolorPecho() {
+    return this.healthForm.get(&#x27;dolorPecho&#x27;);
+  }
+
+  get mareos() {
+    return this.healthForm.get(&#x27;mareos&#x27;);
+  }
+
+  get tempAlta() {
+    return this.healthForm.get(&#x27;tempAlta&#x27;);
+  }
+
+  get sudores() {
+    return this.healthForm.get(&#x27;sudores&#x27;);
+  }
+
+  get palpitaciones() {
+    return this.healthForm.get(&#x27;palpitaciones&#x27;);
+  }
+
+  get taquicardiaReposo() {
+    return this.healthForm.get(&#x27;taquicardiaReposo&#x27;);
+  }
+
+  get caidas() {
+    return this.healthForm.get(&#x27;caidas&#x27;);
+  }
+
+  get inestabilidad() {
+    return this.healthForm.get(&#x27;inestabilidad&#x27;);
+  }
+
+  get cambioLugar() {
+    return this.healthForm.get(&#x27;cambioLugar&#x27;);
+  }
+
+  get dificultadEjercicio() {
+    return this.healthForm.get(&#x27;dificultadEjercicio&#x27;);
+  }
+
+  get disneaActividades() {
+    return this.healthForm.get(&#x27;disneaActividades&#x27;);
+  }
+
+
+  get frutasVerduras() {
+    return this.healthForm.get(&#x27;frutasVerduras&#x27;);
+  }
+
+  get agua() {
+    return this.healthForm.get(&#x27;agua&#x27;);
+  }
+
+  get actividadFisica() {
+    return this.healthForm.get(&#x27;actividadFisica&#x27;);
+  }
+
+  get horasSueño() {
+    return this.healthForm.get(&#x27;horasSueño&#x27;);
+  }
+
+  get despertarNocturno() {
+    return this.healthForm.get(&#x27;despertarNocturno&#x27;);
+  }
+
+  get historiaMedica() {
+    return this.healthForm.get(&#x27;historiaMedica&#x27;);
+  }
+
+  get medicamentos() {
+    return this.healthForm.get(&#x27;medicamentos&#x27;);
+  }
+
+  get antecedentesCardiacos() {
+    return this.healthForm.get(&#x27;antecedentesCardiacos&#x27;);
+  }
+
+  get antecedentesRespiratorios() {
+    return this.healthForm.get(&#x27;antecedentesRespiratorios&#x27;);
+  }
+
+  get obesidad() {
+    return this.healthForm.get(&#x27;obesidad&#x27;);
+  }
+
+  get diabetesFamilia() {
+    return this.healthForm.get(&#x27;diabetesFamilia&#x27;);
+  }
+
+  get diabetesPropia() {
+    return this.healthForm.get(&#x27;diabetes&#x27;);
+  }
+
+  get enfermedadCronica() {
+    return this.healthForm.get(&#x27;enfermedadCronica&#x27;);
+  }
+
+  get cualEnfermedad() {
+    return this.healthForm.get(&#x27;cualEnfermedad&#x27;);
+  }
+
+
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;router-outlet&gt;&lt;/router-outlet&gt;
+
+&lt;div class&#x3D;&quot;card centrar&quot;&gt;
+    &lt;p-card&gt;
+        &lt;div class&#x3D;&quot;scrollable-content&quot;&gt;
+            &lt;h1 class&#x3D;&quot;text-center title&quot;&gt;Edición de paciente&lt;/h1&gt;
+            &lt;br /&gt;
+            &lt;p-steps [model]&#x3D;&quot;steps&quot; [activeIndex]&#x3D;&quot;currentStep&quot; [readonly]&#x3D;&quot;true&quot; class&#x3D;&quot;mb-4&quot;&gt;&lt;/p-steps&gt;
+
+            &lt;form [formGroup]&#x3D;&quot;healthForm&quot;&gt;
+                &lt;br&gt;
+                &lt;div class&#x3D;&quot;buttons-clean&quot;&gt;
+                    &lt;p-button label&#x3D;&quot;Limpiar Formulario&quot; icon&#x3D;&quot;pi pi-eraser&quot; iconPos&#x3D;&quot;left&quot;
+                        (click)&#x3D;&quot;limpiarFormulario()&quot; styleClass&#x3D;&quot;p-button-sm p-button-warning&quot;
+                        [style]&#x3D;&quot;{ &#x27;margin-right&#x27;: &#x27;.6em&#x27; }&quot;&gt;
+                    &lt;/p-button&gt;
+                &lt;/div&gt;
+                &lt;!-- Sección 1: Datos Personales --&gt;
+                &lt;div *ngIf&#x3D;&quot;currentStep &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;p-fluid&quot;&gt;
+                    &lt;br&gt;&lt;br&gt;
+
+                    &lt;div class&#x3D;&quot;row&quot;&gt;
+                        &lt;div align&#x3D;&quot;right&quot; class&#x3D;&quot;col-md-2&quot;&gt;
+                            &lt;label&gt;Nombre&lt;span class&#x3D;&quot;text-danger text-lg font-weight-bold&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;div align&#x3D;&quot;left&quot; class&#x3D;&quot;col-md-3&quot;&gt;
+                            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control input-size&quot; placeholder&#x3D;&quot;Nombre&quot; id&#x3D;&quot;first_name&quot;
+                                name&#x3D;&quot;first_name&quot; formControlName&#x3D;&quot;first_name&quot; [class]&#x3D;&quot;{
+                              &#x27;is-invalid&#x27;:
+                                first_name.invalid &amp;&amp;
+                                (first_name.dirty ||
+                                  first_name.touched ||
+                                  first_name.errors.minlength ||
+                                  first_name.errors.maxlength),
+                              &#x27;is-valid&#x27;: first_name.valid
+                            }&quot; /&gt;
+                            &lt;div *ngIf&#x3D;&quot;
+                              first_name.invalid &amp;&amp; (first_name.dirty || first_name.touched)
+                            &quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+                                &lt;div *ngIf&#x3D;&quot;first_name.errors.required&quot;&gt;
+                                    El campo es obligatorio
+                                &lt;/div&gt;
+                                &lt;div *ngIf&#x3D;&quot;first_name.errors.minlength&quot;&gt;
+                                    El nombre debe ser de al menos 4 caracteres
+                                &lt;/div&gt;
+                                &lt;div *ngIf&#x3D;&quot;first_name.errors.maxlength&quot;&gt;
+                                    El nombre máximo debe tener 40 caracteres
+                                &lt;/div&gt;
+                                &lt;div *ngIf&#x3D;&quot;first_name.errors.pattern&quot;&gt;
+                                    El nombre solo debe contener letras
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div align&#x3D;&quot;right&quot; class&#x3D;&quot;col-md-3&quot;&gt;
+                            &lt;label&gt;Apellido paterno&lt;span class&#x3D;&quot;text-danger text-lg font-weight-bold&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;div align&#x3D;&quot;left&quot; class&#x3D;&quot;col-md-3&quot;&gt;
+                            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control input-size&quot; placeholder&#x3D;&quot;Apellido paterno&quot;
+                                id&#x3D;&quot;middle_name&quot; name&#x3D;&quot;middle_name&quot; formControlName&#x3D;&quot;middle_name&quot; [class]&#x3D;&quot;{
+                              &#x27;is-invalid&#x27;:
+                                middle_name.invalid &amp;&amp;
+                                (middle_name.dirty ||
+                                  middle_name.touched ||
+                                  middle_name.errors.minlength ||
+                                  middle_name.errors.maxlength),
+                              &#x27;is-valid&#x27;: middle_name.valid
+                            }&quot; /&gt;
+                            &lt;div *ngIf&#x3D;&quot;
+                              middle_name.invalid &amp;&amp;
+                              (middle_name.dirty || middle_name.touched)
+                            &quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+                                &lt;div *ngIf&#x3D;&quot;middle_name.errors.required&quot;&gt;
+                                    El campo es obligatorio
+                                &lt;/div&gt;
+                                &lt;div *ngIf&#x3D;&quot;middle_name.errors.minlength&quot;&gt;
+                                    El apellido paterno debe ser de al menos 4 caracteres
+                                &lt;/div&gt;
+                                &lt;div *ngIf&#x3D;&quot;middle_name.errors.maxlength&quot;&gt;
+                                    El apellido paterno máximo debe tener 40 caracteres
+                                &lt;/div&gt;
+                                &lt;div *ngIf&#x3D;&quot;middle_name.errors.pattern&quot;&gt;
+                                    El apellido paterno solo debe contener letras
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;br /&gt;
+                    &lt;div class&#x3D;&quot;row&quot;&gt;
+                        &lt;div align&#x3D;&quot;right&quot; class&#x3D;&quot;col-md-2&quot;&gt;
+                            &lt;label&gt;Apellido materno&lt;span class&#x3D;&quot;text-danger text-lg font-weight-bold&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;div align&#x3D;&quot;left&quot; class&#x3D;&quot;col-md-3&quot;&gt;
+                            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control input-size&quot; placeholder&#x3D;&quot;Apellido materno&quot;
+                                id&#x3D;&quot;last_name&quot; name&#x3D;&quot;last_name&quot; formControlName&#x3D;&quot;last_name&quot; [class]&#x3D;&quot;{
+                              &#x27;is-invalid&#x27;:
+                                last_name.invalid &amp;&amp;
+                                (last_name.dirty ||
+                                  last_name.touched ||
+                                  last_name.errors.minlength ||
+                                  last_name.errors.maxlength),
+                              &#x27;is-valid&#x27;: last_name.valid
+                            }&quot; /&gt;
+                            &lt;div *ngIf&#x3D;&quot;
+                              last_name.invalid &amp;&amp; (last_name.dirty || last_name.touched)
+                            &quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+                                &lt;div *ngIf&#x3D;&quot;last_name.errors.required&quot;&gt;
+                                    El campo es obligatorio
+                                &lt;/div&gt;
+                                &lt;div *ngIf&#x3D;&quot;last_name.errors.minlength&quot;&gt;
+                                    El apellido materno debe ser de al menos 4 caracteres
+                                &lt;/div&gt;
+                                &lt;div *ngIf&#x3D;&quot;last_name.errors.maxlength&quot;&gt;
+                                    El apellido materno máximo debe tener 40 caracteres
+                                &lt;/div&gt;
+                                &lt;div *ngIf&#x3D;&quot;last_name.errors.pattern&quot;&gt;
+                                    El apellido materno solo debe contener letras
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div align&#x3D;&quot;right&quot; class&#x3D;&quot;col-md-3&quot;&gt;
+                            &lt;label&gt;Fecha de nacimiento&lt;span
+                                    class&#x3D;&quot;text-danger text-lg font-weight-bold&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;div align&#x3D;&quot;left&quot; class&#x3D;&quot;col-md-3&quot;&gt;
+                            &lt;p-calendar id&#x3D;&quot;date_of_birth&quot; formControlName&#x3D;&quot;date_of_birth&quot; [dateFormat]&#x3D;&quot;&#x27;dd/mm/yy&#x27;&quot;
+                                [showIcon]&#x3D;&quot;true&quot;&gt;&lt;/p-calendar&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;br&gt;
+                    &lt;div class&#x3D;&quot;row&quot;&gt;
+                        &lt;div align&#x3D;&quot;right&quot; class&#x3D;&quot;col-md-2&quot;&gt;
+                            &lt;label&gt;Tutor&lt;span class&#x3D;&quot;text-danger text-lg font-weight-bold&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;div align&#x3D;&quot;left&quot; class&#x3D;&quot;col-md-3&quot;&gt;
+                            &lt;select2 [data]&#x3D;&quot;dataTutor&quot; [templates]&#x3D;&quot;template1&quot; id&#x3D;&quot;tutor_id&quot; formControlName&#x3D;&quot;tutor_id&quot;
+                                style&#x3D;&quot;height: 100px !important&quot; placeholder&#x3D;&quot;Selecciona el tutor&quot; [class]&#x3D;&quot;{
+                                  &#x27;is-invalid&#x27;:
+                                  tutor_id.invalid &amp;&amp; (tutor_id.dirty || tutor_id.touched),
+                                  &#x27;is-valid&#x27;: tutor_id.valid
+                                }&quot;&gt;
+                                &lt;ng-template #template1 let-data&#x3D;&quot;data&quot;&gt;{{
+                                    data?.name
+                                    }}&lt;/ng-template&gt;
+                            &lt;/select2&gt;
+                            &lt;div *ngIf&#x3D;&quot;tutor_id.invalid &amp;&amp; (tutor_id.dirty || tutor_id.touched)&quot;
+                                class&#x3D;&quot;invalid-feedback&quot;&gt;
+                                &lt;div *ngIf&#x3D;&quot;tutor_id.errors.required&quot;&gt;El campo es obligatorio&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div align&#x3D;&quot;right&quot; class&#x3D;&quot;col-md-3&quot;&gt;
+                            &lt;label&gt;Médico Asignado&lt;span class&#x3D;&quot;text-danger text-lg font-weight-bold&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;div align&#x3D;&quot;left&quot; class&#x3D;&quot;col-md-3&quot;&gt;
+                            &lt;select2 [data]&#x3D;&quot;dataDoctor&quot; [templates]&#x3D;&quot;template&quot; id&#x3D;&quot;doctor_id&quot;
+                                formControlName&#x3D;&quot;doctor_id&quot; style&#x3D;&quot;height: 100px !important&quot;
+                                placeholder&#x3D;&quot;Selecciona el médico asignado&quot; [class]&#x3D;&quot;{
+                                &#x27;is-invalid&#x27;:
+                                doctor_id.invalid &amp;&amp; (doctor_id.dirty || doctor_id.touched),
+                                &#x27;is-valid&#x27;: doctor_id.valid
+                              }&quot;&gt;
+                                &lt;ng-template #template let-data&#x3D;&quot;data&quot;&gt;{{
+                                    data?.name
+                                    }}&lt;/ng-template&gt;
+                            &lt;/select2&gt;
+                            &lt;div *ngIf&#x3D;&quot;doctor_id.invalid &amp;&amp; (doctor_id.dirty || doctor_id.touched)&quot;
+                                class&#x3D;&quot;invalid-feedback&quot;&gt;
+                                &lt;div *ngIf&#x3D;&quot;doctor_id.errors.required&quot;&gt;El campo es obligatorio&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;br&gt;
+                    &lt;br&gt;
+                    &lt;div class&#x3D;&quot;buttons&quot;&gt;
+                        &lt;p-button [routerLink]&#x3D;&quot;[&#x27;/patient&#x27;]&quot; label&#x3D;&quot;Cancelar&quot; icon&#x3D;&quot;pi pi-times&quot;
+                            styleClass&#x3D;&quot;p-button-sm p-button-danger&quot; [style]&#x3D;&quot;{ &#x27;margin-right&#x27;: &#x27;.6em&#x27; }&quot;&gt; &lt;/p-button&gt;
+                        &lt;p-button label&#x3D;&quot;Guardar avance&quot; icon&#x3D;&quot;pi pi-save&quot; iconPos&#x3D;&quot;left&quot; (click)&#x3D;&quot;guardarAvance()&quot;
+                            styleClass&#x3D;&quot;p-button-sm p-button-warning&quot; [style]&#x3D;&quot;{ &#x27;margin-right&#x27;: &#x27;.6em&#x27; }&quot;&gt;
+                        &lt;/p-button&gt;
+                        &lt;p-button label&#x3D;&quot;Siguiente&quot; icon&#x3D;&quot;pi pi-arrow-right&quot; iconPos&#x3D;&quot;right&quot; (click)&#x3D;&quot;nextStep()&quot;
+                            styleClass&#x3D;&quot;p-button-sm p-button-primary&quot;&gt;
+                        &lt;/p-button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+
+                &lt;!-- Sección 2: Salud y Síntomas --&gt;
+                &lt;div *ngIf&#x3D;&quot;currentStep &#x3D;&#x3D;&#x3D; 1&quot; class&#x3D;&quot;p-fluid&quot;&gt;
+                    &lt;br&gt;&lt;br&gt;
+                    &lt;div class&#x3D;&quot;scrollable-tab-content&quot;&gt;
+                        &lt;!-- Estado General --&gt;
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Te has sentido bien en la última semana?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;estadoGeneral&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;estadoGeneral&quot;
+                                        inputId&#x3D;&quot;estadoGeneralSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;estadoGeneralSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;estadoGeneral&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;estadoGeneral&quot;
+                                        inputId&#x3D;&quot;estadoGeneralNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;estadoGeneralNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Has tenido cambios en tu nivel de energía?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;energia&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;energia&quot;
+                                        inputId&#x3D;&quot;energiaSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;energiaSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;energia&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;energia&quot;
+                                        inputId&#x3D;&quot;energiaNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;energiaNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;!-- Síntomas --&gt;
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Has tenido fiebre en los últimos días?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;fiebre&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;fiebre&quot;
+                                        inputId&#x3D;&quot;fiebreSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;fiebreSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;fiebre&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;fiebre&quot;
+                                        inputId&#x3D;&quot;fiebreNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;fiebreNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Has sentido dolor en el pecho recientemente?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;dolorPecho&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;dolorPecho&quot;
+                                        inputId&#x3D;&quot;dolorPechoSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;dolorPechoSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;dolorPecho&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;dolorPecho&quot;
+                                        inputId&#x3D;&quot;dolorPechoNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;dolorPechoNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Has experimentado mareos o desmayos en la última semana?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;mareos&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;mareos&quot;
+                                        inputId&#x3D;&quot;mareosSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;mareosSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;mareos&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;mareos&quot;
+                                        inputId&#x3D;&quot;mareosNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;mareosNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Has notado que tu temperatura ha estado más alta de lo normal?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;tempAlta&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;tempAlta&quot;
+                                        inputId&#x3D;&quot;tempAltaSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;tempAltaSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;tempAlta&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;tempAlta&quot;
+                                        inputId&#x3D;&quot;tempAltaNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;tempAltaNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Has tenido sudores nocturnos?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;sudores&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;sudores&quot;
+                                        inputId&#x3D;&quot;sudoresSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;sudoresSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;sudores&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;sudores&quot;
+                                        inputId&#x3D;&quot;sudoresNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;sudoresNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Has sentido palpitaciones en el corazón?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;palpitaciones&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;palpitaciones&quot;
+                                        inputId&#x3D;&quot;palpitacionesSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;palpitacionesSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;palpitaciones&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;palpitaciones&quot;
+                                        inputId&#x3D;&quot;palpitacionesNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;palpitacionesNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Tu corazón late más rápido de lo habitual en reposo?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;taquicardiaReposo&quot; value&#x3D;&quot;1&quot;
+                                        formControlName&#x3D;&quot;taquicardiaReposo&quot; inputId&#x3D;&quot;taquicardiaSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;taquicardiaSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;taquicardiaReposo&quot; value&#x3D;&quot;0&quot;
+                                        formControlName&#x3D;&quot;taquicardiaReposo&quot; inputId&#x3D;&quot;taquicardiaNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;taquicardiaNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Has tenido alguna caída en el último mes?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;caidas&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;caidas&quot;
+                                        inputId&#x3D;&quot;caidasSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;caidasSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;caidas&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;caidas&quot;
+                                        inputId&#x3D;&quot;caidasNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;caidasNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Te sientes inestable al caminar?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;inestabilidad&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;inestabilidad&quot;
+                                        inputId&#x3D;&quot;inestabilidadSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;inestabilidadSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;inestabilidad&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;inestabilidad&quot;
+                                        inputId&#x3D;&quot;inestabilidadNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;inestabilidadNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Has experimentado cambios en tu salud al cambiar de lugar de residencia?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;cambioLugar&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;cambioLugar&quot;
+                                        inputId&#x3D;&quot;cambioLugarSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;cambioLugarSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;cambioLugar&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;cambioLugar&quot;
+                                        inputId&#x3D;&quot;cambioLugarNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;cambioLugarNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;!-- Saturación de Oxígeno --&gt;
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Has tenido dificultad para respirar al hacer ejercicio?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;dificultadEjercicio&quot; value&#x3D;&quot;1&quot;
+                                        formControlName&#x3D;&quot;dificultadEjercicio&quot;
+                                        inputId&#x3D;&quot;dificultadEjercicioSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;dificultadEjercicioSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;dificultadEjercicio&quot; value&#x3D;&quot;0&quot;
+                                        formControlName&#x3D;&quot;dificultadEjercicio&quot;
+                                        inputId&#x3D;&quot;dificultadEjercicioNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;dificultadEjercicioNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Te sientes corto de aliento al realizar actividades cotidianas?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;disneaActividades&quot; value&#x3D;&quot;1&quot;
+                                        formControlName&#x3D;&quot;disneaActividades&quot;
+                                        inputId&#x3D;&quot;disneaActividadesSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;disneaActividadesSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;disneaActividades&quot; value&#x3D;&quot;0&quot;
+                                        formControlName&#x3D;&quot;disneaActividades&quot;
+                                        inputId&#x3D;&quot;disneaActividadesNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;disneaActividadesNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class&#x3D;&quot;buttons&quot;&gt;
+                        &lt;p-button label&#x3D;&quot;Atrás&quot; icon&#x3D;&quot;pi pi-arrow-left&quot; iconPos&#x3D;&quot;left&quot; (click)&#x3D;&quot;prevStep()&quot;
+                            styleClass&#x3D;&quot;p-button-sm p-button-danger&quot; [style]&#x3D;&quot;{ &#x27;margin-right&#x27;: &#x27;.6em&#x27; }&quot;&gt;
+                        &lt;/p-button&gt;
+                        &lt;p-button label&#x3D;&quot;Guardar avance&quot; icon&#x3D;&quot;pi pi-save&quot; iconPos&#x3D;&quot;left&quot; (click)&#x3D;&quot;guardarAvance()&quot;
+                            styleClass&#x3D;&quot;p-button-sm p-button-warning&quot; [style]&#x3D;&quot;{ &#x27;margin-right&#x27;: &#x27;.6em&#x27; }&quot;&gt;
+                        &lt;/p-button&gt;
+                        &lt;p-button label&#x3D;&quot;Siguiente&quot; icon&#x3D;&quot;pi pi-arrow-right&quot; iconPos&#x3D;&quot;right&quot; (click)&#x3D;&quot;nextStep()&quot;
+                            styleClass&#x3D;&quot;p-button-sm p-button-primary&quot;&gt;
+                        &lt;/p-button&gt;
+                    &lt;/div&gt;
+
+
+                &lt;/div&gt;
+
+                &lt;!-- Sección 3: Hábitos y Antecedentes --&gt;
+                &lt;div *ngIf&#x3D;&quot;currentStep &#x3D;&#x3D;&#x3D; 2&quot; class&#x3D;&quot;p-fluid&quot;&gt;
+                    &lt;br&gt;&lt;br&gt;
+                    &lt;div class&#x3D;&quot;scrollable-tab-content&quot;&gt;
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Consumes frutas y verduras a diario?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;frutasVerduras&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;frutasVerduras&quot;
+                                        inputId&#x3D;&quot;frutasVerdurasSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;frutasVerdurasSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;frutasVerduras&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;frutasVerduras&quot;
+                                        inputId&#x3D;&quot;frutasVerdurasNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;frutasVerdurasNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Bebes suficiente agua diariamente?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;agua&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;agua&quot;
+                                        inputId&#x3D;&quot;aguaSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;aguaSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;agua&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;agua&quot;
+                                        inputId&#x3D;&quot;aguaNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;aguaNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Realizas actividad física al menos 3 veces por semana?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;actividadFisica&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;actividadFisica&quot;
+                                        inputId&#x3D;&quot;ejercicioSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;ejercicioSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;actividadFisica&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;actividadFisica&quot;
+                                        inputId&#x3D;&quot;ejercicioNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;ejercicioNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Duermes al menos 7 horas por noche?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;horasSueño&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;horasSueño&quot;
+                                        inputId&#x3D;&quot;duerme7hSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;duerme7hSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;horasSueño&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;horasSueño&quot;
+                                        inputId&#x3D;&quot;duerme7hNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;duerme7hNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Te despiertas durante la noche con frecuencia?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;despertarNocturno&quot; value&#x3D;&quot;1&quot;
+                                        formControlName&#x3D;&quot;despertarNocturno&quot; inputId&#x3D;&quot;despiertaNocheSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;despiertaNocheSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;despertarNocturno&quot; value&#x3D;&quot;0&quot;
+                                        formControlName&#x3D;&quot;despertarNocturno&quot; inputId&#x3D;&quot;despiertaNocheNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;despiertaNocheNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Tienes alguna condición médica preexistente?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;historiaMedica&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;historiaMedica&quot;
+                                        inputId&#x3D;&quot;condicionMedicaSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;condicionMedicaSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;historiaMedica&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;historiaMedica&quot;
+                                        inputId&#x3D;&quot;condicionMedicaNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;condicionMedicaNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Estás tomando medicamentos actualmente?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;medicamentos&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;medicamentos&quot;
+                                        inputId&#x3D;&quot;medicamentosSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;medicamentosSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;medicamentos&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;medicamentos&quot;
+                                        inputId&#x3D;&quot;medicamentosNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;medicamentosNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Hay antecedentes familiares de enfermedades cardíacas?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;antecedentesCardiacos&quot; value&#x3D;&quot;1&quot;
+                                        formControlName&#x3D;&quot;antecedentesCardiacos&quot; inputId&#x3D;&quot;cardiacasSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;cardiacasSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;antecedentesCardiacos&quot; value&#x3D;&quot;0&quot;
+                                        formControlName&#x3D;&quot;antecedentesCardiacos&quot; inputId&#x3D;&quot;cardiacasNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;cardiacasNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Hay antecedentes familiares de enfermedades respiratorias?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;antecedentesRespiratorios&quot; value&#x3D;&quot;1&quot;
+                                        formControlName&#x3D;&quot;antecedentesRespiratorios&quot;
+                                        inputId&#x3D;&quot;respiratoriasSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;respiratoriasSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;antecedentesRespiratorios&quot; value&#x3D;&quot;0&quot;
+                                        formControlName&#x3D;&quot;antecedentesRespiratorios&quot;
+                                        inputId&#x3D;&quot;respiratoriasNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;respiratoriasNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Sufre de obesidad?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;obesidad&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;obesidad&quot;
+                                        inputId&#x3D;&quot;obesidadSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;obesidadSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;obesidad&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;obesidad&quot;
+                                        inputId&#x3D;&quot;obesidadNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;obesidadNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Tiene familiares cercanos que padezcan diabetes mellitus?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;diabetesFamilia&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;diabetesFamilia&quot;
+                                        inputId&#x3D;&quot;diabetesFamiliaSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;diabetesFamiliaSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;diabetesFamilia&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;diabetesFamilia&quot;
+                                        inputId&#x3D;&quot;diabetesFamiliaNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;diabetesFamiliaNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;diabetesFamilia&quot; value&#x3D;&quot;No se sabe&quot;
+                                        formControlName&#x3D;&quot;diabetesFamilia&quot; inputId&#x3D;&quot;diabetesFamiliaNs&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;diabetesFamiliaNs&quot;&gt;No se sabe&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Padece diabetes mellitus?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;diabetes&quot; value&#x3D;&quot;1&quot; formControlName&#x3D;&quot;diabetes&quot;
+                                        inputId&#x3D;&quot;diabetesPropiaSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;diabetesPropiaSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;diabetes&quot; value&#x3D;&quot;0&quot; formControlName&#x3D;&quot;diabetes&quot;
+                                        inputId&#x3D;&quot;diabetesPropiaNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;diabetesPropiaNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;diabetes&quot; value&#x3D;&quot;No se sabe&quot; formControlName&#x3D;&quot;diabetes&quot;
+                                        inputId&#x3D;&quot;diabetesPropiaNs&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;diabetesPropiaNs&quot;&gt;No se sabe&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot;&gt;
+                            &lt;label&gt;¿Tiene alguna enfermedad crónica?&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;radio-group&quot;&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;enfermedadCronica&quot; value&#x3D;&quot;1&quot;
+                                        formControlName&#x3D;&quot;enfermedadCronica&quot;
+                                        inputId&#x3D;&quot;enfermedadCronicaSi&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;enfermedadCronicaSi&quot;&gt;Sí&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;radio-option&quot;&gt;
+                                    &lt;p-radioButton name&#x3D;&quot;enfermedadCronica&quot; value&#x3D;&quot;0&quot;
+                                        formControlName&#x3D;&quot;enfermedadCronica&quot;
+                                        inputId&#x3D;&quot;enfermedadCronicaNo&quot;&gt;&lt;/p-radioButton&gt;
+                                    &lt;label for&#x3D;&quot;enfermedadCronicaNo&quot;&gt;No&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;field mb-4&quot; *ngIf&#x3D;&quot;healthForm.get(&#x27;enfermedadCronica&#x27;)?.value &#x3D;&#x3D;&#x3D; &#x27;1&#x27;&quot;&gt;
+                            &lt;label for&#x3D;&quot;cualEnfermedad&quot;&gt;¿Cuál?&lt;/label&gt;
+                            &lt;input id&#x3D;&quot;cualEnfermedad&quot; type&#x3D;&quot;text&quot; pInputText formControlName&#x3D;&quot;cualEnfermedad&quot;
+                                placeholder&#x3D;&quot;Especifica la enfermedad&quot; /&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;buttons&quot;&gt;
+                        &lt;p-button label&#x3D;&quot;Atrás&quot; icon&#x3D;&quot;pi pi-arrow-left&quot; iconPos&#x3D;&quot;left&quot; (click)&#x3D;&quot;prevStep()&quot;
+                            styleClass&#x3D;&quot;p-button-sm p-button-danger&quot; [style]&#x3D;&quot;{ &#x27;margin-right&#x27;: &#x27;.6em&#x27; }&quot;&gt;
+                        &lt;/p-button&gt;
+                        &lt;p-button label&#x3D;&quot;Enviar&quot; icon&#x3D;&quot;pi pi-arrow-right&quot; iconPos&#x3D;&quot;right&quot; (click)&#x3D;&quot;CreatePatient()&quot;
+                            styleClass&#x3D;&quot;p-button-sm p-button-success&quot;&gt;
+                        &lt;/p-button&gt;
+                    &lt;/div&gt;
+                    &lt;!-- [disabled]&#x3D;&quot;!healthForm.valid&quot; --&gt;
+                &lt;/div&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+
+    &lt;/p-card&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./edit-patient.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">h3 {
+  color: #56BA6A;
+}
+
+th {
+  text-align   : center;
+  align-items  : center;
+  align-content: center !important;
+
+}
+
+.centrar {
+  width       : 90%;
+  margin-left : auto;
+  margin-right: auto;
+  margin-top  : 100px;
+}
+
+.title {
+  font-size    : 2rem;
+  font-weight  : 700;
+  margin-bottom: 0.5rem;
+  color        : #495057;
+}
+
+#deleteColumn td {
+  text-align: center;
+}
+
+
+table&gt;tbody&gt;td.col-button {
+  text-align: center;
+}
+
+.col-button {
+  width     : 10%;
+  text-align: center;
+}
+
+td.col-button {
+  text-align: center;
+}
+
+.my-center-text {
+  text-align: center;
+
+}
+
+@media screen and (max-width: 40rem) {
+  :host ::ng-deep {
+    .p-datatable {
+      &amp;.p-datatable-responsive-demo {
+
+        .p-datatable-thead&gt;tr&gt;th,
+        .p-datatable-tfoot&gt;tr&gt;td {
+          display: none !important;
+        }
+
+        .p-datatable-tbody&gt;tr&gt;td {
+          text-align: left;
+          display   : block;
+          width     : 100%;
+          float     : left;
+          clear     : left;
+          border    : 0 none;
+
+          .p-column-title {
+            padding    : .4rem;
+            min-width  : 30%;
+            display    : inline-block;
+            margin     : -.4em 1em -.4em -.4rem;
+            font-weight: bold;
+          }
+
+          &amp;:last-child {
+            border-bottom: 1px solid var(--surface-d);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.radio-group {
+  display: flex;
+  gap: 2rem; /* espacio entre Sí y No */
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* espacio entre botón y etiqueta */
+}
+
+.buttons {
+  display: flex;
+  justify-content: center; 
+  align-items: center;   
+  gap: 1rem;          
+  margin-top: 1rem;
+}
+
+.buttons-clean {
+  display: flex;
+  justify-content: right; 
+  align-items: right;   
+  gap: 1rem;          
+  margin-top: 1rem;
+}
+
+.scrollable-tab-content {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 1rem;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><router-outlet></router-outlet><div class="card centrar">    <p-card>        <div class="scrollable-content">            <h1 class="text-center title">Edición de paciente</h1>            <br />            <p-steps [model]="steps" [activeIndex]="currentStep" [readonly]="true" class="mb-4"></p-steps>            <form [formGroup]="healthForm">                <br>                <div class="buttons-clean">                    <p-button label="Limpiar Formulario" icon="pi pi-eraser" iconPos="left"                        (click)="limpiarFormulario()" styleClass="p-button-sm p-button-warning"                        [style]="{ \'margin-right\': \'.6em\' }">                    </p-button>                </div>                <!-- Sección 1: Datos Personales -->                <div *ngIf="currentStep === 0" class="p-fluid">                    <br><br>                    <div class="row">                        <div align="right" class="col-md-2">                            <label>Nombre<span class="text-danger text-lg font-weight-bold">*</span></label>                        </div>                        <div align="left" class="col-md-3">                            <input type="text" class="form-control input-size" placeholder="Nombre" id="first_name"                                name="first_name" formControlName="first_name" [class]="{                              \'is-invalid\':                                first_name.invalid &&                                (first_name.dirty ||                                  first_name.touched ||                                  first_name.errors.minlength ||                                  first_name.errors.maxlength),                              \'is-valid\': first_name.valid                            }" />                            <div *ngIf="                              first_name.invalid && (first_name.dirty || first_name.touched)                            " class="invalid-feedback">                                <div *ngIf="first_name.errors.required">                                    El campo es obligatorio                                </div>                                <div *ngIf="first_name.errors.minlength">                                    El nombre debe ser de al menos 4 caracteres                                </div>                                <div *ngIf="first_name.errors.maxlength">                                    El nombre máximo debe tener 40 caracteres                                </div>                                <div *ngIf="first_name.errors.pattern">                                    El nombre solo debe contener letras                                </div>                            </div>                        </div>                        <div align="right" class="col-md-3">                            <label>Apellido paterno<span class="text-danger text-lg font-weight-bold">*</span></label>                        </div>                        <div align="left" class="col-md-3">                            <input type="text" class="form-control input-size" placeholder="Apellido paterno"                                id="middle_name" name="middle_name" formControlName="middle_name" [class]="{                              \'is-invalid\':                                middle_name.invalid &&                                (middle_name.dirty ||                                  middle_name.touched ||                                  middle_name.errors.minlength ||                                  middle_name.errors.maxlength),                              \'is-valid\': middle_name.valid                            }" />                            <div *ngIf="                              middle_name.invalid &&                              (middle_name.dirty || middle_name.touched)                            " class="invalid-feedback">                                <div *ngIf="middle_name.errors.required">                                    El campo es obligatorio                                </div>                                <div *ngIf="middle_name.errors.minlength">                                    El apellido paterno debe ser de al menos 4 caracteres                                </div>                                <div *ngIf="middle_name.errors.maxlength">                                    El apellido paterno máximo debe tener 40 caracteres                                </div>                                <div *ngIf="middle_name.errors.pattern">                                    El apellido paterno solo debe contener letras                                </div>                            </div>                        </div>                    </div>                    <br />                    <div class="row">                        <div align="right" class="col-md-2">                            <label>Apellido materno<span class="text-danger text-lg font-weight-bold">*</span></label>                        </div>                        <div align="left" class="col-md-3">                            <input type="text" class="form-control input-size" placeholder="Apellido materno"                                id="last_name" name="last_name" formControlName="last_name" [class]="{                              \'is-invalid\':                                last_name.invalid &&                                (last_name.dirty ||                                  last_name.touched ||                                  last_name.errors.minlength ||                                  last_name.errors.maxlength),                              \'is-valid\': last_name.valid                            }" />                            <div *ngIf="                              last_name.invalid && (last_name.dirty || last_name.touched)                            " class="invalid-feedback">                                <div *ngIf="last_name.errors.required">                                    El campo es obligatorio                                </div>                                <div *ngIf="last_name.errors.minlength">                                    El apellido materno debe ser de al menos 4 caracteres                                </div>                                <div *ngIf="last_name.errors.maxlength">                                    El apellido materno máximo debe tener 40 caracteres                                </div>                                <div *ngIf="last_name.errors.pattern">                                    El apellido materno solo debe contener letras                                </div>                            </div>                        </div>                        <div align="right" class="col-md-3">                            <label>Fecha de nacimiento<span                                    class="text-danger text-lg font-weight-bold">*</span></label>                        </div>                        <div align="left" class="col-md-3">                            <p-calendar id="date_of_birth" formControlName="date_of_birth" [dateFormat]="\'dd/mm/yy\'"                                [showIcon]="true"></p-calendar>                        </div>                    </div>                    <br>                    <div class="row">                        <div align="right" class="col-md-2">                            <label>Tutor<span class="text-danger text-lg font-weight-bold">*</span></label>                        </div>                        <div align="left" class="col-md-3">                            <select2 [data]="dataTutor" [templates]="template1" id="tutor_id" formControlName="tutor_id"                                style="height: 100px !important" placeholder="Selecciona el tutor" [class]="{                                  \'is-invalid\':                                  tutor_id.invalid && (tutor_id.dirty || tutor_id.touched),                                  \'is-valid\': tutor_id.valid                                }">                                <ng-template #template1 let-data="data">{{                                    data?.name                                    }}</ng-template>                            </select2>                            <div *ngIf="tutor_id.invalid && (tutor_id.dirty || tutor_id.touched)"                                class="invalid-feedback">                                <div *ngIf="tutor_id.errors.required">El campo es obligatorio</div>                            </div>                        </div>                        <div align="right" class="col-md-3">                            <label>Médico Asignado<span class="text-danger text-lg font-weight-bold">*</span></label>                        </div>                        <div align="left" class="col-md-3">                            <select2 [data]="dataDoctor" [templates]="template" id="doctor_id"                                formControlName="doctor_id" style="height: 100px !important"                                placeholder="Selecciona el médico asignado" [class]="{                                \'is-invalid\':                                doctor_id.invalid && (doctor_id.dirty || doctor_id.touched),                                \'is-valid\': doctor_id.valid                              }">                                <ng-template #template let-data="data">{{                                    data?.name                                    }}</ng-template>                            </select2>                            <div *ngIf="doctor_id.invalid && (doctor_id.dirty || doctor_id.touched)"                                class="invalid-feedback">                                <div *ngIf="doctor_id.errors.required">El campo es obligatorio</div>                            </div>                        </div>                    </div>                    <br>                    <br>                    <div class="buttons">                        <p-button [routerLink]="[\'/patient\']" label="Cancelar" icon="pi pi-times"                            styleClass="p-button-sm p-button-danger" [style]="{ \'margin-right\': \'.6em\' }"> </p-button>                        <p-button label="Guardar avance" icon="pi pi-save" iconPos="left" (click)="guardarAvance()"                            styleClass="p-button-sm p-button-warning" [style]="{ \'margin-right\': \'.6em\' }">                        </p-button>                        <p-button label="Siguiente" icon="pi pi-arrow-right" iconPos="right" (click)="nextStep()"                            styleClass="p-button-sm p-button-primary">                        </p-button>                    </div>                </div>                <!-- Sección 2: Salud y Síntomas -->                <div *ngIf="currentStep === 1" class="p-fluid">                    <br><br>                    <div class="scrollable-tab-content">                        <!-- Estado General -->                        <div class="field mb-4">                            <label>¿Te has sentido bien en la última semana?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="estadoGeneral" value="1" formControlName="estadoGeneral"                                        inputId="estadoGeneralSi"></p-radioButton>                                    <label for="estadoGeneralSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="estadoGeneral" value="0" formControlName="estadoGeneral"                                        inputId="estadoGeneralNo"></p-radioButton>                                    <label for="estadoGeneralNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Has tenido cambios en tu nivel de energía?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="energia" value="1" formControlName="energia"                                        inputId="energiaSi"></p-radioButton>                                    <label for="energiaSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="energia" value="0" formControlName="energia"                                        inputId="energiaNo"></p-radioButton>                                    <label for="energiaNo">No</label>                                </div>                            </div>                        </div>                        <!-- Síntomas -->                        <div class="field mb-4">                            <label>¿Has tenido fiebre en los últimos días?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="fiebre" value="1" formControlName="fiebre"                                        inputId="fiebreSi"></p-radioButton>                                    <label for="fiebreSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="fiebre" value="0" formControlName="fiebre"                                        inputId="fiebreNo"></p-radioButton>                                    <label for="fiebreNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Has sentido dolor en el pecho recientemente?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="dolorPecho" value="1" formControlName="dolorPecho"                                        inputId="dolorPechoSi"></p-radioButton>                                    <label for="dolorPechoSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="dolorPecho" value="0" formControlName="dolorPecho"                                        inputId="dolorPechoNo"></p-radioButton>                                    <label for="dolorPechoNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Has experimentado mareos o desmayos en la última semana?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="mareos" value="1" formControlName="mareos"                                        inputId="mareosSi"></p-radioButton>                                    <label for="mareosSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="mareos" value="0" formControlName="mareos"                                        inputId="mareosNo"></p-radioButton>                                    <label for="mareosNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Has notado que tu temperatura ha estado más alta de lo normal?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="tempAlta" value="1" formControlName="tempAlta"                                        inputId="tempAltaSi"></p-radioButton>                                    <label for="tempAltaSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="tempAlta" value="0" formControlName="tempAlta"                                        inputId="tempAltaNo"></p-radioButton>                                    <label for="tempAltaNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Has tenido sudores nocturnos?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="sudores" value="1" formControlName="sudores"                                        inputId="sudoresSi"></p-radioButton>                                    <label for="sudoresSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="sudores" value="0" formControlName="sudores"                                        inputId="sudoresNo"></p-radioButton>                                    <label for="sudoresNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Has sentido palpitaciones en el corazón?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="palpitaciones" value="1" formControlName="palpitaciones"                                        inputId="palpitacionesSi"></p-radioButton>                                    <label for="palpitacionesSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="palpitaciones" value="0" formControlName="palpitaciones"                                        inputId="palpitacionesNo"></p-radioButton>                                    <label for="palpitacionesNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Tu corazón late más rápido de lo habitual en reposo?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="taquicardiaReposo" value="1"                                        formControlName="taquicardiaReposo" inputId="taquicardiaSi"></p-radioButton>                                    <label for="taquicardiaSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="taquicardiaReposo" value="0"                                        formControlName="taquicardiaReposo" inputId="taquicardiaNo"></p-radioButton>                                    <label for="taquicardiaNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Has tenido alguna caída en el último mes?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="caidas" value="1" formControlName="caidas"                                        inputId="caidasSi"></p-radioButton>                                    <label for="caidasSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="caidas" value="0" formControlName="caidas"                                        inputId="caidasNo"></p-radioButton>                                    <label for="caidasNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Te sientes inestable al caminar?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="inestabilidad" value="1" formControlName="inestabilidad"                                        inputId="inestabilidadSi"></p-radioButton>                                    <label for="inestabilidadSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="inestabilidad" value="0" formControlName="inestabilidad"                                        inputId="inestabilidadNo"></p-radioButton>                                    <label for="inestabilidadNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Has experimentado cambios en tu salud al cambiar de lugar de residencia?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="cambioLugar" value="1" formControlName="cambioLugar"                                        inputId="cambioLugarSi"></p-radioButton>                                    <label for="cambioLugarSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="cambioLugar" value="0" formControlName="cambioLugar"                                        inputId="cambioLugarNo"></p-radioButton>                                    <label for="cambioLugarNo">No</label>                                </div>                            </div>                        </div>                        <!-- Saturación de Oxígeno -->                        <div class="field mb-4">                            <label>¿Has tenido dificultad para respirar al hacer ejercicio?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="dificultadEjercicio" value="1"                                        formControlName="dificultadEjercicio"                                        inputId="dificultadEjercicioSi"></p-radioButton>                                    <label for="dificultadEjercicioSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="dificultadEjercicio" value="0"                                        formControlName="dificultadEjercicio"                                        inputId="dificultadEjercicioNo"></p-radioButton>                                    <label for="dificultadEjercicioNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Te sientes corto de aliento al realizar actividades cotidianas?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="disneaActividades" value="1"                                        formControlName="disneaActividades"                                        inputId="disneaActividadesSi"></p-radioButton>                                    <label for="disneaActividadesSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="disneaActividades" value="0"                                        formControlName="disneaActividades"                                        inputId="disneaActividadesNo"></p-radioButton>                                    <label for="disneaActividadesNo">No</label>                                </div>                            </div>                        </div>                    </div>                    <div class="buttons">                        <p-button label="Atrás" icon="pi pi-arrow-left" iconPos="left" (click)="prevStep()"                            styleClass="p-button-sm p-button-danger" [style]="{ \'margin-right\': \'.6em\' }">                        </p-button>                        <p-button label="Guardar avance" icon="pi pi-save" iconPos="left" (click)="guardarAvance()"                            styleClass="p-button-sm p-button-warning" [style]="{ \'margin-right\': \'.6em\' }">                        </p-button>                        <p-button label="Siguiente" icon="pi pi-arrow-right" iconPos="right" (click)="nextStep()"                            styleClass="p-button-sm p-button-primary">                        </p-button>                    </div>                </div>                <!-- Sección 3: Hábitos y Antecedentes -->                <div *ngIf="currentStep === 2" class="p-fluid">                    <br><br>                    <div class="scrollable-tab-content">                        <div class="field mb-4">                            <label>¿Consumes frutas y verduras a diario?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="frutasVerduras" value="1" formControlName="frutasVerduras"                                        inputId="frutasVerdurasSi"></p-radioButton>                                    <label for="frutasVerdurasSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="frutasVerduras" value="0" formControlName="frutasVerduras"                                        inputId="frutasVerdurasNo"></p-radioButton>                                    <label for="frutasVerdurasNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Bebes suficiente agua diariamente?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="agua" value="1" formControlName="agua"                                        inputId="aguaSi"></p-radioButton>                                    <label for="aguaSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="agua" value="0" formControlName="agua"                                        inputId="aguaNo"></p-radioButton>                                    <label for="aguaNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Realizas actividad física al menos 3 veces por semana?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="actividadFisica" value="1" formControlName="actividadFisica"                                        inputId="ejercicioSi"></p-radioButton>                                    <label for="ejercicioSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="actividadFisica" value="0" formControlName="actividadFisica"                                        inputId="ejercicioNo"></p-radioButton>                                    <label for="ejercicioNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Duermes al menos 7 horas por noche?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="horasSueño" value="1" formControlName="horasSueño"                                        inputId="duerme7hSi"></p-radioButton>                                    <label for="duerme7hSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="horasSueño" value="0" formControlName="horasSueño"                                        inputId="duerme7hNo"></p-radioButton>                                    <label for="duerme7hNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Te despiertas durante la noche con frecuencia?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="despertarNocturno" value="1"                                        formControlName="despertarNocturno" inputId="despiertaNocheSi"></p-radioButton>                                    <label for="despiertaNocheSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="despertarNocturno" value="0"                                        formControlName="despertarNocturno" inputId="despiertaNocheNo"></p-radioButton>                                    <label for="despiertaNocheNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Tienes alguna condición médica preexistente?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="historiaMedica" value="1" formControlName="historiaMedica"                                        inputId="condicionMedicaSi"></p-radioButton>                                    <label for="condicionMedicaSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="historiaMedica" value="0" formControlName="historiaMedica"                                        inputId="condicionMedicaNo"></p-radioButton>                                    <label for="condicionMedicaNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Estás tomando medicamentos actualmente?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="medicamentos" value="1" formControlName="medicamentos"                                        inputId="medicamentosSi"></p-radioButton>                                    <label for="medicamentosSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="medicamentos" value="0" formControlName="medicamentos"                                        inputId="medicamentosNo"></p-radioButton>                                    <label for="medicamentosNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Hay antecedentes familiares de enfermedades cardíacas?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="antecedentesCardiacos" value="1"                                        formControlName="antecedentesCardiacos" inputId="cardiacasSi"></p-radioButton>                                    <label for="cardiacasSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="antecedentesCardiacos" value="0"                                        formControlName="antecedentesCardiacos" inputId="cardiacasNo"></p-radioButton>                                    <label for="cardiacasNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Hay antecedentes familiares de enfermedades respiratorias?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="antecedentesRespiratorios" value="1"                                        formControlName="antecedentesRespiratorios"                                        inputId="respiratoriasSi"></p-radioButton>                                    <label for="respiratoriasSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="antecedentesRespiratorios" value="0"                                        formControlName="antecedentesRespiratorios"                                        inputId="respiratoriasNo"></p-radioButton>                                    <label for="respiratoriasNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Sufre de obesidad?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="obesidad" value="1" formControlName="obesidad"                                        inputId="obesidadSi"></p-radioButton>                                    <label for="obesidadSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="obesidad" value="0" formControlName="obesidad"                                        inputId="obesidadNo"></p-radioButton>                                    <label for="obesidadNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Tiene familiares cercanos que padezcan diabetes mellitus?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="diabetesFamilia" value="1" formControlName="diabetesFamilia"                                        inputId="diabetesFamiliaSi"></p-radioButton>                                    <label for="diabetesFamiliaSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="diabetesFamilia" value="0" formControlName="diabetesFamilia"                                        inputId="diabetesFamiliaNo"></p-radioButton>                                    <label for="diabetesFamiliaNo">No</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="diabetesFamilia" value="No se sabe"                                        formControlName="diabetesFamilia" inputId="diabetesFamiliaNs"></p-radioButton>                                    <label for="diabetesFamiliaNs">No se sabe</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Padece diabetes mellitus?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="diabetes" value="1" formControlName="diabetes"                                        inputId="diabetesPropiaSi"></p-radioButton>                                    <label for="diabetesPropiaSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="diabetes" value="0" formControlName="diabetes"                                        inputId="diabetesPropiaNo"></p-radioButton>                                    <label for="diabetesPropiaNo">No</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="diabetes" value="No se sabe" formControlName="diabetes"                                        inputId="diabetesPropiaNs"></p-radioButton>                                    <label for="diabetesPropiaNs">No se sabe</label>                                </div>                            </div>                        </div>                        <div class="field mb-4">                            <label>¿Tiene alguna enfermedad crónica?</label>                            <div class="radio-group">                                <div class="radio-option">                                    <p-radioButton name="enfermedadCronica" value="1"                                        formControlName="enfermedadCronica"                                        inputId="enfermedadCronicaSi"></p-radioButton>                                    <label for="enfermedadCronicaSi">Sí</label>                                </div>                                <div class="radio-option">                                    <p-radioButton name="enfermedadCronica" value="0"                                        formControlName="enfermedadCronica"                                        inputId="enfermedadCronicaNo"></p-radioButton>                                    <label for="enfermedadCronicaNo">No</label>                                </div>                            </div>                        </div>                        <div class="field mb-4" *ngIf="healthForm.get(\'enfermedadCronica\')?.value === \'1\'">                            <label for="cualEnfermedad">¿Cuál?</label>                            <input id="cualEnfermedad" type="text" pInputText formControlName="cualEnfermedad"                                placeholder="Especifica la enfermedad" />                        </div>                    </div>                    <div class="buttons">                        <p-button label="Atrás" icon="pi pi-arrow-left" iconPos="left" (click)="prevStep()"                            styleClass="p-button-sm p-button-danger" [style]="{ \'margin-right\': \'.6em\' }">                        </p-button>                        <p-button label="Enviar" icon="pi pi-arrow-right" iconPos="right" (click)="CreatePatient()"                            styleClass="p-button-sm p-button-success">                        </p-button>                    </div>                    <!-- [disabled]="!healthForm.valid" -->                </div>            </form>        </div>    </p-card></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DetailPatientComponent', 'selector': 'app-detail-patient'},{'name': 'DetailPermissionComponent', 'selector': 'app-detail-permission'},{'name': 'DetailRoleComponent', 'selector': 'app-detail-role'},{'name': 'DetailUserComponent', 'selector': 'app-detail-user'},{'name': 'EditPatientComponent', 'selector': 'app-edit-patient'},{'name': 'EditPermissionComponent', 'selector': 'app-edit-permission'},{'name': 'EditRoleComponent', 'selector': 'app-edit-role'},{'name': 'EditUserComponent', 'selector': 'app-edit-user'},{'name': 'FallDetectorPatientComponent', 'selector': 'app-fall-detector-patient'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeartRatePatientComponent', 'selector': 'app-heart-rate-patient'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LocationPatientComponent', 'selector': 'app-location-patient'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ManagePermissionsComponent', 'selector': 'app-manage-permissions'},{'name': 'ManageRolesComponent', 'selector': 'app-manage-roles'},{'name': 'ManageUsersComponent', 'selector': 'app-manage-users'},{'name': 'ManagmentComponent', 'selector': 'app-managment'},{'name': 'MantainanceComponent', 'selector': 'app-mantainance'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'NewPatientComponent', 'selector': 'app-new-patient'},{'name': 'NewPermissionComponent', 'selector': 'app-new-permission'},{'name': 'NewRoleComponent', 'selector': 'app-new-role'},{'name': 'NewUserComponent', 'selector': 'app-new-user'},{'name': 'OxygenSaturationPatientComponent', 'selector': 'app-oxygen-saturation-patient'},{'name': 'PatientComponent', 'selector': 'app-patient'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'ReviewPatientComponent', 'selector': 'app-review-patient'},{'name': 'ScrollToTopComponent', 'selector': 'app-scroll-to-top'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TemperaturePatientComponent', 'selector': 'app-temperature-patient'},{'name': 'UserDetailComponent', 'selector': 'app-user-detail'},{'name': 'UserUpdatePasswordComponent', 'selector': 'app-user-update-password'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EditPatientComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EditPatientComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

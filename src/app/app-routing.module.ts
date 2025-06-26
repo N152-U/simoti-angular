@@ -14,7 +14,7 @@ import { AuthGuard } from './guards/auth.guard';
 const managmentModule = () => import('./components/pages/managment/managment.module').then(x => x.ManagmentModule);
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: 'patient' },
   { path: 'login', component: LoginComponent },
   { path: 'managment', loadChildren: managmentModule, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },

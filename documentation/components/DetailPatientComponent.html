@@ -1,0 +1,1350 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>simoti-angular documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">simoti-angular documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DetailPatientComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/pages/patient/detail-patient/detail-patient.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-detail-patient</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./detail-patient.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./detail-patient.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#formBuilder" >formBuilder</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hash" >hash</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#patient" >patient</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(ps: <a href="../injectables/PatientsService.html" target="_self">PatientsService</a>, route: ActivatedRoute, formBuilder: FormBuilder)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/pages/patient/detail-patient/detail-patient.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>ps</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PatientsService.html" target="_self" >PatientsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="23"
+                                    class="link-to-prism">src/app/components/pages/patient/detail-patient/detail-patient.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formBuilder"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>formBuilder</b></span>
+                        <a href="#formBuilder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormBuilder</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/pages/patient/detail-patient/detail-patient.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hash"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>hash</b></span>
+                        <a href="#hash"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/pages/patient/detail-patient/detail-patient.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patient"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>patient</b></span>
+                        <a href="#patient"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/pages/patient/detail-patient/detail-patient.component.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { PatientsService } from &#x27;@app/services/managment/patients/patients.service&#x27;;
+
+@Component({
+  selector: &#x27;app-detail-patient&#x27;,
+  templateUrl: &#x27;./detail-patient.component.html&#x27;,
+  styleUrls: [&#x27;./detail-patient.component.scss&#x27;]
+})
+export class DetailPatientComponent implements OnInit{
+
+  public patient: any &#x3D; {}
+  public hash: string &#x3D; &#x27;&#x27;;
+  
+  constructor(
+    private ps: PatientsService,
+    private route: ActivatedRoute,
+    public formBuilder: FormBuilder
+  ){}
+
+
+  ngOnInit(): void {
+    this.hash &#x3D; this.route.snapshot.params[&quot;hash&quot;];
+
+    this.ps.GetPatientByHash(this.hash).subscribe((res) &#x3D;&gt; {
+      this.patient &#x3D; res;
+    });
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;router-outlet&gt;&lt;/router-outlet&gt;
+
+&lt;div class&#x3D;&quot;card centrar&quot;&gt;
+    &lt;br&gt;
+    &lt;h4 class&#x3D;&quot;mb-2 text-primary text-center title&quot;&gt;Expediente del paciente - {{patient.firstName}}&lt;/h4&gt;
+    &lt;br&gt;
+    &lt;p-toolbar styleClass&#x3D;&quot;p-mb-4&quot;&gt;
+        &lt;ng-template pTemplate&#x3D;&quot;left&quot;&gt;
+            &lt;h5&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; Seleccione el indicador a consultar:&lt;/h5&gt;
+        &lt;/ng-template&gt;
+  
+        &lt;ng-template pTemplate&#x3D;&quot;right&quot;&gt;
+            &lt;p-button [routerLink]&#x3D;&quot;[&#x27;/patient&#x27;]&quot; label&#x3D;&quot;Regresar&quot; icon&#x3D;&quot;pi pi-arrow-left&quot;
+            styleClass&#x3D;&quot;p-button-sm p-button-danger&quot; [style]&#x3D;&quot;{ &#x27;margin-right&#x27;: &#x27;.6em&#x27; }&quot;&gt; &lt;/p-button&gt;
+          &lt;/ng-template&gt;
+      &lt;/p-toolbar&gt;
+    &lt;br&gt;
+    &lt;div class&#x3D;&quot;scrollable-tab-content&quot;&gt;
+
+    
+    &lt;div class&#x3D;&quot;cards-list&quot; style&#x3D;&quot;margin-left: 80px;&quot;&gt;
+        &lt;div class&#x3D;&quot;wrapper&quot;&gt;
+        
+            &lt;div class&#x3D;&quot;clash-card barbarian&quot; [routerLink]&#x3D;&quot;[&#x27;/patient/detail-patient/temperature&#x27;,hash]&quot;&gt;
+                &lt;div class&#x3D;&quot;clash-card__image clash-card__image--barbarian&quot;&gt;
+                    &lt;img src&#x3D;&quot;assets/images/temperature.png&quot;
+                        alt&#x3D;&quot;barbarian&quot; /&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__level clash-card__level--barbarian&quot;&gt;Indicador&lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__unit-name&quot;&gt;Temperatura&lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__unit-description&quot;&gt;
+                    En este módulo podrás darle seguimiento a la temperatura corporal de la persona,
+                    ayudando a identificar cambios importantes en su salud.
+                &lt;/div&gt;
+
+                &lt;!-- &lt;div class&#x3D;&quot;clash-card__unit-stats clash-card__unit-stats--barbarian clearfix&quot;&gt;
+                    &lt;div class&#x3D;&quot;one-third&quot;&gt;
+                        &lt;div class&#x3D;&quot;stat&quot;&gt;26&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;stat-value&quot;&gt;Mínima&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class&#x3D;&quot;one-third&quot;&gt;
+                        &lt;div class&#x3D;&quot;stat&quot;&gt;28&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;stat-value&quot;&gt;Máxima&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class&#x3D;&quot;one-third no-border&quot;&gt;
+                        &lt;div class&#x3D;&quot;stat&quot;&gt;27&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;stat-value&quot;&gt;Promedio&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt; --&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;wrapper&quot;&gt;
+
+            &lt;div class&#x3D;&quot;clash-card archer&quot; [routerLink]&#x3D;&quot;[&#x27;/patient/detail-patient/heart-rate&#x27;,hash]&quot;&gt;
+
+                &lt;div class&#x3D;&quot;clash-card__image clash-card__image--archer&quot;&gt;
+                    &lt;img src&#x3D;&quot;assets/images/heart-rate.png&quot; alt&#x3D;&quot;heart-rate&quot; /&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__level clash-card__level--archer&quot;&gt;Indicador&lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__unit-name&quot;&gt;Frecuencia Cardiaca&lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__unit-description&quot;&gt;
+                    Este módulo permite monitorear los latidos por minuto, ayudando a evaluar el estado del corazón y la
+                    condición física de la persona.
+                &lt;/div&gt;
+                &lt;!-- &lt;div class&#x3D;&quot;clash-card__unit-stats clash-card__unit-stats--archer clearfix&quot;&gt;
+                    &lt;div class&#x3D;&quot;one-third&quot;&gt;
+                        &lt;div class&#x3D;&quot;stat&quot;&gt;25&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;stat-value&quot;&gt;Mínima&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;one-third&quot;&gt;
+                        &lt;div class&#x3D;&quot;stat&quot;&gt;24&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;stat-value&quot;&gt;Máxima&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;one-third no-border&quot;&gt;
+                        &lt;div class&#x3D;&quot;stat&quot;&gt;300&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;stat-value&quot;&gt;Promedio&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt; --&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;wrapper&quot;&gt;
+
+            &lt;div class&#x3D;&quot;clash-card giant&quot; [routerLink]&#x3D;&quot;[&#x27;/patient/detail-patient/fall-detector&#x27;,hash]&quot;&gt;
+                &lt;div class&#x3D;&quot;clash-card__image clash-card__image--giant&quot;&gt;
+                    &lt;img src&#x3D;&quot;assets/images/fall-detector.png&quot;
+                        alt&#x3D;&quot;fall-detector&quot; /&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__level clash-card__level--giant&quot;&gt;Indicador&lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__unit-name&quot;&gt;Detección de Caídas&lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__unit-description&quot;&gt;
+                    En este módulo se muestran eventos de posibles caídas, permitiendo una respuesta rápida y mejorando
+                    la seguridad de la persona.
+                &lt;/div&gt;
+
+                &lt;!-- &lt;div class&#x3D;&quot;clash-card__unit-stats clash-card__unit-stats--giant clearfix&quot;&gt;
+                    &lt;div class&#x3D;&quot;one-third no-border&quot;&gt;
+                        &lt;div class&#x3D;&quot;stat&quot;&gt;&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;stat-value&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;one-third no-border&quot;&gt;
+                        &lt;div class&#x3D;&quot;stat&quot;&gt;2&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;stat-value&quot;&gt;Registros&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt; --&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;wrapper&quot;&gt;
+
+            &lt;div class&#x3D;&quot;clash-card goblin&quot; [routerLink]&#x3D;&quot;[&#x27;/patient/detail-patient/location&#x27;,hash]&quot;&gt;
+
+                &lt;div class&#x3D;&quot;clash-card__image clash-card__image--goblin&quot;&gt;
+                    &lt;img src&#x3D;&quot;assets/images/location-icon.png&quot; alt&#x3D;&quot;location-icon&quot; /&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__level clash-card__level--goblin&quot;&gt;Indicador&lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__unit-name&quot;&gt;Geolocalización&lt;/div&gt;
+                &lt;div class&#x3D;&quot;clash-card__unit-description&quot;&gt;
+                    Este módulo permite conocer y hacer seguimiento a la ubicación en tiempo real de la persona,
+                    brindando mayor control y seguridad.
+                &lt;/div&gt;
+
+                &lt;!-- &lt;div class&#x3D;&quot;clash-card__unit-stats clash-card__unit-stats--goblin clearfix&quot;&gt;
+                    &lt;div class&#x3D;&quot;one-third no-border&quot;&gt;
+                        &lt;div class&#x3D;&quot;stat&quot;&gt;&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;stat-value&quot;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;one-third no-border&quot;&gt;
+                        &lt;div class&#x3D;&quot;stat&quot;&gt;2&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;stat-value&quot;&gt;Registros&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt; --&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;wrapper&quot;&gt;
+
+            &lt;div class&#x3D;&quot;clash-card wizard&quot; [routerLink]&#x3D;&quot;[&#x27;/patient/detail-patient/oxygen-saturation&#x27;,hash]&quot;&gt;
+
+                &lt;div class&#x3D;&quot;clash-card__image clash-card__image--wizard&quot;&gt;
+
+                    &lt;img src&#x3D;&quot;assets/images/oxygen-saturation.png&quot; alt&#x3D;&quot;wizard&quot; /&gt;
+
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;clash-card__level clash-card__level--wizard&quot;&gt;Indicador&lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;clash-card__unit-name&quot;&gt;Oxígeno&lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;clash-card__unit-description&quot;&gt;
+
+                    Este módulo muestra el nivel de oxígeno en la sangre, un dato clave para evaluar la función
+                    respiratoria y el estado general de salud.
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./detail-patient.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import url(https://fonts.googleapis.com/css?family&#x3D;Lato:400,700,900);
+
+
+
+$border-radius-size: 14px;
+
+$barbarian: #4955d3;
+
+$archer: #EE5487;
+
+$giant: #F6901A;
+
+$goblin: #82BB30;
+
+$wizard: #8634d7;
+
+
+
+*,
+*:before,
+*:after {
+
+    box-sizing: border-box;
+
+}
+
+
+
+body {
+
+    background: linear-gradient(to bottom, rgba(140, 122, 122, 1) 0%, rgba(175, 135, 124, 1) 65%, rgba(175, 135, 124, 1) 100%) fixed;
+
+    background: url(&#x27;https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/coc-background.jpg&#x27;) no-repeat center center fixed;
+
+    background-size: cover;
+
+    font: 14px/20px &quot;Lato&quot;, Arial, sans-serif;
+
+    color: #9E9E9E;
+
+    margin-top: 30px;
+
+}
+
+
+
+.cards-list {
+
+    z-index: 0;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+
+
+.slide-container {
+
+    margin: auto;
+
+    width: 600px;
+
+    text-align: center;
+
+}
+
+
+
+.wrapper {
+
+    padding-top: 40px;
+
+    padding-bottom: 40px;
+
+    cursor: pointer;
+
+    &amp;:focus {
+
+        outline: 0;
+
+    }
+
+}
+
+
+
+
+
+
+
+.clash-card {
+
+    background: white;
+
+    width: 300px;
+
+    display: inline-block;
+
+    margin-right: 10px!important;
+    margin: auto;
+
+    border-radius: $border-radius-size + 5;
+
+    position: relative;
+
+    text-align: center;
+
+    box-shadow: -1px 15px 30px -12px black;
+
+    z-index: 9999;
+
+}
+
+
+
+.clash-card__image {
+
+    position: relative;
+
+    height: 230px;
+
+    margin-bottom: 35px;
+
+    border-top-left-radius: $border-radius-size;
+
+    border-top-right-radius: $border-radius-size;
+
+}
+
+
+
+.clash-card__image--barbarian {
+
+    background: url(&#x27;https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/barbarian-bg.jpg&#x27;);
+
+    img {
+
+        width: 180px;
+        position: absolute;
+        left: 60px;
+        top:15px;
+
+    }
+
+}
+
+
+
+.clash-card__image--archer {
+
+    background: url(&#x27;https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/archer-bg.jpg&#x27;);
+    img {
+
+        width: 180px;
+        position: absolute;
+        left: 60px;
+        top:15px;
+
+    }
+
+}
+
+
+
+.clash-card__image--giant {
+
+    background: url(&#x27;https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/giant-bg.jpg&#x27;);
+
+    img {
+
+        width: 180px;
+        position: absolute;
+        left: 60px;
+
+    }
+
+}
+
+
+
+.clash-card__image--goblin {
+
+    background: url(&#x27;https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/goblin-bg.jpg&#x27;);
+
+    img {
+
+        width: 180px;
+        position: absolute;
+        left: 70px;
+
+    }
+
+}
+
+
+
+.clash-card__image--wizard {
+
+    background: url(&#x27;https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard-bg.jpg&#x27;);
+
+    img {
+        width: 180px;
+        position: absolute;
+        top: 20px;
+        left: 60px;
+    }
+
+}
+
+
+
+.clash-card__level {
+
+    text-transform: uppercase;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 3px;
+
+}
+
+
+
+.clash-card__level--barbarian {
+
+    color: $barbarian;
+
+}
+
+
+
+.clash-card__level--archer {
+
+    color: $archer;
+
+}
+
+
+
+.clash-card__level--giant {
+
+    color: $giant;
+
+}
+
+
+
+.clash-card__level--goblin {
+
+    color: $goblin;
+
+}
+
+
+
+.clash-card__level--wizard {
+
+    color: $wizard;
+
+}
+
+
+
+.clash-card__unit-name {
+
+    font-size: 26px;
+
+    color: black;
+
+    font-weight: 900;
+
+    margin-bottom: 5px;
+
+}
+
+
+
+.clash-card__unit-description {
+
+    padding: 20px;
+
+    margin-bottom: 10px;
+
+}
+
+
+
+.clash-card__unit-stats--barbarian {
+
+    background: $barbarian;
+
+
+
+    .one-third {
+
+        border-right: 1px solid #362fbd;
+
+    }
+
+}
+
+
+
+.clash-card__unit-stats--archer {
+
+    background: $archer;
+
+
+
+    .one-third {
+
+        border-right: 1px solid #D04976;
+
+    }
+
+}
+
+
+
+.clash-card__unit-stats--giant {
+
+    background: $giant;
+
+
+
+    .one-third {
+
+        border-right: 1px solid darken($giant, 8%);
+
+    }
+
+}
+
+
+
+.clash-card__unit-stats--goblin {
+
+    background: $goblin;
+
+
+
+    .one-third {
+
+        border-right: 1px solid darken($goblin, 6%);
+
+    }
+
+}
+
+
+
+.clash-card__unit-stats--wizard {
+
+    background: $wizard;
+
+
+
+    .one-third {
+
+        border-right: 1px solid darken($wizard, 6%);
+
+    }
+
+}
+
+
+
+.clash-card__unit-stats {
+
+
+
+    color: white;
+
+    font-weight: 700;
+
+    border-bottom-left-radius: $border-radius-size;
+
+    border-bottom-right-radius: $border-radius-size;
+
+
+
+    .one-third {
+
+        width: 33%;
+
+        float: left;
+
+        padding: 20px 15px;
+
+    }
+
+
+
+    sup {
+
+        position: absolute;
+
+        bottom: 4px;
+
+        font-size: 45%;
+
+        margin-left: 2px;
+
+    }
+
+
+
+    .stat {
+
+        position: relative;
+
+        font-size: 24px;
+
+        margin-bottom: 10px;
+
+    }
+
+
+
+    .stat-value {
+
+        text-transform: uppercase;
+
+        font-weight: 400;
+
+        font-size: 12px;
+
+    }
+
+
+
+    .no-border {
+
+        border-right: none;
+
+    }
+
+}
+
+
+
+.clearfix:after {
+
+    visibility: hidden;
+
+    display: block;
+
+    font-size: 0;
+
+    content: &quot; &quot;;
+
+    clear: both;
+
+    height: 0;
+
+}
+
+
+
+.slick-prev {
+
+    left: 100px;
+
+    z-index: 999;
+
+}
+
+
+
+.slick-next {
+
+    right: 100px;
+
+    z-index: 999;
+
+}
+
+
+
+//componente
+h3 {
+    color: #56BA6A;
+}
+
+th {
+    text-align: center;
+    align-items: center;
+    align-content: center !important;
+
+}
+
+.centrar {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+#deleteColumn td {
+    text-align: center;
+}
+
+
+table&gt;tbody&gt;td.col-button {
+    text-align: center;
+}
+
+.col-button {
+    width: 10%;
+    text-align: center;
+}
+
+td.col-button {
+    text-align: center;
+}
+
+.my-center-text {
+    text-align: center;
+
+}
+
+@media screen and (max-width: 40rem) {
+    :host ::ng-deep {
+        .p-datatable {
+            &amp;.p-datatable-responsive-demo {
+
+                .p-datatable-thead&gt;tr&gt;th,
+                .p-datatable-tfoot&gt;tr&gt;td {
+                    display: none !important;
+                }
+
+                .p-datatable-tbody&gt;tr&gt;td {
+                    text-align: left;
+                    display: block;
+                    width: 100%;
+                    float: left;
+                    clear: left;
+                    border: 0 none;
+
+                    .p-column-title {
+                        padding: .4rem;
+                        min-width: 30%;
+                        display: inline-block;
+                        margin: -.4em 1em -.4em -.4rem;
+                        font-weight: bold;
+                    }
+
+                    &amp;:last-child {
+                        border-bottom: 1px solid var(--surface-d);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.scrollable-tab-content {
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 1rem;
+  }</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><router-outlet></router-outlet><div class="card centrar">    <br>    <h4 class="mb-2 text-primary text-center title">Expediente del paciente - {{patient.firstName}}</h4>    <br>    <p-toolbar styleClass="p-mb-4">        <ng-template pTemplate="left">            <h5>&nbsp;&nbsp;&nbsp; Seleccione el indicador a consultar:</h5>        </ng-template>          <ng-template pTemplate="right">            <p-button [routerLink]="[\'/patient\']" label="Regresar" icon="pi pi-arrow-left"            styleClass="p-button-sm p-button-danger" [style]="{ \'margin-right\': \'.6em\' }"> </p-button>          </ng-template>      </p-toolbar>    <br>    <div class="scrollable-tab-content">        <div class="cards-list" style="margin-left: 80px;">        <div class="wrapper">                    <div class="clash-card barbarian" [routerLink]="[\'/patient/detail-patient/temperature\',hash]">                <div class="clash-card__image clash-card__image--barbarian">                    <img src="assets/images/temperature.png"                        alt="barbarian" />                </div>                <div class="clash-card__level clash-card__level--barbarian">Indicador</div>                <div class="clash-card__unit-name">Temperatura</div>                <div class="clash-card__unit-description">                    En este módulo podrás darle seguimiento a la temperatura corporal de la persona,                    ayudando a identificar cambios importantes en su salud.                </div>                <!-- <div class="clash-card__unit-stats clash-card__unit-stats--barbarian clearfix">                    <div class="one-third">                        <div class="stat">26</div>                        <div class="stat-value">Mínima</div>                    </div>                    <div class="one-third">                        <div class="stat">28</div>                        <div class="stat-value">Máxima</div>                    </div>                    <div class="one-third no-border">                        <div class="stat">27</div>                        <div class="stat-value">Promedio</div>                    </div>                </div> -->            </div>        </div>        <div class="wrapper">            <div class="clash-card archer" [routerLink]="[\'/patient/detail-patient/heart-rate\',hash]">                <div class="clash-card__image clash-card__image--archer">                    <img src="assets/images/heart-rate.png" alt="heart-rate" />                </div>                <div class="clash-card__level clash-card__level--archer">Indicador</div>                <div class="clash-card__unit-name">Frecuencia Cardiaca</div>                <div class="clash-card__unit-description">                    Este módulo permite monitorear los latidos por minuto, ayudando a evaluar el estado del corazón y la                    condición física de la persona.                </div>                <!-- <div class="clash-card__unit-stats clash-card__unit-stats--archer clearfix">                    <div class="one-third">                        <div class="stat">25</div>                        <div class="stat-value">Mínima</div>                    </div>                    <div class="one-third">                        <div class="stat">24</div>                        <div class="stat-value">Máxima</div>                    </div>                    <div class="one-third no-border">                        <div class="stat">300</div>                        <div class="stat-value">Promedio</div>                    </div>                </div> -->            </div>        </div>        <div class="wrapper">            <div class="clash-card giant" [routerLink]="[\'/patient/detail-patient/fall-detector\',hash]">                <div class="clash-card__image clash-card__image--giant">                    <img src="assets/images/fall-detector.png"                        alt="fall-detector" />                </div>                <div class="clash-card__level clash-card__level--giant">Indicador</div>                <div class="clash-card__unit-name">Detección de Caídas</div>                <div class="clash-card__unit-description">                    En este módulo se muestran eventos de posibles caídas, permitiendo una respuesta rápida y mejorando                    la seguridad de la persona.                </div>                <!-- <div class="clash-card__unit-stats clash-card__unit-stats--giant clearfix">                    <div class="one-third no-border">                        <div class="stat"></div>                        <div class="stat-value"></div>                    </div>                    <div class="one-third no-border">                        <div class="stat">2</div>                        <div class="stat-value">Registros</div>                    </div>                </div> -->            </div>        </div>        <div class="wrapper">            <div class="clash-card goblin" [routerLink]="[\'/patient/detail-patient/location\',hash]">                <div class="clash-card__image clash-card__image--goblin">                    <img src="assets/images/location-icon.png" alt="location-icon" />                </div>                <div class="clash-card__level clash-card__level--goblin">Indicador</div>                <div class="clash-card__unit-name">Geolocalización</div>                <div class="clash-card__unit-description">                    Este módulo permite conocer y hacer seguimiento a la ubicación en tiempo real de la persona,                    brindando mayor control y seguridad.                </div>                <!-- <div class="clash-card__unit-stats clash-card__unit-stats--goblin clearfix">                    <div class="one-third no-border">                        <div class="stat"></div>                        <div class="stat-value"></div>                    </div>                    <div class="one-third no-border">                        <div class="stat">2</div>                        <div class="stat-value">Registros</div>                    </div>                </div> -->            </div>        </div>        <div class="wrapper">            <div class="clash-card wizard" [routerLink]="[\'/patient/detail-patient/oxygen-saturation\',hash]">                <div class="clash-card__image clash-card__image--wizard">                    <img src="assets/images/oxygen-saturation.png" alt="wizard" />                </div>                <div class="clash-card__level clash-card__level--wizard">Indicador</div>                <div class="clash-card__unit-name">Oxígeno</div>                <div class="clash-card__unit-description">                    Este módulo muestra el nivel de oxígeno en la sangre, un dato clave para evaluar la función                    respiratoria y el estado general de salud.                </div>            </div>        </div>    </div></div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DetailPatientComponent', 'selector': 'app-detail-patient'},{'name': 'DetailPermissionComponent', 'selector': 'app-detail-permission'},{'name': 'DetailRoleComponent', 'selector': 'app-detail-role'},{'name': 'DetailUserComponent', 'selector': 'app-detail-user'},{'name': 'EditPatientComponent', 'selector': 'app-edit-patient'},{'name': 'EditPermissionComponent', 'selector': 'app-edit-permission'},{'name': 'EditRoleComponent', 'selector': 'app-edit-role'},{'name': 'EditUserComponent', 'selector': 'app-edit-user'},{'name': 'FallDetectorPatientComponent', 'selector': 'app-fall-detector-patient'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeartRatePatientComponent', 'selector': 'app-heart-rate-patient'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LocationPatientComponent', 'selector': 'app-location-patient'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ManagePermissionsComponent', 'selector': 'app-manage-permissions'},{'name': 'ManageRolesComponent', 'selector': 'app-manage-roles'},{'name': 'ManageUsersComponent', 'selector': 'app-manage-users'},{'name': 'ManagmentComponent', 'selector': 'app-managment'},{'name': 'MantainanceComponent', 'selector': 'app-mantainance'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'NewPatientComponent', 'selector': 'app-new-patient'},{'name': 'NewPermissionComponent', 'selector': 'app-new-permission'},{'name': 'NewRoleComponent', 'selector': 'app-new-role'},{'name': 'NewUserComponent', 'selector': 'app-new-user'},{'name': 'OxygenSaturationPatientComponent', 'selector': 'app-oxygen-saturation-patient'},{'name': 'PatientComponent', 'selector': 'app-patient'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'ReviewPatientComponent', 'selector': 'app-review-patient'},{'name': 'ScrollToTopComponent', 'selector': 'app-scroll-to-top'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TemperaturePatientComponent', 'selector': 'app-temperature-patient'},{'name': 'UserDetailComponent', 'selector': 'app-user-detail'},{'name': 'UserUpdatePasswordComponent', 'selector': 'app-user-update-password'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DetailPatientComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DetailPatientComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
