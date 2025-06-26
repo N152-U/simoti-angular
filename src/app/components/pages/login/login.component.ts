@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
       };
       this.auth.logIn(this.aFormGroup.value).subscribe(
         (data) => {
-          this.router.navigateByUrl("/home");
+          this.router.navigateByUrl("/patient");
         },
         (err) => {
           Swal.fire({
