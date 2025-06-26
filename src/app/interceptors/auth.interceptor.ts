@@ -44,7 +44,7 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError((err: HttpErrorResponse) => {
         if (token && this.pendingRequestsCount > 0) this.pendingRequestsCount--;
         if (err.status === 401) {
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/patients');
         }
         if ((this.pendingRequestsCount == 0)) {
           this.reqpendingservice.notify(this.pendingRequestsCount);
