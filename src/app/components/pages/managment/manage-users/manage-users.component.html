@@ -89,6 +89,12 @@
               </button>
             </ng-template>
             &nbsp;
+            <ng-template [ngxPermissionsOnly]="['EDIT.PATIENT']">
+              <button class="btn btn-warning" (click)="openTokenModal(user)" title="Agregar Token">
+                <i class="pi pi-key"></i>
+              </button>
+            </ng-template>
+            &nbsp;
             <ng-template [ngxPermissionsOnly]="['DELETE.USER']">
               <button class="btn btn-danger" (click)="DeleteUser(user, i)">
                 <i class="pi pi-trash"></i>
@@ -110,3 +116,14 @@
   </div>
 
 </div>
+<p-dialog header="Agregar Token" [(visible)]="tokenDialog" [modal]="true" [closable]="true" [dismissableMask]="true">
+  <div class="p-fluid">
+    <div class="p-field">
+      <label for="token">Token</label>
+      <input id="token" type="text" pInputText [(ngModel)]="tokenValue" />
+    </div>
+    <div class="p-d-flex p-jc-end">
+      <button pButton type="button" label="Guardar" (click)="saveToken()" class="p-button-success"></button>
+    </div>
+  </div>
+</p-dialog>

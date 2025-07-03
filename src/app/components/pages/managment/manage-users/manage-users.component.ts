@@ -22,6 +22,9 @@ export class ManageUsersComponent implements OnInit {
   first = 0;
   rows = 10;
   totalRecords: number = 0;
+  tokenDialog: boolean = false;
+  tokenValue: string = '';
+  selectedUserId: string | null = null;
 
   constructor(private mmu: ManageUsersService, public router: Router) { }
 
@@ -94,6 +97,31 @@ export class ManageUsersComponent implements OnInit {
       }, 1000);
     }
 
+  }
+
+  openTokenModal(patient: any) {
+    this.selectedUserId = patient.id;
+    this.tokenValue = '';
+    this.tokenDialog = true;
+  }
+
+  saveToken() {
+    if (this.selectedUserId && this.tokenValue) {
+      const payload = {
+        userId: this.selectedUserId,
+        token: this.tokenValue
+      };
+  
+      this.mmu.sendToken(payload.userId,payload.token).subscribe({
+        next: () => {
+          this.tokenDialog = false;
+          // Aquí puedes mostrar un mensaje de éxito si quieres
+        },
+        error: () => {
+          // Manejar errores
+        }
+      });
+    }
   }
 
 }

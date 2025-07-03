@@ -102,6 +102,14 @@ export class ManageUsersService {
       );
   }
 
+  sendToken(tutorId: string, token: string){
+    return this.http.put<any>(`${environment.apiUrl}/users/addTokenFcw/${tutorId}`, {"token":token})
+      .pipe(catchError((error: HttpErrorResponse) => {
+        return throwError(() => error); // Reenvía el error al componente
+      })
+    );
+  }
+
   /* FUNCION Get user details to update by hash */
   GetUpdateByHash(hash: string) {
     return this.http
