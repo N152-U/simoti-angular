@@ -99,9 +99,9 @@ export class ManageUsersComponent implements OnInit {
 
   }
 
-  openTokenModal(patient: any) {
-    this.selectedUserId = patient.id;
-    this.tokenValue = '';
+  openTokenModal(user: any) {
+    this.selectedUserId = user.id;
+    this.tokenValue = user.tokenFcw ?? '';
     this.tokenDialog = true;
   }
 
@@ -115,10 +115,18 @@ export class ManageUsersComponent implements OnInit {
       this.mmu.sendToken(payload.userId,payload.token).subscribe({
         next: () => {
           this.tokenDialog = false;
-          // Aquí puedes mostrar un mensaje de éxito si quieres
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Token guardado',
+            showConfirmButton: false,
+          });
+          this.router.navigate(["/managment/manage-users"]);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1300);
         },
-        error: () => {
-          // Manejar errores
+        error: (error) => {
         }
       });
     }
